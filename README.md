@@ -1,8 +1,8 @@
-# MagangApp
+# Ayo Magang
 
 BIT304 - Final Project
 
-MagangApp
+Ayo Magang
 
 Created by :
 

@@ -1,0 +1,528 @@
+
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="author" content="Turnitin, LLC" />
+    <meta name="keywords" content="" /> 
+    <meta name="description" content="" />
+    <meta name="viewport" content="width = initial-scale" />
+    <meta name="viewport" content="height = initial-scale" />
+    
+<title>Turnitin Originality Report</title>
+
+<base href="http://www.turnitin.com">
+<style type="text/css">
+	
+body	{
+	color: #000;
+	background: #ddd;
+	padding: 0;
+	border: 0;
+	font: 14px Arial, Verdana, sans-serif;
+	margin: 0;
+	text-align: center;
+	}
+	
+form	{
+	padding: 0;
+	margin: 0;
+	}
+	
+p	{
+	padding: .8em 1.5em;
+	margin: 0;
+	text-align: left;
+	}
+	
+img	{
+	border: 0;
+	padding: 0;
+	}
+
+div	{
+	padding: 0;
+	border: 0;
+	text-align: left;
+	}
+	
+strong	{
+	font-weight: bold;
+	}
+	
+h2	{
+	font-size: 15px;
+	margin: 20px 0 10px 20px;
+	}
+	
+a:link, a:visited	{
+	text-decoration: underline;
+	color: #00f;
+	}
+	
+a:hover, a:active	{
+	text-decoration: underline;
+	color: #888;
+	}
+	
+img#logo	{
+	float: right;
+	padding-right: 20px;
+	padding-top: 10px;
+	}
+	
+div#container	{
+	border: 1px solid #aaa;
+	width: 770px;
+	margin: 20px auto;
+	background: #fff;
+	padding: 10px 0;
+	}
+	
+div#top	{
+	background: #fff;
+	width: 7in;
+	margin: auto;
+	padding-bottom: 15px;
+	}
+	
+div#content	{
+	background: #fff;
+	}
+	
+#top p	{
+	padding: .3em 0 .3em 20px;
+	}
+
+#top span	{
+	padding-right: 35px;
+	}
+	
+#top p#orig	{
+	padding-top: 15px;
+	}
+	
+#orig span#score.red	{
+	border-right: 18px solid red;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.orange	{
+	border-right: 18px solid orange;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.yellow	{
+	border-right: 18px solid yellow;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.green	{
+	border-right: 18px solid green;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.blue	{
+	border-right: 18px solid blue;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+div.divider	{
+	width: 7in;
+	border: 1px dotted #888;
+	margin: auto;
+	padding: 4px 0 4px 10px;
+	font-weight: bold;
+	background: #ddd;
+	font-size: 15px;
+	}
+	
+div.links	{
+	width: 7in;
+	margin: auto;
+	}
+	
+.links div	{
+	padding: 15px 20px 15px 20px;
+	border-bottom: 1px dotted #888;
+	}
+	
+.links div#last	{
+	padding: 15px 20px 20px 20px;
+	border-bottom: 0;
+	}
+	
+div.number	{
+	float: right;
+	background: white;
+	border: 1px solid #888;
+	margin: 0 0 0 20px;
+	padding: .1em .5em;
+	text-align: center;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 20px;
+	}
+	
+div.number-l	{
+	float: left;
+	background: white;
+	border: 1px solid #888;
+	margin: 6px 16px 10px 0;
+	padding: .1em .5em;
+	text-align: center;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 20px;
+	}
+	
+.links div p	{
+	padding: .2em 1.5em .4em 0;
+	}
+	
+.links div p#mess	{
+	padding: .2em 1.5em 0 0;
+	}
+	
+div#body	{
+	line-height: 1.5em;
+	width: 7in;
+	margin: auto;
+	padding-bottom: 20px;
+	}
+	
+#body p	{
+	color: #555;
+	padding-top: 30px;
+	line-height: 20px;
+	}
+
+	
+#body a	{
+	display: block;
+	color: red;
+	margin: 1em 3em;
+	background-repeat: no-repeat;
+	background-position: top right;
+	padding: 1em 1em;
+	border: 1px dotted #888;
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: none;
+	line-height: 26px;
+	background: #FFFFE5;
+	}
+
+#body span	{
+	color: #555;
+	font-weight: normal;
+	font-size: 14px;
+	}
+
+#body span.number	{
+	display: block;
+	float: right;
+	color: #000;
+	font-weight: normal;
+	border: 1px solid #888;
+	padding: 0 6px;
+	font-weight: bold;
+	margin-left: 15px;
+	font-size: .9em;
+	background: #fff;
+	}
+	
+#actions	{
+	display: none;
+	}
+
+</style>
+
+
+
+</head>
+
+<body id="or_print_report">
+
+
+<div id="container">
+
+<div id="top">
+    <div id="content">
+        <!-- ######### Top Body  ##########################--> 
+        <div id="top_body">
+            <p id="title">
+            <img src="/r/build/images/b3964fd7e38c8fcbb8bfbf2efc1f0635cb_turnitin_logo.gif" id="logo" width="60">
+            Turnitin Originality Report
+            </p>
+                <div class="general_info">
+                    <p>
+                        <span>Final Year Project 1 BIT304 - Literature Review (Ayu Chrisniyanti - E1500352)</span>
+                        
+                        by Ayu Chrisniyanti
+                        
+                    </p>
+                    <p>
+                        From Literature Review (Assignment 2) (BIT304 (STIKOM - Semester 3 - 2018))
+                    </p>
+                    <ul>
+                        <li>Processed on 25-Oct-2018 10:25 AM +08</li>
+                        <li>ID: 1026352523</li>
+                        <li>Word Count: 2528</li>
+                    </ul>
+                </div>
+                <div class="similarity_box">
+                    <div class="overall_similarity">
+                        <div class="color_box yellow">&nbsp;</div>
+                        <div class="similarity_title">Similarity Index</div>
+                        <div class="similarity_percent">26%</div>
+                    </div>
+                    <div class="similarity_by_source">
+                        <div class="similarity_title">Similarity by Source</div>
+                        <dl>
+                            <dt>Internet&nbsp;Sources:</dt>
+                            <dd>16%</dd>
+                            <div class="clear"></div>
+                            <dt>Publications:</dt>
+                            <dd>3%</dd>
+                            <div class="clear"></div>
+                            <dt>Student&nbsp;Papers:</dt>
+                            <dd>24%</dd>
+                            <div class="clear"></div>
+                        </dl>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                                 
+        </div>
+        <!-- ######### END Top Body  ##########################--> 
+    </div>
+</div>
+
+<div class="divider">sources:</div>
+
+<div class="links">
+
+	<div>
+	<div class="number-l">1</div>
+	<p>4% match (student papers from 21-May-2018)</p>
+
+	<a style="color:red" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=966451814&perc=4">Submitted to HELP UNIVERSITY on 2018-05-21</a>
+
+	</div>
+	<div>
+	<div class="number-l">2</div>
+	<p>2% match (student papers from 28-Aug-2018)</p>
+
+	<a style="color:green" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=994153488&perc=2">Submitted to University of Rwanda on 2018-08-28</a>
+
+	</div>
+	<div>
+	<div class="number-l">3</div>
+	<p>1% match (student papers from 23-Sep-2018)</p>
+
+	<a style="color:blue" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=1006920537&perc=1">Submitted to Victoria University on 2018-09-23</a>
+
+	</div>
+	<div>
+	<div class="number-l">4</div>
+	<p>1% match (Internet from 27-Apr-2016)</p>
+
+	<a style="color:brown" href="http://webcache.googleusercontent.com/search?q=cache:G0b5_laP_cUJ:citeseerx.ist.psu.edu/vie">http://webcache.googleusercontent.com/search?q=cache:G0b5_laP_cUJ:citeseerx.ist.psu.edu/vie</a>
+
+	</div>
+	<div>
+	<div class="number-l">5</div>
+	<p>1% match (student papers from 13-Oct-2015)</p>
+
+	<a style="color:#ff6600" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=583919573&perc=1">Submitted to Whitireia Community Polytechnic on 2015-10-13</a>
+
+	</div>
+	<div>
+	<div class="number-l">6</div>
+	<p>1% match (Internet from 23-Sep-2017)</p>
+
+	<a style="color:#630000" href="https://media.neliti.com/media/publications/166286-EN-usage-of-web-service-in-mobile-applicati.pdf">https://media.neliti.com/media/publications/166286-EN-usage-of-web-service-in-mobile-applicati.pdf</a>
+
+	</div>
+	<div>
+	<div class="number-l">7</div>
+	<p>1% match (student papers from 06-Aug-2018)</p>
+
+	<a style="color:#009cff" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=987863420&perc=1">Submitted to Wellington Institute of Technology on 2018-08-06</a>
+
+	</div>
+	<div>
+	<div class="number-l">8</div>
+	<p>1% match (Internet from 06-Dec-2017)</p>
+
+	<a style="color:#31ff00" href="http://article.sciencepublishinggroup.com/pdf/10.11648.j.ajsea.20170605.11.pdf">http://article.sciencepublishinggroup.com/pdf/10.11648.j.ajsea.20170605.11.pdf</a>
+
+	</div>
+	<div>
+	<div class="number-l">9</div>
+	<p>1% match (Internet from 15-Nov-2017)</p>
+
+	<a style="color:#330099" href="http://journals.ums.ac.id/index.php/warta/article/view/3438">http://journals.ums.ac.id/index.php/warta/article/view/3438</a>
+
+	</div>
+	<div>
+	<div class="number-l">10</div>
+	<p>1% match (student papers from 01-Jun-2018)</p>
+
+	<a style="color:#00cc99" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=971061160&perc=1">Submitted to Waikato Institute of Technology on 2018-06-01</a>
+
+	</div>
+	<div>
+	<div class="number-l">11</div>
+	<p>1% match (student papers from 15-Mar-2014)</p>
+
+	<a style="color:#ff0063" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=406164352&perc=1">Submitted to Institute of Technology Blanchardstown on 2014-03-15</a>
+
+	</div>
+	<div>
+	<div class="number-l">12</div>
+	<p>1% match (student papers from 14-Nov-2016)</p>
+
+	<a style="color:#006331" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=736602056&perc=1">Submitted to Universiti Malaysia Sarawak on 2016-11-14</a>
+
+	</div>
+	<div>
+	<div class="number-l">13</div>
+	<p>1% match (student papers from 10-Aug-2018)</p>
+
+	<a style="color:#9966ff" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=988915807&perc=1">Submitted to UniSadhuGuna International College on 2018-08-10</a>
+
+	</div>
+	<div>
+	<div class="number-l">14</div>
+	<p>1% match (publications)</p>
+
+	<a style="color:#9c6331" href="http://dl.acm.org/citation.cfm?doid=2905055.2905247">P. Vigneswara Ilavarasan, Han Ei Chew. "A Toolkit on Mobile Apps for Business Growth", Proceedings of the Second International Conference on Information and Communication Technology for Competitive Strategies - ICTCS '16, 2016</a>
+
+	</div>
+	<div>
+	<div class="number-l">15</div>
+	<p>1% match (Internet from 09-Apr-2018)</p>
+
+	<a style="color:#ce0031" href="http://e-journal.uajy.ac.id/14173/7/MTF022446.pdf">http://e-journal.uajy.ac.id/14173/7/MTF022446.pdf</a>
+
+	</div>
+	<div>
+	<div class="number-l">16</div>
+	<p>1% match (student papers from 19-Mar-2018)</p>
+
+	<a style="color:#cc9900" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=932830687&perc=1">Submitted to Mohawk College of Applied Arts & Technology on 2018-03-19</a>
+
+	</div>
+	<div>
+	<div class="number-l">17</div>
+	<p>1% match (student papers from 25-Apr-2012)</p>
+
+	<a style="color:#63009c" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=245085184&perc=1">Submitted to VIT University on 2012-04-25</a>
+
+	</div>
+	<div>
+	<div class="number-l">18</div>
+	<p>1% match (student papers from 04-Jun-2017)</p>
+
+	<a style="color:#cc6600" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=821842588&perc=1">Submitted to Universiti Teknologi MARA on 2017-06-04</a>
+
+	</div>
+	<div>
+	<div class="number-l">19</div>
+	<p>1% match (student papers from 12-Dec-2015)</p>
+
+	<a style="color:#cc0066" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=614202352&perc=1">Submitted to University of Southern California on 2015-12-12</a>
+
+	</div>
+	<div>
+	<div class="number-l">20</div>
+	<p>1% match (Internet from 21-Jul-2016)</p>
+
+	<a style="color:#33cc99" href="http://www.idpublications.org/ejmcs-vol-2-no-1-2015/">http://www.idpublications.org/ejmcs-vol-2-no-1-2015/</a>
+
+	</div>
+	<div>
+	<div class="number-l">21</div>
+	<p>1% match (student papers from 06-Aug-2017)</p>
+
+	<a style="color:#336699" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=835541988&perc=1">Submitted to Champlain College on 2017-08-06</a>
+
+	</div>
+	<div>
+	<div class="number-l">22</div>
+	<p>1% match (student papers from 05-May-2017)</p>
+
+	<a style="color:red" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=71955869&perc=1">Submitted to University of Central England in Birmingham on 2017-05-05</a>
+
+	</div>
+	<div>
+	<div class="number-l">23</div>
+	<p>< 1% match (Internet from 04-May-2016)</p>
+
+	<a style="color:green" href="http://www.ijcaonline.org/archives/volume121/number1/21504-4351">http://www.ijcaonline.org/archives/volume121/number1/21504-4351</a>
+
+	</div>
+	<div>
+	<div class="number-l">24</div>
+	<p>< 1% match (student papers from 23-Nov-2016)</p>
+
+	<a style="color:blue" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=741913078&perc=0">Submitted to Universiti Teknologi MARA on 2016-11-23</a>
+
+	</div>
+	<div>
+	<div class="number-l">25</div>
+	<p>< 1% match (student papers from 04-Jul-2018)</p>
+
+	<a style="color:brown" href="/paperInfo.asp?r=46.2394962694034&svr=304&lang=en_us&oid=898327435&perc=0">Submitted to Universiti Teknologi MARA on 2018-07-04</a>
+
+	</div>
+	<div id="last">
+	<div class="number-l">26</div>
+	<p>< 1% match (Internet from 21-Sep-2015)</p>
+
+	<a style="color:#ff6600" href="http://www.slideshare.net/PareshMayani/android-studio-26760642?related=1">http://www.slideshare.net/PareshMayani/android-studio-26760642?related=1</a>
+
+	</div>
+
+</div>
+
+
+
+<div class="divider">paper text:</div>
+<div id="body">
+BeautéPanda: <a href="javascript:openDSC(966451814, 1, '956');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="956" name="1" style="color:red" class="red"><span class="b-ref">1</span>Android Application for<span> Beauty Enthusiasts </span>BIT304 FINAL YEAR PROJECT I</a> LITERATURE REVIEW (E1500352) Ayu Chrisniyanti <a href="javascript:openDSC(966451814, 1, '971');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="971" name="1" style="color:red" class="red"><span class="b-ref">1</span>Submitted to the FACULTY OF COMPUTING AND DIGITAL TECHNOLOGY (SCHOOL OF INFORMATION AND COMMUNICATION TECHNOLOGY) In partial fulfilment of the requirements for the degree of Bachelor of Information Technology (HONS) HELP UNIVERSITY<span> SEPTEMBER - DECEMBER </span>2018 1. Introduction<span> Nowadays, smartphone </span>is</a> one example of technology that is becoming popular, global, and be <a href="javascript:openDSC(994153488, 1, '1798');" onmouseover="doRollover(2);" onmouseout="undoRollover(2);" id="1798" name="2" style="color:green" class="green"><span class="b-ref">2</span>a part of every person life. People around the world have adopted this technology as one of the most important facility<span> that is needed </span>in their everyday life. A variety of smartphones applications is available to be used in a wider range of usage<span> situation. </span>No doubt a smartphone is a new gadget</a> that have ability to change people lives (Fawareh &amp; Shaidah, 2017). In the past, mobile phones were used only to make call or sending messages, but today mobile phones are changed into smartphones where it provides numerous functionalities and smartphones are not only used for communication anymore. With the growth of internet technology and its applications, now people are using smartphone for internet use such as sending and receiving email, chatting, sharing photos, and many more (Fawareh &amp; Shaidah, 2017). <a href="javascript:openDSC(1278684358, 2474, '216');" onmouseover="doRollover(23);" onmouseout="undoRollover(23);" id="216" name="23" style="color:green" class="green"><span class="b-ref">23</span>At present there are many mobile Operating Systems<span> that </span>available in the market</a> such as Windows by Windows Inc., Symbian by Nokia, iOS by Apple Inc., and many more. But now, Android by Google and iOS by Apple Inc. are being the major players in building and developing mobile Operating System in the global market. Both platforms have grown more enterprise-friendly since about one decade (Bala, Sharma, &amp; Kaur, 2015). Android OS is a new next generation of mobile operating system and it <a href="javascript:openDSC(741913078, 1, '725');" onmouseover="doRollover(24);" onmouseout="undoRollover(24);" id="725" name="24" style="color:blue" class="blue"><span class="b-ref">24</span>is one of the most widely used mobile Operating System<span> by the people </span>these days.</a> In 2003, Android was founded by Andy Rubin with company named Android Inc. in California. Entering 2005, Google was purchased Android and it was unveiled <a href="javascript:openDSC(898327435, 1, '830');" onmouseover="doRollover(25);" onmouseout="undoRollover(25);" id="830" name="25" style="color:brown" class="brown"><span class="b-ref">25</span>in 2007 with formation of<span> OHA </span>(Open Handset Alliance) led by Google.</a> This <a href="javascript:openDSC(835541988, 1, '1320');" onmouseover="doRollover(21);" onmouseout="undoRollover(21);" id="1320" name="21" style="color:#336699" class="#336699"><span class="b-ref">21</span>Operating System is based on the Linux Kernel and<span> it </span>is developed by Google (Narmatha &amp; Krishnakumar, 2016).</a> (Lazareska &amp; Jakimoski, 2017) <a href="javascript:openDSC(2696042958, 2909, '39');" onmouseover="doRollover(8);" onmouseout="undoRollover(8);" id="39" name="8" style="color:#31ff00" class="#31ff00"><span class="b-ref">8</span>The iOS platform<span> is </span>developed by Apple<span> Inc., iOS </span>is the<span> second </span>most<span> popular </span>mobile</a> OS these days after Android, and it <a href="javascript:openDSC(2696042958, 2909, '44');" onmouseover="doRollover(8);" onmouseout="undoRollover(8);" id="44" name="8" style="color:#31ff00" class="#31ff00"><span class="b-ref">8</span>is the world’s most advanced mobile Operating System</a> these days. This OS was first released in 2007 and it developed only for iPhone, but later it was developed for iPod as well as iPad (Bharati, Ramith, &amp; Amala, 2015). iOS is developed and it works exclusively on Apple’s products and devices. In 2017, Apple announced that iOS had 710 million active devices and <a href="javascript:openDSC(2696042958, 2909, '35');" onmouseover="doRollover(8);" onmouseout="undoRollover(8);" id="35" name="8" style="color:#31ff00" class="#31ff00"><span class="b-ref">8</span>it has sold more than 1.2 billion iOS devices</a> (Lazareska &amp; Jakimoski, 2017). Based on what I have discussed above, we decided to develop a mobile application as a platform for our application. The reason we choose mobile application because it is running on smartphone where it <a href="javascript:openDSC(1092525680, 2474, '186');" onmouseover="doRollover(4);" onmouseout="undoRollover(4);" id="186" name="4" style="color:brown" class="brown"><span class="b-ref">4</span>easy to use and accessible from anywhere and any place,</a> unlike website or desktop application. Also, mobile application <a href="javascript:openDSC(1092525680, 2474, '183');" onmouseover="doRollover(4);" onmouseout="undoRollover(4);" id="183" name="4" style="color:brown" class="brown"><span class="b-ref">4</span>is a new<span> development </span>and rapidly growing sector<span> in </span>global.</a> In this Era, many people are using <a href="javascript:openDSC(988915807, 1, '1789');" onmouseover="doRollover(13);" onmouseout="undoRollover(13);" id="1789" name="13" style="color:#9966ff" class="#9966ff"><span class="b-ref">13</span>mobile application to contact friends, browse<span> the </span>internet,<span> sharing documents, </span>and many more.<span> The user </span>can get facility<span> of mobile application </span>from everywhere<span> and </span>people can do many things<span> in </span>daily life<span> or </span>business life.</a> Beside daily life got impact from mobile application, it gives and <a href="javascript:openDSC(1092525680, 2474, '193');" onmouseover="doRollover(4);" onmouseout="undoRollover(4);" id="193" name="4" style="color:brown" class="brown"><span class="b-ref">4</span>plays an important role in business<span> life. </span>many business companies<span> in the world </span>are earning revenue<span> by </span>using mobile application</a> (Islam, Islam, &amp; Mazumder, 2010). This makes people on society are using mobile application and smartphone often for daily life than any other platforms. 2. Why We Choose Android Operating System that are developing by Google and Apple Inc. are the most popular in society these days. Even though, Apple Inc. developed iOS and it success to surpass the performance of any other Operating Systems include Android, because its features and its exclusivity. Nowadays, the fact in the market is Android Operating System is growing faster than iOS and many people on society are using Android Operating System (Sheikh, Ganai, Malik, &amp; Dar, 2013). Beside that some application developers are prefer to develop a mobile application with Android-based, because Android OS is open source which mean it is freely available and editable for application developers and it market share is 48.8% which is wider than iOS where iOS only has 17.2% of market share. Also, Android has the highest market size than any other existing Operating Systems (Divya &amp; KrishnaKumar, 2016). <a href="javascript:openDSC(971061160, 1, '759');" onmouseover="doRollover(10);" onmouseout="undoRollover(10);" id="759" name="10" style="color:#00cc99" class="#00cc99"><span class="b-ref">10</span>Android OS is the most widely used<span> on society </span>in 2012</a> until present. This Operating System <a href="javascript:openDSC(971061160, 1, '756');" onmouseover="doRollover(10);" onmouseout="undoRollover(10);" id="756" name="10" style="color:#00cc99" class="#00cc99"><span class="b-ref">10</span>is based on Linux Kernel and<span> it is </span>developed by Google, but later on<span> it developed </span>by Open Handset Alliance (OHA).</a> It <a href="javascript:openDSC(245085184, 1, '1338');" onmouseover="doRollover(17);" onmouseout="undoRollover(17);" id="1338" name="17" style="color:#63009c" class="#63009c"><span class="b-ref">17</span>applications are usually developed in the Java language using the Android Software Development Kit, but<span> the </span>other development tools are available<span> for developers, such </span>as</a> Native Development Kit for those developers that developed an application or extensions in C or C++ (Sheikh, Ganai, Malik, &amp; Dar, 2013). Besides Android provide an open development platform, Android also offers all the developers with the ability to develop and build an innovative application. Take advantages of the device hardware, set alarms, and many more are free for developers. In 2011, Google announced that their Android apps had been about 100.000 installed around the world (Sheikh, Ganai, Malik, &amp; Dar, 2013). Based on the analysis above, we have chosen Android to develop our project named BeautéPanda. Because it is open source OS and it offers a lot of convenience and flexibility for developers while developing a mobile application. Besides, Android OS is commonly used on society and it is becoming popular around the world, so it will make easier for us to reach more users to use our application. 3. Similar Application Before we are developing our application, we were in the phase of gathering ideas. While in this phase, we did a lot of research about other applications that have similarity with our application that we want to develop named BeautéPanda. There are some mobile applications that provide some features that are similar with our application. But, all of those applications still cannot fulfil the user needs between Makeup Artists or Salons and the customers while making the appointment. There are the lists of some Android applications that have similarity with our application: ? GO GLAM by GO-JEK GO GLAM is service that powered by GO-JEK. It is a beauty services that provide customers with manicure pedicure, cream-bath to waxing and the service is come directly to your home (GOJEK, 2017). However, for now this application only provides two services such as hair treatment and nails. This application still gets many comments from the user because the price offered is more expensive than salons in general (iTunes, 2017). ? SALON by Houzcall This application is a mobile application that provides beauty services for the customers from hairstyling, haircut, manicure pedicure, and waxing to the place and time determined by you. This application provides the customer with booking menu where the customer can book for more than one person. However, this application did not provide the customer for makeup and for now, SALON by Houzcall only serves areas of Jakarta. This application provide electronic voucher called Houzcall Credit where the customer can use this voucher instead of cash to make payments and transactions (Houzcall, 2018). 4. Methodology and Technique 4.1 Methodology We have chosen to use Agile software development method for developing our project. This methodology involves many stakeholders and constantly showing them with the demonstrations of the current state of the software. This methodology also focused in around short iterative software release cycle. With this project, the stakeholders are allowed to make recommendations and suggest changes in the application while the software is being develop; so with this methodology, the developers can track what the customers actually desire (Charles Edeki, 2015). Besides, the reason we choose Agile software development for this project because it will help us to improve the expectations of when the software or project will be complete, provide the ability to check the overall project progress easily, and many more (Charles Edeki, 2015). Agile software development is suitable for our project, because we can know what customers need while the software is being develop by giving feedback. 4.2 Technique Testing is very important thing in software development. The <a href="javascript:openDSC(966451814, 1, '960');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="960" name="1" style="color:red" class="red"><span class="b-ref">1</span>main purpose of software testing is to ensure that the software<span> produced </span>is in accordance with requirements<span> that </span>previously determined. When the requirements of a system have been compiled, there should be a<span> planning </span>test. In addition, a testing process requires a final goal that can be assessed so that the tester can stop<span> doing </span>a test when<span> the objectives </span>are achieved</a> (Kumar &amp; Singh, 2015). In this project, we will use <a href="javascript:openDSC(406164352, 1, '1435');" onmouseover="doRollover(11);" onmouseout="undoRollover(11);" id="1435" name="11" style="color:#ff0063" class="#ff0063"><span class="b-ref">11</span>Grey-box<span> testing. </span>Grey-box<span> testing </span>is a technique to test<span> our </span>application with limited knowledge of the internal working of an application and<span> it </span>also<span> have knowledge about </span>the<span> basic </span>aspects<span> from </span>the system.</a> With this technique, we <a href="javascript:openDSC(583919573, 1, '653');" onmouseover="doRollover(5);" onmouseout="undoRollover(5);" id="653" name="5" style="color:#ff6600" class="#ff6600"><span class="b-ref">5</span>can verify both<span> of </span>the output<span> from </span>the user interface and also<span> its </span>process that leads to<span> the </span>user interface output.<span> This </span>Grey-box testing can be applied to most testing phases; However, mostly used in<span> the </span>integration testing</a> (Bansal, 2014). 5. Tools &amp; Software to Be Used ? IntelliJ IDEA In this project we decided to use IntelliJ IDEA, because in developing this project we use Java language as the programming language and it is an integrated development environment (IDE). There is no different between this software and Android Studio, the Android plugins for both software are built from the same code and also all features on Android Studio are also available on IntelliJ IDEA (JetBrains, 2013). <a href="javascript:openDSC(2889803464, 2209, '113');" onmouseover="doRollover(26);" onmouseout="undoRollover(26);" id="113" name="26" style="color:#ff6600" class="#ff6600"><span class="b-ref">26</span>The difference between IntelliJ IDEA and Android Studio</a> is only from the RAM specification where the developers need 8GB RAM with processors i3 – i7 and SSD 128 or 152GB while using Android Studio if they want to develop the Android application without problems such as the software is not responding while developing the mobile application (Dotid, 2017). ? Gantt Project We use Gantt Project as our tools to make and manage the project schedule before developing our project as the requirements that need to fulfil. We choose Gantt Project because it easier to use and more flexible while making and managing the project schedule. ? Microsoft Visio Pro We decided to use Microsoft Visio Pro to make our project diagram from use case diagram, sequence diagram, database diagram, and many more. We choose this software because it easy to use and it has many libraries that make us easy to navigate. ? Adobe Photoshop Adobe Photoshop is a photo editing and photo manipulation software that lets users to create and edit an images. In developing this project, we choose Adobe Photoshop to design our user interface as a sketch before we develop the application. Also, this software will help us to make the logo for our application and other graphic content needs. 6. Challenges to Be Overcome ? Lack of experience in developing an android application We have no experience to develop an Android application before, but we have experience and we have learned Java programming languages and developed Java desktop application. However, we must do many practice and learn by watching the tutorial videos to develop this project and to understand step by step while developing the application. ? Lack of experience in using IntelliJ IDEA for developing this project We have no experience developing an Android application with IntelliJ IDEA and this is our first time using IntelliJ IDEA as a software to develop an android application. We must do many research and learn to understand in term of using IntelliJ IDEA to develop an android application and to solve the problem that we face while developing our project. 7. Conclusion An Android application is commonly and widely use in global for this Era by many people. With the highest market demand in global make this platform become popular year by year. We choose Android as the platform because it is an open-source code where it offers us as the developer more flexibility while developing the application. In this Era, many beauty enthusiasts are facing the problem such as the difficulty to find makeup artists or beauty salons in one application and they still find it manually. However, we decided to develop an Android application namely BeautéPanda. We hope by developing this an Android mobile application can solve problems that are exists in beauty world. With our application, it will help the customers to find and meet with makeup artists or beauty salons and also facilitate both makeup artists and the customers with many features. References <a href="javascript:openDSC(736602056, 1, '748');" onmouseover="doRollover(12);" onmouseout="undoRollover(12);" id="748" name="12" style="color:#006331" class="#006331"><span class="b-ref">12</span>Bala, K., Sharma, S., &amp; Kaur, G. (2015). A Study on Smartphone based Operating System. International Journal of Computer Applications , 121 (1), 17-<span> 19. Bansal, A. </span>(2014). A</a><a href="javascript:openDSC(614202352, 1, '1496');" onmouseover="doRollover(19);" onmouseout="undoRollover(19);" id="1496" name="19" style="color:#cc0066" class="#cc0066"><span class="b-ref">19</span>Comparative Study of Software Testing Techniques. International Journal of Computer Science and Mobile Computing , 3 (6), 579- 584.</a> Bharati, W., Ramith, N., &amp; Amala, N. <a href="javascript:openDSC(821842588, 1, '606');" onmouseover="doRollover(18);" onmouseout="undoRollover(18);" id="606" name="18" style="color:#cc6600" class="#cc6600"><span class="b-ref">18</span>(2015). Mobile Operating System: Analysis and Comparison of Android and IOS. IJCAT - International Journal of Computing and Technology , 2 (7),</a> 273-280. Charles Edeki, P. <a href="javascript:openDSC(2327869376, 2474, '226');" onmouseover="doRollover(20);" onmouseout="undoRollover(20);" id="226" name="20" style="color:#33cc99" class="#33cc99"><span class="b-ref">20</span>(2015). AGILE SOFTWARE DEVELOPMENT METHODOLOGY. European Journal of Mathematics and Computer Science , 2 (1), 22-27.</a><a href="javascript:openDSC(987863420, 1, '989');" onmouseover="doRollover(7);" onmouseout="undoRollover(7);" id="989" name="7" style="color:#009cff" class="#009cff"><span class="b-ref">7</span>Divya, K., &amp; KrishnaKumar, S. V. (2016). COMPARATIVE ANALYSIS OF SMART PHONE OPERATING SYSTEMS ANDROID, APPLE iOS AND WINDOWS . International Journal of Scientific Engineering and Applied Science (IJSEAS) , 2 (2), 432-438.</a> Dotid, F. (2017, January 14). Rekomendasi Spesifikasi Laptop untuk Menggunakan Android Studio. Retrieved October 22, 2018, from Medium: https://medium.com/@farizdotid/rekomendasi-spesifikasi-laptop-untuk- menggunakan-android-studio-fa8cd4091bfb <a href="javascript:openDSC(932830687, 1, '1522');" onmouseover="doRollover(16);" onmouseout="undoRollover(16);" id="1522" name="16" style="color:#cc9900" class="#cc9900"><span class="b-ref">16</span>Fawareh, H. M.,<span>&amp;</span><span> Shaidah, J. </span>(2017). The Use and Effects of Smartphones in Higher Education. International Journal of Interactive Mobile Technologies , 11 (6), 103-</a> 104. GOJEK. (2017, January 01). Persona Stylist at Your Home. Retrieved October 23, 2018, from Go-Glam: https://www.go-jek.com/go-glam/ Houzcall, S. (2018, February 12). FAQ. Retrieved October 23, 2018, from Salon by Houzcall: https://salon.co.id/faq <a href="javascript:openDSC(572330097, 37, '1957');" onmouseover="doRollover(14);" onmouseout="undoRollover(14);" id="1957" name="14" style="color:#9c6331" class="#9c6331"><span class="b-ref">14</span>Islam, M. R., Islam, M. R., &amp; Mazumder, T. A. (2010). Mobile Application and Its Global Impact.<span> ternational </span>Journal of Engineering &amp; Technology , 10 (6), 72-</a> 77. iTunes. (2017, January 01). App Store Preview. Retrieved October 23, 2018, from GO- LIFE | On Demand Lifestyle: https://itunes.apple.com/us/app/go-life-on-demand- lifestyle/id1192681273?mt=8 JetBrains. (2013, May 16). IntelliJ IDEA and Android Studio FAQ . Retrieved October 23, 2018, from <a href="javascript:openDSC(71955869, 2, '1034');" onmouseover="doRollover(22);" onmouseout="undoRollover(22);" id="1034" name="22" style="color:red" class="red"><span class="b-ref">22</span>IntelliJ IDEA Blog: https://blog.jetbrains.com/idea/2013/05/intellij-idea-and-android-studio-faq/</a> Kumar, M., &amp; Singh, S. <a href="javascript:openDSC(2395440928, 2909, '51');" onmouseover="doRollover(9);" onmouseout="undoRollover(9);" id="51" name="9" style="color:#330099" class="#330099"><span class="b-ref">9</span>K. (2015). A Comparative Study of Black Box Testing and White Box Testing Techniques. International Journal of Advance Research in Computer Science and Management Studies , 3 (10), 32-44.</a><a href="javascript:openDSC(1006920537, 1, '827');" onmouseover="doRollover(3);" onmouseout="undoRollover(3);" id="827" name="3" style="color:blue" class="blue"><span class="b-ref">3</span>Lazareska, L., &amp; Jakimoski, K. (2017). Analysis of the Advantages and Disadvantages of Android and iOS Systems and Converting Applications from Android to iOS Platform and Vice Versa . American Journal of Software Engineering and Applications , 6 (5), 116-120.</a><a href="javascript:openDSC(4149998677, 2909, '14');" onmouseover="doRollover(15);" onmouseout="undoRollover(15);" id="14" name="15" style="color:#ce0031" class="#ce0031"><span class="b-ref">15</span>Narmatha, M., &amp; Krishnakumar, S. V. (2016). Study on Android Operating System And Its Versions. International Journal of Scientific Engineering and Applied Science</a> , 2 (2), 439. <a href="javascript:openDSC(2100037109, 2909, '50');" onmouseover="doRollover(6);" onmouseout="undoRollover(6);" id="50" name="6" style="color:#630000" class="#630000"><span class="b-ref">6</span>Sheikh, A. A., Ganai, P. T., Malik, N. A., &amp; Dar, K. A. (2013). Smartphone: Android Vs IOS. The SIJ Transactions on Computer Science Engineering &amp; its Applications (CSEA) , 1 (4), 141-148.</a> BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts 
+</div>
+</div>
+</body>
+</html>

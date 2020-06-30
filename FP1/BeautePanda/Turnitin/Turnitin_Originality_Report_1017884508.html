@@ -1,0 +1,395 @@
+
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="author" content="Turnitin, LLC" />
+    <meta name="keywords" content="" /> 
+    <meta name="description" content="" />
+    <meta name="viewport" content="width = initial-scale" />
+    <meta name="viewport" content="height = initial-scale" />
+    
+<title>Turnitin Originality Report</title>
+
+<base href="http://www.turnitin.com">
+<style type="text/css">
+	
+body	{
+	color: #000;
+	background: #ddd;
+	padding: 0;
+	border: 0;
+	font: 14px Arial, Verdana, sans-serif;
+	margin: 0;
+	text-align: center;
+	}
+	
+form	{
+	padding: 0;
+	margin: 0;
+	}
+	
+p	{
+	padding: .8em 1.5em;
+	margin: 0;
+	text-align: left;
+	}
+	
+img	{
+	border: 0;
+	padding: 0;
+	}
+
+div	{
+	padding: 0;
+	border: 0;
+	text-align: left;
+	}
+	
+strong	{
+	font-weight: bold;
+	}
+	
+h2	{
+	font-size: 15px;
+	margin: 20px 0 10px 20px;
+	}
+	
+a:link, a:visited	{
+	text-decoration: underline;
+	color: #00f;
+	}
+	
+a:hover, a:active	{
+	text-decoration: underline;
+	color: #888;
+	}
+	
+img#logo	{
+	float: right;
+	padding-right: 20px;
+	padding-top: 10px;
+	}
+	
+div#container	{
+	border: 1px solid #aaa;
+	width: 770px;
+	margin: 20px auto;
+	background: #fff;
+	padding: 10px 0;
+	}
+	
+div#top	{
+	background: #fff;
+	width: 7in;
+	margin: auto;
+	padding-bottom: 15px;
+	}
+	
+div#content	{
+	background: #fff;
+	}
+	
+#top p	{
+	padding: .3em 0 .3em 20px;
+	}
+
+#top span	{
+	padding-right: 35px;
+	}
+	
+#top p#orig	{
+	padding-top: 15px;
+	}
+	
+#orig span#score.red	{
+	border-right: 18px solid red;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.orange	{
+	border-right: 18px solid orange;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.yellow	{
+	border-right: 18px solid yellow;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.green	{
+	border-right: 18px solid green;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+#orig span#score.blue	{
+	border-right: 18px solid blue;
+	padding: .2em .5em;
+	margin: 0 1em;
+	background: white;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	}
+	
+div.divider	{
+	width: 7in;
+	border: 1px dotted #888;
+	margin: auto;
+	padding: 4px 0 4px 10px;
+	font-weight: bold;
+	background: #ddd;
+	font-size: 15px;
+	}
+	
+div.links	{
+	width: 7in;
+	margin: auto;
+	}
+	
+.links div	{
+	padding: 15px 20px 15px 20px;
+	border-bottom: 1px dotted #888;
+	}
+	
+.links div#last	{
+	padding: 15px 20px 20px 20px;
+	border-bottom: 0;
+	}
+	
+div.number	{
+	float: right;
+	background: white;
+	border: 1px solid #888;
+	margin: 0 0 0 20px;
+	padding: .1em .5em;
+	text-align: center;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 20px;
+	}
+	
+div.number-l	{
+	float: left;
+	background: white;
+	border: 1px solid #888;
+	margin: 6px 16px 10px 0;
+	padding: .1em .5em;
+	text-align: center;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 20px;
+	}
+	
+.links div p	{
+	padding: .2em 1.5em .4em 0;
+	}
+	
+.links div p#mess	{
+	padding: .2em 1.5em 0 0;
+	}
+	
+div#body	{
+	line-height: 1.5em;
+	width: 7in;
+	margin: auto;
+	padding-bottom: 20px;
+	}
+	
+#body p	{
+	color: #555;
+	padding-top: 30px;
+	line-height: 20px;
+	}
+
+	
+#body a	{
+	display: block;
+	color: red;
+	margin: 1em 3em;
+	background-repeat: no-repeat;
+	background-position: top right;
+	padding: 1em 1em;
+	border: 1px dotted #888;
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: none;
+	line-height: 26px;
+	background: #FFFFE5;
+	}
+
+#body span	{
+	color: #555;
+	font-weight: normal;
+	font-size: 14px;
+	}
+
+#body span.number	{
+	display: block;
+	float: right;
+	color: #000;
+	font-weight: normal;
+	border: 1px solid #888;
+	padding: 0 6px;
+	font-weight: bold;
+	margin-left: 15px;
+	font-size: .9em;
+	background: #fff;
+	}
+	
+#actions	{
+	display: none;
+	}
+
+</style>
+
+
+
+</head>
+
+<body id="or_print_report">
+
+
+<div id="container">
+
+<div id="top">
+    <div id="content">
+        <!-- ######### Top Body  ##########################--> 
+        <div id="top_body">
+            <p id="title">
+            <img src="/r/build/images/b3964fd7e38c8fcbb8bfbf2efc1f0635cb_turnitin_logo.gif" id="logo" width="60">
+            Turnitin Originality Report
+            </p>
+                <div class="general_info">
+                    <p>
+                        <span>Final Year Project 1 BIT304 - Ayu Chrisniyanti (E1500352) & Lovely (E1500367)</span>
+                        
+                        by Ayu Chrisniyanti
+                        
+                    </p>
+                    <p>
+                        From Project Plan (Assignment 1) (BIT304 (STIKOM - Semester 3 - 2018))
+                    </p>
+                    <ul>
+                        <li>Processed on 11-Oct-2018  1:42 PM +08</li>
+                        <li>ID: 1017884508</li>
+                        <li>Word Count: 1999</li>
+                    </ul>
+                </div>
+                <div class="similarity_box">
+                    <div class="overall_similarity">
+                        <div class="color_box green">&nbsp;</div>
+                        <div class="similarity_title">Similarity Index</div>
+                        <div class="similarity_percent">18%</div>
+                    </div>
+                    <div class="similarity_by_source">
+                        <div class="similarity_title">Similarity by Source</div>
+                        <dl>
+                            <dt>Internet&nbsp;Sources:</dt>
+                            <dd>6%</dd>
+                            <div class="clear"></div>
+                            <dt>Publications:</dt>
+                            <dd>4%</dd>
+                            <div class="clear"></div>
+                            <dt>Student&nbsp;Papers:</dt>
+                            <dd>18%</dd>
+                            <div class="clear"></div>
+                        </dl>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                                 
+        </div>
+        <!-- ######### END Top Body  ##########################--> 
+    </div>
+</div>
+
+<div class="divider">sources:</div>
+
+<div class="links">
+
+	<div>
+	<div class="number-l">1</div>
+	<p>8% match (student papers from 25-Feb-2018)</p>
+
+	<a style="color:red" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=920750235&perc=8">Submitted to HELP UNIVERSITY on 2018-02-25</a>
+
+	</div>
+	<div>
+	<div class="number-l">2</div>
+	<p>4% match (student papers from 16-Jul-2007)</p>
+
+	<a style="color:green" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=48589278&perc=4">Submitted to CSU, San Jose State University on 2007-07-16</a>
+
+	</div>
+	<div>
+	<div class="number-l">3</div>
+	<p>3% match (student papers from 25-Feb-2018)</p>
+
+	<a style="color:blue" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=920900034&perc=3">Submitted to HELP UNIVERSITY on 2018-02-25</a>
+
+	</div>
+	<div>
+	<div class="number-l">4</div>
+	<p>1% match (student papers from 28-Dec-2017)</p>
+
+	<a style="color:brown" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=899526919&perc=1">Submitted to HELP UNIVERSITY on 2017-12-28</a>
+
+	</div>
+	<div>
+	<div class="number-l">5</div>
+	<p>1% match (student papers from 26-Feb-2018)</p>
+
+	<a style="color:#ff6600" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=921628804&perc=1">Submitted to HELP UNIVERSITY on 2018-02-26</a>
+
+	</div>
+	<div>
+	<div class="number-l">6</div>
+	<p>1% match (student papers from 04-Oct-2016)</p>
+
+	<a style="color:#630000" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=715062851&perc=1">Submitted to HELP UNIVERSITY on 2016-10-04</a>
+
+	</div>
+	<div id="last">
+	<div class="number-l">7</div>
+	<p>1% match (student papers from 25-Jan-2018)</p>
+
+	<a style="color:#009cff" href="/paperInfo.asp?r=92.4256363687153&svr=310&lang=en_us&oid=906584214&perc=1">Submitted to HELP UNIVERSITY on 2018-01-25</a>
+
+	</div>
+
+</div>
+
+
+
+<div class="divider">paper text:</div>
+<div id="body">
+<a href="javascript:openDSC(921628804, 1, '988');" onmouseover="doRollover(5);" onmouseout="undoRollover(5);" id="988" name="5" style="color:#ff6600" class="#ff6600"><span class="b-ref">5</span>BACHELOR OF INFORMATION TECHNOLOGY (HONS) BIT304 Final Year Project I PROJECT PLAN<span> BeautéPanda: </span>Android Application for<span> Beauty Enthusiasts </span>PROJECT PERIOD:<span> 28th September </span>2018<span> – 28th December </span>2018 Student Name: Student Name:</a> Ayu Chrisniyanti Lovely <a href="javascript:openDSC(920750235, 1, '693');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="693" name="1" style="color:red" class="red"><span class="b-ref">1</span>Student Id:<span> E1500352 </span>Student Id:<span> E1500367 </span>15 Jalan Sri Semantan 1, Off Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur, Malaysia. Tel : 603-2716 2000, Fax : 603 - 2095 7100 1. PROJECT TITLE<span> The title of </span>our project<span> is </span>title is<span> BeautéPanda: </span>Android Application for<span> Beauty Enthusiasts. </span>It is an<span> an android </span>application that</a> serves as a place of commerce that connects customers with sellers who offer makeup, hairdo and nails services. This application has two types of user, which are customer and seller (salon or makeup artist). Through this application, a user can register as a customer and he/she will be able to find salons or makeup artists and read information about the services offered. The user can also find information about the latest beauty trends. 2. PROJECT MEMBERS No Student ID Name 1 E1500352 Ayu Chrisniyanti 2 E1500367 Lovely 3. PROJECT KEY WORDS ? Makeup Artist ? Salon ? Appointment ? Beauty Service Categories ? Seller ? Customer 4. PROJECT BACKGROUND In this modern era, people want to look beautiful everyday especially for women. If we talk about beauty, it will always be related to makeup and hairdo. In recent years, the needs of beauty services are growing rapidly, because they have become as important as clothing for women. Due to these increasing needs, the services are not only offered by beauty salons, but also individuals that have skilled in makeup, hairdo and other beauty services. However, it is not easy to find these individuals, and it is hard for them to reach out to the targeted customer, since there is no platform that connect both of them. The increasing popularity of beauty services also increases the number of individuals or businesses that offer these services. They are called makeup artist and beauty salons. However, there are so many of them which makes the customers confused to choose which makeup artist or salon that have good price, have better quality, etc. The other problem is that customer should find the information about makeup artists one by one in the internet or social media such an Instagram. This process of searching for the suitable individuals/place to get the services will spend much of the customers’ time. Therefore, we would like to solve the problems mentioned above by developing a mobile application. This android – based application will be called BeautéPanda. This application will help customer to find and compare makeup artist and beauty salons easily. The customer can also contact the makeup artist directly through the ‘inbox’ menu that will provided in the application, and make an appointment to deliver the service. From the seller’s (makeup artist and beauty salon) point of view, this application will facilitate them to promote his/her service. <a href="javascript:openDSC(906584214, 1, '1454');" onmouseover="doRollover(7);" onmouseout="undoRollover(7);" id="1454" name="7" style="color:#009cff" class="#009cff"><span class="b-ref">7</span>5. AIMS OF THE PROJECT The aim of this project is to<span> create </span>an<span> android </span>application<span> called BeautéPanda, </span>which<span> serves as </span>a</a> market place where people who are self-employed as makeup artist can offer their services and make themselves known to the customer. This application is also for beauty salons that have already had physical building for their business, but want to reach more customers by offering their services through this application. We also want to help customer finding the perfect makeup/hairdo/nails for any occasion, contact the seller and make an appointment, all from one application. Other than that, this application is also intended to give users information about beauty – related news. 6. OBJECTIVES OF THE PROJECT There are several objectives that we should set to develop BeautéPanda, which are: ? Facilitate user (as customer) to search for a makeup artist or salon that offer the service he/she needs ? Facilitate user (as sellers) to offer their service and reach the customer ? Assist customer and seller to chat each other to make an appointment and confirm the order ? Provide a reminder feature so that both users will not forget about an appointment ? Let administrator to manage content of the news section and help section 7. DIRECT CUSTOMERS/BENEFICIARIES OF THE PROJECT This application will be used for both the customers and sellers, which are makeup artist and beauty salons. For the sellers, they can upload their photos of beauty services and add description to attract customers, which will benefit them because they can promote their business and will be known by the customer. They will also get income when customer ‘buy’ their services. For the customers, this application will help finding information about the sellers and making appointment easier. The customers that will be using this application are mainly teen and adult women. The beauty services offered can also be for children, but since they are still young, they will not directly use the application to get a service. 8. OUTPUTS EXPECTED FROM THE PROJECT Details of works and tasks done by each team member: a. Ayu Chrisniyanti ? Develop project background ? Develop project schedule ? Literature reviews ? Requirement gathering ? User interface design ? Develop use case ? Develop class and sequence diagram ? Develop and testing prototype ? Develop database design ? Develop software methodology ? Requirement analysis b. Lovely ? Develop aims of project and project objectives ? Develop work item list ? Develop resource plan list ? Risk management ? Literature reviews ? Requirement gathering ? Develop use case ? Develop class and sequence diagram ? Develop and testing prototype ? Develop software methodology ? Functional &amp; non-functional requirements ? Structural design 9. ORGANISATIONS/INDUSTRIES INVOLVED IN THE PROJECT a. STIKOM Bali b. HELP University c. Local beauty salons and makeup artists that provide data and photos to be used as samples in our application <a href="javascript:openDSC(920900034, 1, '580');" onmouseover="doRollover(3);" onmouseout="undoRollover(3);" id="580" name="3" style="color:blue" class="blue"><span class="b-ref">3</span>10. SYSTEM DEVELOPMENT METHODOLOGY The methodology that we<span> will </span>use<span> for </span>our project is</a> Agile Methodology. This method has four core values which we view to be suitable in developing a mobile application in this digital and ever – changing era. These values are: <a href="javascript:openDSC(48589278, 1, '1610');" onmouseover="doRollover(2);" onmouseout="undoRollover(2);" id="1610" name="2" style="color:green" class="green"><span class="b-ref">2</span>individuals and interactions over processes and tools, working software over comprehensive documentation, customer collaboration over contract negotiation<span> and </span>responding to change over following a plan (Cockburn,<span> 2002). </span>The core of agile software development methods<span> can be defined </span>as the use of light-but- sufficient rules of project<span> behavior </span>and the use of human- and communication-oriented rules. The agile process is both light and sufficient. Lightness is a means of remaining maneuverable. Sufficiency is a matter of staying in the game</a> (Cockburn, 2002). We choose Agile Methodology because it is a continuous cycle of improvement. Moreover, it focuses on communication between developers and users, and let the users participate in developing the application. This is better than the traditional development methodology because developer and user relation is not limited on the contract paper. This allows changes or additions to the application to meet the needs of users. We can have better understanding of the user and create our application to be as close as possible to what the users need. <a href="javascript:openDSC(715062851, 1, '762');" onmouseover="doRollover(6);" onmouseout="undoRollover(6);" id="762" name="6" style="color:#630000" class="#630000"><span class="b-ref">6</span>11. RISK MANAGEMENT PLAN # Description Probability % Impact 1= low 5 = high Mitigation Strategy 1<span> Lacking </span>the<span> skills and knowledge </span>to</a> develop a wholesome android application 40 5 Find online sources to learn how to properly develop android application and find an expert to consult or to give guidance 2 The application produced will have many bugs 40 5 Run unit and integration testing to the codes to find bugs, and run system testing when the application prototype has been created 3 Project is not finished within project period 20 5 Regularly hold meetings between project members so that the project is not neglected 4 Not being able to produce proper UML diagram to show the workflow of the application 30 4 Revise previous lecture notes for creating UML diagram and consult with the project supervisor to give corrections to the diagram 5 Loss of data due to virus infection 10 4 Regularly make a backup for all the files related to the project <a href="javascript:openDSC(920750235, 1, '704');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="704" name="1" style="color:red" class="red"><span class="b-ref">1</span>12. WORK<span> ITEM </span>LIST Name / Description Priority Assigned To<span> Effort </span>estimated (days) Initiating<span> Initial </span>Meeting<span> with Supervisor </span>High<span> Niya and Lovely </span>1<span> Project Theme Identification </span>High</a> Niya and Lovely 1 Supervisor Consultation High Niya and Lovely 1 Project <a href="javascript:openDSC(920750235, 1, '711');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="711" name="1" style="color:red" class="red"><span class="b-ref">1</span>Theme Decision High 0 Planning Develop Project Background High<span> Niya </span>2 Develop Project Aims and Objectives High<span> Lovely </span>2 Develop Work</a> Item List Medium Lovely 1 Develop Project Schedule Medium Niya 1 Select Software Methodology Medium Niya and Lovely 1 Develop Resource Plan Medium Lovely 1 Develop Risk Management Plan High Lovely 1 Submission of Project Plan and Project Management Plan High 0 Executing Gathering Requirements High Niya and Lovely 4 Develop Literature Review High Niya and Lovely 5 <a href="javascript:openDSC(920750235, 1, '719');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="719" name="1" style="color:red" class="red"><span class="b-ref">1</span>Literature Review Submission High 0 Prepare for Interim Presentation Medium</a> Niya and Lovely 9 <a href="javascript:openDSC(920750235, 1, '721');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="721" name="1" style="color:red" class="red"><span class="b-ref">1</span>Interim Presentation High 0 Develop Requirement Analysis High<span> Niya </span>3 Develop Functional &amp; Non-Functional Requirement High<span> Lovely </span>4 Develop</a> Use Case Diagram Medium Niya and Lovely 2 Chapter 3 Submission High 0 Develop Analysis Class Diagram High Niya and Lovely 1 Develop Sequence Diagram High Niya and Lovely 1 Database Design Medium Niya 1 Structural Design Medium Lovely 1 User Interface Design High Niya 4 Construction Coding for Prototype High Niya and Lovely 3 Testing High Niya and Lovely 1 Chapter 4 Submission High 0 Closing Develop Progress Report High Niya and Lovely 6 Prepare Final Documentation High Niya and Lovely 3 Final Report Submission High 0 Final Presentation Preparation High Niya and Lovely 4 Final Presentation High 0 <a href="javascript:openDSC(920750235, 1, '727');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="727" name="1" style="color:red" class="red"><span class="b-ref">1</span>13. WORK PLAN 14. DURATION Starting Date<span> : 28th September </span>2018 Duration/elapsed time<span> : 4 </span>months End Date<span> : 28th December </span>2018 15. PROJECT RESOURCE REQUIREMENTS AND ESTIMATED COSTS* No Item Usage Qty. Cost Hardware 1<span> ASUS </span>laptop</a> X450J series Project development 1 Available 2 Apple MacBook Pro Mid 2012 Project development 1 Available 3 Samsung Galaxy A5 Project testing 1 Available 4 Epson L210 printer Document printing 1 Available Operating system 5 Windows 10 Project development - Available 6 MacOS Sierra 10.12.3 Project development - Available 7 Android Nougat 7.0 Project testing - Available Others 8 IntelliJ IDEA Community Edition 2018.2.4 Android application development - Available 9 Adobe Photoshop CS6 User interface design - Available 10 Microsoft Visio Pro 2013 Drawing UML diagrams - Available 11 GanttProject 2.8.5 Creating project schedule - Available 12 Microsoft Office Word 2013 Creating project document - Available 13 Microsoft Office PowerPoint 2013 Creating presentation for the project - Available Estimated Project Cost Rupiah <a href="javascript:openDSC(920750235, 1, '732');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="732" name="1" style="color:red" class="red"><span class="b-ref">1</span>0,- 16. CONTRACTUAL OBLIGATIONS UNDER THIS PROJECT Team</a> Members Ayu Chrisniyanti : E1500352 Lovely : E1500367 <a href="javascript:openDSC(920750235, 1, '733');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="733" name="1" style="color:red" class="red"><span class="b-ref">1</span>a. Code of Conduct As a<span> project </span>team, we will: 1.<span> Work together to </span>solve all<span> problems encountered </span>during the project 2.</a> Develop a good relation with each other to support our teamwork so that we will finish on the due date 3. Distribute tasks and work items equally 4. Consider each other’s approach in developing the project b. Participation As a project team, we will: 1. Present in every meeting 2. Responsible to do and finished the given tasks 3. Help to solve problems in developing the project by giving solutions 4. Open to any advice and suggestion to make the project better c. Communication <a href="javascript:openDSC(899526919, 1, '1700');" onmouseover="doRollover(4);" onmouseout="undoRollover(4);" id="1700" name="4" style="color:brown" class="brown"><span class="b-ref">4</span>As a project team, we will: 1.<span> Clearly </span>discuss the project<span> goals and ideas </span>2.</a> Communicate problems with each other and come up with the solution 3. Value each other’s view and opinion in developing the <a href="javascript:openDSC(899526919, 1, '1696');" onmouseover="doRollover(4);" onmouseout="undoRollover(4);" id="1696" name="4" style="color:brown" class="brown"><span class="b-ref">4</span>project d. Problem Solving As a project team, we will: 1.<span> Communicate </span>the<span> problems in </span>the project</a> 2. Give advice and suggestion to solve the problems 3. Respect each other’s solution to solve the problems 4. Provide a strategy to deal with problems that may have great impact to our project <a href="javascript:openDSC(920750235, 1, '745');" onmouseover="doRollover(1);" onmouseout="undoRollover(1);" id="745" name="1" style="color:red" class="red"><span class="b-ref">1</span>e. Meeting Guidelines As a<span> project </span>team, we will: 1.<span> Decide on </span>the project<span> idea </span>and<span> distribute </span>the<span> tasks </span>equally 2.</a> Record the outcomes of every meeting 3. Use the necessary tools to finish the project 4. Evaluate the project result with the initial goal 17. <a href="javascript:openDSC(920900034, 1, '609');" onmouseover="doRollover(3);" onmouseout="undoRollover(3);" id="609" name="3" style="color:blue" class="blue"><span class="b-ref">3</span>OWNERSHIP OF INTELLECTUAL PROPERTY RIGHTS All ownership and intellectual property belongs to HELP University PROJECT MEMBERS DECLARATION We hereby acknowledge that the all the information given above is true and correct to the best of<span> our </span>knowledge. Name<span> : Ayu Chrisniyanti </span>Signature : Date : Name<span> : Lovely </span>Signature : Date : References<span> Cockburn, </span>A.</a> (2002). Agile Software Development. Boston: Addison-Wesley. BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts BeautéPanda: Android Application for Beauty Enthusiasts 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+</div>
+</div>
+</body>
+</html>

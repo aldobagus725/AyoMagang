@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="AyoMagang " company="" webLink="http://" view-date="2020-07-27" view-index="0" gantt-divider-location="412" resource-divider-location="300" version="2.8.11" locale="en_ID">
+<?xml version="1.0" encoding="UTF-8"?><project name="AyoMagang " company="" webLink="http://" view-date="2020-07-19" view-index="0" gantt-divider-location="412" resource-divider-location="300" version="2.8.11" locale="en_ID">
     <description/>
-    <view zooming-state="default:2" id="gantt-chart">
+    <view zooming-state="default:4" id="gantt-chart">
         <field id="tpd3" name="Name" width="195" order="0"/>
         <field id="tpd4" name="Begin date" width="99" order="1"/>
         <field id="tpd5" name="End date" width="99" order="2"/>
@@ -35,24 +35,24 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Initiating" meeting="false" start="2020-06-17" duration="5" complete="0" expand="true">
-            <task id="1" name="Online Meeting with Supervisor" color="#8cb6ce" meeting="false" start="2020-06-17" duration="1" complete="0" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
-            <task id="2" name="Project Theme Identification" color="#8cb6ce" meeting="false" start="2020-06-20" duration="1" complete="0" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
-            <task id="3" name="Consultation with Supervisor" color="#8cb6ce" meeting="false" start="2020-06-22" duration="1" complete="0" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
-            <task id="4" name="Project Theme Decision" color="#8cb6ce" meeting="true" start="2020-06-22" duration="0" complete="0" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
+        <task id="0" name="Initiating" meeting="false" start="2020-06-17" duration="5" complete="100" expand="true">
+            <task id="1" name="Online Meeting with Supervisor" color="#8cb6ce" meeting="false" start="2020-06-17" duration="1" complete="100" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
+            <task id="2" name="Project Theme Identification" color="#8cb6ce" meeting="false" start="2020-06-20" duration="1" complete="100" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
+            <task id="3" name="Consultation with Supervisor" color="#8cb6ce" meeting="false" start="2020-06-22" duration="1" complete="100" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
+            <task id="4" name="Project Theme Decision" color="#8cb6ce" meeting="true" start="2020-06-22" duration="0" complete="100" thirdDate="2020-06-29" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="7" name="Planning" meeting="false" start="2020-06-23" duration="86" complete="0" expand="true">
-            <task id="8" name="Develop Project Background" color="#8cb6ce" meeting="false" start="2020-06-23" duration="1" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="10" name="Develop Project Aims and Objectives" color="#8cb6ce" meeting="false" start="2020-06-23" duration="1" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="13" name="Develop Work Item List" color="#8cb6ce" meeting="false" start="2020-06-25" duration="2" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="16" name="Develop Project Schedule" color="#8cb6ce" meeting="false" start="2020-06-27" duration="1" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="18" name="Software Methodology" color="#8cb6ce" meeting="false" start="2020-06-29" duration="1" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="19" name="Develop Resource Plan" color="#8cb6ce" meeting="false" start="2020-06-29" duration="1" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="21" name="Risk Management Plan" color="#8cb6ce" meeting="false" start="2020-06-30" duration="1" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
-            <task id="22" name="Submission of Project Plan" color="#8cb6ce" meeting="true" start="2020-07-01" duration="0" complete="0" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+        <task id="7" name="Planning" meeting="false" start="2020-06-23" duration="86" complete="37" expand="true">
+            <task id="8" name="Develop Project Background" color="#8cb6ce" meeting="false" start="2020-06-23" duration="1" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="10" name="Develop Project Aims and Objectives" color="#8cb6ce" meeting="false" start="2020-06-23" duration="1" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="13" name="Develop Work Item List" color="#8cb6ce" meeting="false" start="2020-06-25" duration="2" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="16" name="Develop Project Schedule" color="#8cb6ce" meeting="false" start="2020-06-27" duration="1" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="18" name="Software Methodology" color="#8cb6ce" meeting="false" start="2020-06-29" duration="1" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="19" name="Develop Resource Plan" color="#8cb6ce" meeting="false" start="2020-06-29" duration="1" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="21" name="Risk Management Plan" color="#8cb6ce" meeting="false" start="2020-06-30" duration="1" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
+            <task id="22" name="Submission of Project Plan" color="#8cb6ce" meeting="true" start="2020-07-01" duration="0" complete="100" thirdDate="2020-06-12" thirdDate-constraint="0" expand="true"/>
             <task id="70" name="Revision of Each Chapter" color="#8cb6ce" meeting="false" start="2020-09-14" duration="15" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="27" name="Executing" meeting="false" start="2020-07-02" duration="88" complete="0" expand="true">
+        <task id="27" name="Executing" meeting="false" start="2020-07-02" duration="165" complete="0" expand="true">
             <task id="28" name="Develop Literature Review" color="#8cb6ce" meeting="false" start="2020-07-02" duration="5" complete="0" thirdDate="2020-06-18" thirdDate-constraint="0" expand="true"/>
             <task id="29" name="Develop Project Management Plan" color="#8cb6ce" meeting="false" start="2020-07-02" duration="5" complete="0" thirdDate="2020-06-18" thirdDate-constraint="0" expand="true"/>
             <task id="30" name="Chapter II: Literature Review and Project Management Plan Submission" color="#8cb6ce" meeting="true" start="2020-07-08" duration="0" complete="0" thirdDate="2020-06-18" thirdDate-constraint="0" expand="true"/>
@@ -67,14 +67,14 @@
             <task id="52" name="Database Design" color="#8cb6ce" meeting="false" start="2020-07-24" duration="1" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>
             <task id="53" name="Structural Design" color="#8cb6ce" meeting="false" start="2020-07-24" duration="1" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>
             <task id="54" name="User Interface Design" color="#8cb6ce" meeting="false" start="2020-07-24" duration="1" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>
-            <task id="73" name="Update Gantt Chart" color="#8cb6ce" meeting="false" start="2020-09-14" duration="25" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
+            <task id="73" name="Update Gantt Chart" color="#8cb6ce" meeting="false" start="2020-07-02" duration="165" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="58" name="Construction" meeting="false" start="2020-07-25" duration="90" complete="0" expand="true">
+        <task id="58" name="Construction" meeting="false" start="2020-07-25" duration="97" complete="0" expand="true">
             <task id="59" name="Coding for Prototype" color="#8cb6ce" meeting="false" start="2020-07-25" duration="2" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>
             <task id="60" name="Testing" color="#8cb6ce" meeting="false" start="2020-07-28" duration="1" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>
             <task id="61" name="Chapter IV: Iteration Submission" color="#8cb6ce" meeting="true" start="2020-07-29" duration="0" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>
-            <task id="77" name="Creating Iteration 1" color="#8cb6ce" meeting="false" start="2020-11-02" duration="2" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
-            <task id="79" name="Creating Iteration 2" color="#8cb6ce" meeting="false" start="2020-11-04" duration="3" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
+            <task id="77" name="Creating Iteration 1" color="#8cb6ce" meeting="false" start="2020-11-02" duration="5" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
+            <task id="79" name="Creating Iteration 2" color="#8cb6ce" meeting="false" start="2020-11-04" duration="10" complete="0" thirdDate="2020-07-27" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="62" name="Closing" meeting="false" start="2020-07-30" duration="9" complete="0" expand="true">
             <task id="63" name="Develop Progress Report" color="#8cb6ce" meeting="false" start="2020-07-30" duration="3" complete="0" thirdDate="2020-07-03" thirdDate-constraint="0" expand="true"/>

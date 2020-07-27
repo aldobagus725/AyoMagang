@@ -39,7 +39,6 @@ jQuery(document).ready(function() {
     $('#top-navbar-1').on('hidden.bs.collapse', function(){
     	$('.top-content').backstretch("resize");
     });
-    
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(){
     	$('.testimonials-container').backstretch("resize");
     });

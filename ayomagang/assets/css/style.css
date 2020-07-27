@@ -218,6 +218,7 @@ img { max-width: 100%; }
 .services-box {
 	padding-top: 30px;
 	text-align: left;
+    color: white;
 }
 
 .services-box .services-box-icon {
@@ -239,12 +240,15 @@ img { max-width: 100%; }
 	background: linear-gradient(to bottom,  #ffb24b 0%,#9b59b6 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb24b', endColorstr='#9b59b6',GradientType=0 ); /* IE6-9 */
 }
+.services-box h2 {
+    color: #fff;
+}
 
 .services-box h3 {
 	margin-top: 0;
 	padding: 0 0 10px 0;
+    color: #fff;
 }
-
 
 /***** About us *****/
 

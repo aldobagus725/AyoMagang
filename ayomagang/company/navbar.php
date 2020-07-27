@@ -25,7 +25,7 @@
     <!-- Jika Sudah Login -->
     <?php if(isset($_SESSION['company'])) : ?>
     <form class="form-inline my-2 my-lg-0">
-      <a href="logout.php" class="btn btn-danger" role="button">Logout</a>
+      <a href="logout.php" onclick="return confirm('Yakin Logout?')" class="btn btn-danger" role="button">Logout</a>
     </form>
     <?php else : ?>
     <form class="form-inline my-2 my-lg-0">

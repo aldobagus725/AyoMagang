@@ -1,5 +1,5 @@
 <?php
-	include'koneksi.php'; 
+	include'../koneksi.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	</head>
 	<body>
-		<?php include 'menu.php'; ?>		
+		<?php include 'navbar.php'; ?>		
 		<br>
 		<div class="container">
 			<div class="row">
@@ -92,7 +92,7 @@
 									                                        	'$email',
 									                                        	'$password')");
 										echo "<script>alert('Selamat, pendaftaran berhasil ');</script>";
-										echo "<script>location='login.php';</script>";
+										echo "<script>location='home.php';</script>";
 									}
 								}
 							?>

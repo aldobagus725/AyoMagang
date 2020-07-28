@@ -42,10 +42,28 @@ CREATE TABLE `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `nama_perusahaan`, `username`, `siup`, `alamat`, `telepon`, `email`, `password`) VALUES
-(1, 'Margarin', 'margarin', 123, '123', '123', 'margarin@gmail.com', 'margarin');
+INSERT INTO `company` (`nama_perusahaan`, `username`, `siup`, `alamat`, `telepon`, `email`, `password`) VALUES
+('Margarin', 'margarin', 123, '123', '123', 'margarin@gmail.com', 'margarin');
 
 -- --------------------------------------------------------
+
+CREATE TABLE `superadmin` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `superadmin`
+--
+
+INSERT INTO `superadmin` (`fullname`, `username`, `email`, `password`) VALUES
+('Margarin', 'margarin', 'margarin@gmail.com', 'margarin');
+
+-- --------------------------------------------------------
+
 
 --
 -- Table structure for table `student`
@@ -66,10 +84,10 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `nama_lengkap`, `username`, `nis`, `alamat`, `telepon`, `email`, `password`) VALUES
-(1, 'awidya andika', 'aan', 123, 'jl. aan', '085848834566', 'aan@gmail.com', 'aan'),
-(4, 'wulan', 'wulan', 123, 'jl.wulan', '123', 'wulan@gmail.com', 'wulan'),
-(5, 'ana', 'ana', 1234, '1234', '1234', 'ana@gmail.com', 'ana');
+INSERT INTO `student` (`nama_lengkap`, `username`, `nis`, `alamat`, `telepon`, `email`, `password`) VALUES
+('awidya andika', 'aan', 123, 'jl. aan', '085848834566', 'aan@gmail.com', 'aan'),
+('wulan', 'wulan', 123, 'jl.wulan', '123', 'wulan@gmail.com', 'wulan'),
+('ana', 'ana', 1234, '1234', '1234', 'ana@gmail.com', 'ana');
 
 --
 -- Indexes for dumped tables
@@ -80,6 +98,8 @@ INSERT INTO `student` (`id`, `nama_lengkap`, `username`, `nis`, `alamat`, `telep
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
+
+
 
 --
 -- Indexes for table `student`
@@ -103,6 +123,10 @@ ALTER TABLE `company`
 ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
+
+ALTER TABLE 'student' AUTO_INCREMENT = 1000;
+ALTER TABLE 'company' AUTO_INCREMENT = 2000;
+ALTER TABLE 'superadmin' AUTO_INCREMENT = 3000;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

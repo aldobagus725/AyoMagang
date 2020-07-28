@@ -68,6 +68,38 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Table structure for table `open_app`
+--
+
+CREATE TABLE `open_app` (
+  `id_openapp` int(11) NOT NULL,
+  `id_perusahaan` int(11) NOT NULL,
+  `nama_perusahaan` varchar(100) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `alamat_perusahaan` varchar(100) NOT NULL,
+  `telepon` varchar(100) NOT NULL,
+  `bidang_perusahaan` varchar(100) NOT NULL,
+  `syarat_magang` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `application`
+--
+
+CREATE TABLE `application` (
+  `id_aplikasi` int(11) NOT NULL,
+  `id_student` int(11) NOT NULL,
+  `id_perusahaan` int(11) NOT NULL,
+  `nama_perusahaan` varchar(100) NOT NULL,
+  `alamat_perusahaan` varchar(100) NOT NULL,
+  `nama_murid` varchar(100) NOT NULL,
+  `alamat murid` varchar(100) NOT NULL,
+  `telepon` varchar(100) NOT NULL,
+  `bidang_perusahaan` varchar(100) NOT NULL,
+  `syarat_magang` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
 -- Indexes for dumped tables
 --
 
@@ -90,6 +122,18 @@ ALTER TABLE `superadmin`
   ADD PRIMARY KEY (`id`);
   
 --
+-- Indexes for table `open_app`
+--
+ALTER TABLE `open_app`
+  ADD PRIMARY KEY (`id_openapp`);
+  
+  --
+-- Indexes for table `open_app`
+--
+ALTER TABLE `application`
+  ADD PRIMARY KEY (`id_openapp`);
+  
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -104,12 +148,24 @@ ALTER TABLE `company`
 --
 ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  
+--
+-- AUTO_INCREMENT for table `open_app`
+--
+ALTER TABLE `open_app`
+  MODIFY `id_openapp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4000;
 
 --
 -- AUTO_INCREMENT for table `superadmin`
 --
 ALTER TABLE `superadmin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3000;
+  
+--
+-- AUTO_INCREMENT for table `application`
+--
+ALTER TABLE `application`
+  MODIFY `id_aplikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5000;
 COMMIT;
 
 
@@ -139,6 +195,18 @@ INSERT INTO `student` (`nama_lengkap`, `username`, `nis`, `alamat`, `telepon`, `
 ('awidya andika', 'aan', 123, 'jl. aan', '085848834566', 'aan@gmail.com', 'aan'),
 ('wulan', 'wulan', 123, 'jl.wulan', '123', 'wulan@gmail.com', 'wulan'),
 ('ana', 'ana', 1234, '1234', '1234', 'ana@gmail.com', 'ana');
+
+--
+-- Dumping data for table `open_app`
+--
+
+INSERT INTO `open_app` (`id_perusahaan`, `nama_perusahaan`, `author`, `alamat_perusahaan`, `telepon`, `bidang_perusahaan`, `syarat_magang`) VALUES
+(990, 'admin', 'admin', 'jl.admin', '123', 'web', 'web\r\n'),
+(991, 'admin', 'admin2', 'jl.admin', '123', 'admin2', 'admin2'),
+(992, 'test', 'test', 'jl.test', '456', 'website', 'html'),
+(993, 'test', 'test2', 'jl.test', '456', 'marketing', 'bisa ngitung');
+
+-- --------------------------------------------------------
 
 
 

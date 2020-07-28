@@ -6,8 +6,8 @@
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
         echo "<script>location='login.php';</script>";
     }
-
-	$query = $koneksi->query("SELECT * FROM company WHERE company_id = '$_GET[id]'");
+    $id = $_SESSION['company']['company_id'];
+	$query = $koneksi->query("SELECT * FROM company WHERE company_id = '$id'");
 	$data  = $query->fetch_assoc(); 
 
 	// Mengambil id url
@@ -17,7 +17,7 @@
 	// Jika id url dengan id user tidak sesuai
 	if($valid_url !== $user_login){
 		echo "<script>alert('Data does not match!')</script>";
-        echo "<script>location='index.php'</script>";
+        echo "<script>location='home.php'</script>";
         exit();
 	}
 ?>

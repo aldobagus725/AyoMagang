@@ -7,14 +7,14 @@
         echo "<script>location='../login.php';</script>";
     }
 
-    $idcompany  = $_GET['id'];
-    $queryvalid = $koneksi->query("SELECT * FROM company WHERE id_perusahaan = '$idcompany'");
+    $company_id  = $_GET['id'];
+    $queryvalid = $koneksi->query("SELECT * FROM company WHERE company_id = '$company_id'");
 	$datavalid  = $queryvalid->fetch_assoc(); 
 	
 	// Mengambil id url
-	$valid_url = $datavalid['id_perusahaan'];
+	$valid_url = $datavalid['company_id'];
 	// Mengambil id user
-	$user_login = $_SESSION['company']['id_perusahaan'];
+	$user_login = $_SESSION['company']['company_id'];
 	// Jika id url dengan id user tidak sesuai
 	if($valid_url !== $user_login){
 		echo "<script>alert('Data does not match!')</script>";
@@ -63,8 +63,8 @@
 	                    </thead>
 	                    <tbody>
 	                        <?php
-								//Query menampilkan data pada tabel "open_app" 
-								$query = $koneksi->query("SELECT * FROM open_app WHERE id_perusahaan = '$_GET[id]'");
+								//Query menampilkan data pada tabel "vacancies" 
+								$query = $koneksi->query("SELECT * FROM vacancies WHERE company_id = '$_GET[id]'");
 								//Membuat nomor urut
 								$nomor = 1;
 								//Menampilkan data
@@ -72,11 +72,11 @@
 							?>
 							<tr>
 								<td><?php echo $nomor; ?></td>
-								<td><?php echo $dataapp['nama_perusahaan']; ?></td>
+								<td><?php echo $dataapp['company_name']; ?></td>
 								<td><?php echo $dataapp['author']; ?></td>
-								<td><?php echo $dataapp['bidang_perusahaan']; ?></td>
+								<td><?php echo $dataapp['company_speciality']; ?></td>
 								<td>
-									<a href="detail-lowongan.php?&id=<?php echo $dataapp['id_openapp']; ?>" class="btn btn-primary btn-sm"> Detail</a>
+									<a href="detail-lowongan.php?&id=<?php echo $dataapp['vacancies_id']; ?>" class="btn btn-primary btn-sm"> Detail</a>
 								</td>
 							</tr>
 							<?php

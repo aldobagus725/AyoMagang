@@ -41,10 +41,10 @@
 			                <a class="nav-link scroll-link" href="#testimonials">Testimoni</a>
 			            </li>
                         <li class="nav-item">
-			                <a class="nav-link" href="login.php">Tertarik? Ayo Login</a>
+			                <a class="nav-link" href="login.php">Ayo Login!</a>
 			            </li>
                         <li class="nav-item">
-			                <a class="nav-link" href="/ayomagang/superadmin/login.php">Admin Login Sini</a>
+			                <a class="nav-link" href="/ayomagang/superadmin/login.php">Super Admin</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -62,7 +62,7 @@
                         <div class="top-big-link wow fadeInUp">
                         	<input class="form-control mr-sm-2" type="text" placeholder="Nama Jurusan, Bidang Studi, contoh : Sistem Informasi">
                             <br/>
-                            <button class="btn btn-success" type="submit">Cari</button>
+                            <a href="login.php"><button class="btn btn-success" type="submit">Cari</button></a>
                         </div>
                     </div>
                 </div>

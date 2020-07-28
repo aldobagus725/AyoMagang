@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include'../koneksi.php'; 
+	include'../koneksi.php';
 ?>
 <!-- Required meta tags -->
 <!doctype html>
@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title><?php echo $_SESSION['student']['nama_lengkap']; ?></title>
+        <title><?php echo $_SESSION['student']['fullname']; ?></title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300">
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -57,14 +57,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 offset-md-2 text">
-                        <h1 class="wow fadeInLeftBig">Halo <?php echo $_SESSION['student']['nama_lengkap']; ?>!</h1>
+                        <h1 class="wow fadeInLeftBig">Halo <?php echo $_SESSION['student']['fullname']; ?>!</h1>
                         <div class="description wow fadeInLeftBig">
                             <p>Yuk Langsung Cari Magang Akademikmu!</p>
                         </div>
                         <div class="top-big-link wow fadeInUp">
                         	<input class="form-control mr-sm-2" type="text" placeholder="Nama Jurusan, Bidang Studi, contoh : Sistem Informasi">
                             <br/>
-                            <button class="btn btn-success" type="submit">Cari</button>
+                            <a href="applist.php"><button class="btn btn-success" type="submit">Cari</button></a>
                         </div>
                     </div>
                 </div>
@@ -126,76 +126,45 @@
         <!-- About us -->
         <div class="about-us-container section-container section-container-gray-bg">
 	        <div class="container">
-<!--
-	            <div class="row">
-	            	<div class="col-12 col-lg-7 about-us-box wow fadeInLeft">
-	                    <div class="about-us-box-text">
-	                    	<h3>Tentang Kami</h3>
-	                    	<p class="medium-paragraph">
-	                    		Ayo Magang adalah aplikasi web yang membantu kamu siswa atau mahasiswa praktek
-                                dalam mencari perusahaan sebagai tempat magang akademik kalian!
-	                    	</p>
-	                    	<p>
-	                    		Aplikasi web kami sudah dilengkapi dengan teknologi terbaru, menggunakan
-                                properti web yang ringan, sehingga kalian bisa dengan cepat mengakses informasi
-                                yang kalian butuhkan!
-	                    	</p>
-	                    	<p>
-	                    		Kamu juga sudah bekerja sama dengan banyak perusahaan, sehingga kalian memiliki
-                                banyak pilihan dalam mencari perusahaan sesuai jurusan ataupun preferensi kalian.
-	                    	</p>
-	                    </div>
-	                </div>
-	                <div class="col-12 col-lg-5 about-us-box wow fadeInUp">
-	                	<div class="about-us-box-img">
-	                    	<img src="assets/img/about/1.jpg" alt="about" data-at2x="assets/img/about/1.jpg">
-	                    </div>
-	                </div>
-	            </div>
--->
                 <div class="row">
 	            	<div class="col about-us-box wow fadeInLeft">
 	                    <div class="about-us-box-text">
                             <center>
-                                <h3>Daftar Aplikasi Kamu</h3>
+                                <h1>Daftar Aplikasi Kamu</h1>
+                                <hr>
                                 <table class="table table-borderless table-hover table-dark">
                                 <tr>
-                                    <th>Application ID</th>
-                                    <th>Residence ID</th>
-                                    <th>Application Date</th>
-                                    <th>Required Month</th>
-                                    <th>Required Year</th>
-                                    <th>Status</th>
-                                    <th>Payment (Ringgit)</th>
-                                    <th>Payment Status</th>
+                                    <th>ID Aplikasi</th>
+                                    <th>ID Lowongan</th>
+                                    <th>ID Kamu</th>
+                                    <th>ID Perusahaan</th>
+                                    <th>Nama Perusahaan</th>
+                                    <th>Alamat Perusahaan</th>
+                                    <th>Email Perusahaan</th>
+                                    <th>Nama Kamu</th>
+                                    <th>Status Lowongan Kamu</th>
                                 </tr>
+                                <?php
+                                $id_student = $_SESSION['student']['student_id'];
+                                $query = mysqli_query($koneksi,"SELECT * FROM application where student_id = $id_student");
+                                if(mysqli_num_rows($query)>0){
+                                    while($data = mysqli_fetch_array($query)){
+                                ?>
                                 <tr>
-                                    <td>{{ $app->applicationID}}</td>
-                                    <td>{{ $app->residenceID}}</td>
-                                    <td>{{ $app->applicationDate}}</td>
-                                    <td>{{ $app->requiredMonth}}</td>
-                                    <td>{{ $app->requiredYear}}</td>
-                                    <td>{{ $app->status}}</td>
-                                    <td>{{ $app->payment}}</td>
-                                    <td>{{ $app->payment_status}}</td>
+                                    <td><?php echo $data["application_id"];?></td>
+                                    <td><?php echo $data["vacancies_id"];?></td>
+                                    <td><?php echo $data["student_id"];?></td>
+                                    <td><?php echo $data["company_id"];?></td>
+                                    <td><?php echo $data["company_name"];?></td>
+                                    <td><?php echo $data["company_address"];?></td>
+                                    <td><?php echo $data["company_email"];?></td>
+                                    <td><?php echo $data["student_name"];?></td>
+                                    <td><?php echo $data["status"];?></td>
                                 </tr>
-                                    @endif
-                                @endforeach
+                                    <?php }} ?>
                             </table>
                             </center>
-	                    	<p class="medium-paragraph">
-	                    		Ayo Magang adalah aplikasi web yang membantu kamu siswa atau mahasiswa praktek
-                                dalam mencari perusahaan sebagai tempat magang akademik kalian!
-	                    	</p>
-	                    	<p>
-	                    		Aplikasi web kami sudah dilengkapi dengan teknologi terbaru, menggunakan
-                                properti web yang ringan, sehingga kalian bisa dengan cepat mengakses informasi
-                                yang kalian butuhkan!
-	                    	</p>
-	                    	<p>
-	                    		Kamu juga sudah bekerja sama dengan banyak perusahaan, sehingga kalian memiliki
-                                banyak pilihan dalam mencari perusahaan sesuai jurusan ataupun preferensi kalian.
-	                    	</p>
+                            <br>
 	                    </div>
 	                </div>
 	            </div>
@@ -281,22 +250,25 @@
                                     <center>
                                      <table class="table table-dark table-hover">
                                         <tr>
-                                            <th>ID Kamu</th><td><?php echo $_SESSION['student']['id']; ?></td>
+                                            <th>ID Kamu</th><td><?php echo $_SESSION['student']['student_id']; ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Fullname</th><td><?php echo $_SESSION['student']['nama_lengkap']; ?></td>
+                                            <th>Fullname</th><td><?php echo $_SESSION['student']['fullname']; ?></td>
                                         </tr>
                                         <tr>
-                                            <th>NIS</th><td><?php echo $_SESSION['student']['nis']; ?></td>
+                                            <th>NIS/NIM</th><td><?php echo $_SESSION['student']['student_number']; ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Alamat</th><td><?php echo $_SESSION['student']['alamat']; ?></td>
+                                            <th>Nama Institusi</th><td><?php echo $_SESSION['student']['institution_name']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Alamat</th><td><?php echo $_SESSION['student']['address']; ?></td>
                                         </tr>
                                         <tr>
                                             <th>Email</th><td><?php echo $_SESSION['student']['email']; ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Telepon</th><td><?php echo $_SESSION['student']['telepon']; ?></td>
+                                            <th>Telepon</th><td><?php echo $_SESSION['student']['phone']; ?></td>
                                         </tr>
                                     </table>
                                         </center>

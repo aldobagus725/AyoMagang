@@ -26,7 +26,7 @@
 							<form method="POST" class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label">Nama Perusahaan</label>
-									<input type="text" class="form-control" name="nama" required="">
+									<input type="text" class="form-control" name="company_name" required="">
 								</div>
 								<div class="form-group">
 									<label class="control-label">Username</label>
@@ -38,11 +38,11 @@
 								</div>
 								<div class="form-group">
 									<label class="control-label">Alamat</label>
-									<textarea class="form-control" name="alamat" rows="2"></textarea>		
+									<textarea class="form-control" name="address" rows="2"></textarea>		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Telepon</label>
-									<input type="text" class="form-control" name="telepon" required="">		
+									<input type="text" class="form-control" name="phone" required="">		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Email</label>
@@ -59,12 +59,12 @@
 							<?php
 								if(isset($_POST['daftar'])){
 									//Mengambil data dan menyimpan divariabel
-									$nama     = $_POST['nama'];
+									$company_name = $_POST['company_name'];
 									$username = $_POST['username'];
-									$siup     = $_POST['siup'];
-									$alamat   = $_POST['alamat'];
-									$telepon  = $_POST['telepon'];
-									$email    = $_POST['email'];
+									$siup = $_POST['siup'];
+									$address = $_POST['address'];
+									$phone = $_POST['phone'];
+									$email = $_POST['email'];
 									$password = $_POST['password'];	
 
 									$query = $koneksi->query("SELECT * FROM company WHERE email = '$email' OR username = '$username'");
@@ -77,18 +77,18 @@
 									}
 									//Validasi ketika email tidak sama
 									else{
-										$koneksi->query("INSERT INTO company (nama_perusahaan,
+										$koneksi->query("INSERT INTO company (company_name,
 									                                            username,
 									                                            siup,
-									                                            alamat,
-									                                            telepon,
+									                                            address,
+									                                            phone,
 									                                            email,
 									                                            password)
-									                                    VALUES ('$nama',
+									                                    VALUES ('$company_name',
 									                                            '$username',
 									                                            '$siup',
-									                                            '$alamat',
-									                                            '$telepon',
+									                                            '$address',
+									                                            '$phone',
 									                                        	'$email',
 									                                        	'$password')");
 										echo "<script>alert('Selamat, pendaftaran berhasil ');</script>";

@@ -7,13 +7,13 @@
         echo "<script>location='login.php';</script>";
     }
 
-	$query = $koneksi->query("SELECT * FROM open_app JOIN company ON open_app.id_perusahaan = company.id_perusahaan WHERE id_openapp = '$_GET[id]'");
-	$data  = $query->fetch_assoc(); 
-
+	$query = $koneksi->query("SELECT * FROM vacancies JOIN company ON vacancies.company_id = company.company_id WHERE vacancies_id = '$_GET[id]'");
+	$data  = $query->fetch_assoc();
+    //$result = $koneksi->query($query);
 	// Mengambil id url
-	$valid_url = $data['id_perusahaan'];
+	$valid_url = $data['company_id'];
 	// Mengambil id user
-	$user_login = $_SESSION['company']['id_perusahaan'];
+	$user_login = $_SESSION['company']['company_id'];
 	// Jika id url dengan id user tidak sesuai
 	if($valid_url !== $user_login){
 		echo "<script>alert('Data does not match!')</script>";
@@ -32,8 +32,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	</head>
-	<body>
-		<?php include 'menu.php'; ?>		
+	<body>		
 		<br>
 		<div class="container">
 			<div class="row">
@@ -46,7 +45,7 @@
 							<form method="POST" class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label">Nama Perusahaan</label>
-									<input type="text" class="form-control" name="nama" required="" value="<?php echo $data['nama_perusahaan']; ?>" readonly>
+									<input type="text" class="form-control" name="company_name" required="" value="<?php echo $data['company_name']; ?>" readonly>
 								</div>
 								<div class="form-group">
 									<label class="control-label">Author</label>
@@ -54,22 +53,22 @@
 								</div>
 								<div class="form-group">
 									<label class="control-label">Alamat</label>
-									<textarea class="form-control" name="alamat" rows="2" required="" value="" readonly=""><?php echo $data['alamat']; ?></textarea>		
+									<textarea class="form-control" name="company_address" rows="2" required="" value="" readonly=""><?php echo $data['company_address']; ?></textarea>		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Telepon</label>
-									<input type="text" class="form-control" name="telepon" required="" value="<?php echo $data['telepon']; ?>" readonly>		
+									<input type="text" class="form-control" name="phone" required="" value="<?php echo $data['phone']; ?>" readonly>		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Bidang Perusahaan</label>
-									<input type="text" class="form-control" name="bidang" required="" value="<?php echo $data['bidang_perusahaan']; ?>" readonly>
+									<input type="text" class="form-control" name="company_speciality" required="" value="<?php echo $data['company_speciality']; ?>" readonly>
 								</div>
 								<div class="form-group">
 									<label class="control-label">Syarat Magang</label>
-									<textarea class="form-control" name="syarat" rows="2" required="" value="" readonly=""><?php echo $data['syarat_magang']; ?></textarea>		
+									<textarea class="form-control" name="intern_policies" rows="2" required="" value="" readonly=""><?php echo $data['intern_policies']; ?></textarea>		
 								</div>
 								<div class="form-group">
-									<a href="index.php" class="btn btn-primary"> Kembali</a>
+									<a href="home.php" class="btn btn-primary"> Kembali</a>
 								</div>
 							</form>
 						</div>

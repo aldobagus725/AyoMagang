@@ -26,23 +26,27 @@
 							<form method="POST" class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label">Nama Lengkap</label>
-									<input type="text" class="form-control" name="nama" required="">
+									<input type="text" class="form-control" name="fullname" required="">
 								</div>
 								<div class="form-group">
 									<label class="control-label">Username</label>
 									<input type="text" class="form-control" name="username" required="">
 								</div>
 								<div class="form-group">
-									<label class="control-label">NIS</label>
-									<input type="text" class="form-control" name="nis" required="">
+									<label class="control-label">NIS/NIM</label>
+									<input type="text" class="form-control" name="student_number" required="">
+								</div>
+                                <div class="form-group">
+									<label class="control-label">Nama Institusi Pendidikan</label>
+									<input type="text" class="form-control" name="institution_name" placeholder="SMK TI Global, STIKOM, dll." required="">
 								</div>
 								<div class="form-group">
 									<label class="control-label">Alamat</label>
-									<textarea class="form-control" name="alamat" rows="2"></textarea>		
+									<textarea class="form-control" name="address" rows="2"></textarea>		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Telepon</label>
-									<input type="text" class="form-control" name="telepon" required="">		
+									<input type="text" class="form-control" name="phone" required="">		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Email</label>
@@ -59,12 +63,13 @@
 							<?php
 								if(isset($_POST['daftar'])){
 									//Mengambil data dan menyimpan divariabel
-									$nama     = $_POST['nama'];
+									$fullname = $_POST['fullname'];
 									$username = $_POST['username'];
-									$nis      = $_POST['nis'];
-									$alamat   = $_POST['alamat'];
-									$telepon  = $_POST['telepon'];
-									$email    = $_POST['email'];
+									$student_number= $_POST['student_number'];
+                                    $institution_name= $_POST['institution_name'];
+									$address = $_POST['address'];
+									$phone = $_POST['phone'];
+									$email = $_POST['email'];
 									$password = $_POST['password'];	
 
 									$query = $koneksi->query("SELECT * FROM student WHERE email = '$email' OR username = '$username'");
@@ -77,18 +82,20 @@
 									}
 									//Validasi ketika email tidak sama
 									else{
-										$koneksi->query("INSERT INTO student (nama_lengkap,
+										$koneksi->query("INSERT INTO student (fullname,
 									                                            username,
-									                                            nis,
-									                                            alamat,
-									                                            telepon,
+									                                            student_number,
+                                                                                institution_name,
+									                                            address,
+									                                            phone,
 									                                            email,
 									                                            password)
-									                                    VALUES ('$nama',
+									                                    VALUES ('$fullname',
 									                                            '$username',
-									                                            '$nis',
-									                                            '$alamat',
-									                                            '$telepon',
+									                                            '$student_number',
+                                                                                '$institution_name',
+									                                            '$address',
+									                                            '$phone',
 									                                        	'$email',
 									                                        	'$password')");
 										echo "<script>alert('Selamat, pendaftaran berhasil ');</script>";

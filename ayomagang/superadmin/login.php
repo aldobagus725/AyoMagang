@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    session_start();
+    include 'koneksi.php'
+    ?>
     <head>
 
         <meta charset="utf-8">
@@ -110,7 +113,7 @@
 	                        	<label class="sr-only" for="l-form-password">Password</label>
 	                        	<input type="password" name="l-form-password" placeholder="Password..." class="l-form-password form-control" id="l-form-password">
 	                        </div>
-				            <button type="submit" class="btn">Sign in!</button>
+				            <button type="submit" class="btn" name="loginsadmin">Sign in!</button>
 				    	</form>
 				    	<div class="social-login">
                         	<p>Or login with:</p>
@@ -145,6 +148,31 @@
 						</div>
                     </div>
                 </div>
+                <?php
+                                    if(isset($_POST['loginsadmin'])){
+                                    $username = $_POST['l-form-username'];
+                                    $password = $_POST['l-form-password'];
+                                    //Mengambil data email_pelanggan dan password_pelanggan pada tabel "pelanggan"
+                                    //Login berdasarkan username dan email
+                                    $query = $koneksi->query("SELECT * FROM superadmin WHERE 
+                                        (email    = '$username' OR username = '$username' ) AND 
+                                         password = '$password'");
+                                    //Menghitung data(akun)
+                                    $data = $query->num_rows;
+                                    //Jika akun ada yang cocok
+                                    if($data == 1){
+                                        $akun = $query->fetch_assoc(); 
+                                        $_SESSION['superadmin'] = $akun;
+                                        echo "<div class='alert alert-info'>Login Berhasil!</div>";
+                                        echo "<script>location='dashboard.php';</script>";
+                                    }
+                                    //Jika akun tidak ada yang cocok
+                                    else{
+                                        echo "<div class='alert alert-danger'>Login Gagal!</div>";
+                                        echo "<meta http-equiv='refresh' content='1; url=login.php'>"; 
+                                    }
+                                }
+                            ?>           
                     
         	</div>
         </div>

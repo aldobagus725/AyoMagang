@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `company`
 --
 
+
 CREATE TABLE `company` (
   `id` int(11) NOT NULL,
   `nama_perusahaan` varchar(100) NOT NULL,
@@ -39,13 +40,9 @@ CREATE TABLE `company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `company`
+-- Table structure for table `superadmin`
 --
 
-INSERT INTO `company` (`nama_perusahaan`, `username`, `siup`, `alamat`, `telepon`, `email`, `password`) VALUES
-('Margarin', 'margarin', 123, '123', '123', 'margarin@gmail.com', 'margarin');
-
--- --------------------------------------------------------
 
 CREATE TABLE `superadmin` (
   `id` int(11) NOT NULL,
@@ -54,16 +51,6 @@ CREATE TABLE `superadmin` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `superadmin`
---
-
-INSERT INTO `superadmin` (`fullname`, `username`, `email`, `password`) VALUES
-('Margarin', 'margarin', 'margarin@gmail.com', 'margarin');
-
--- --------------------------------------------------------
-
 
 --
 -- Table structure for table `student`
@@ -81,15 +68,6 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`nama_lengkap`, `username`, `nis`, `alamat`, `telepon`, `email`, `password`) VALUES
-('awidya andika', 'aan', 123, 'jl. aan', '085848834566', 'aan@gmail.com', 'aan'),
-('wulan', 'wulan', 123, 'jl.wulan', '123', 'wulan@gmail.com', 'wulan'),
-('ana', 'ana', 1234, '1234', '1234', 'ana@gmail.com', 'ana');
-
---
 -- Indexes for dumped tables
 --
 
@@ -98,15 +76,19 @@ INSERT INTO `student` (`nama_lengkap`, `username`, `nis`, `alamat`, `telepon`, `
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
-
-
-
+  
 --
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
-
+  
+--
+-- Indexes for table `superadmin`
+--
+ALTER TABLE `superadmin`
+  ADD PRIMARY KEY (`id`);
+  
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -115,18 +97,50 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2000;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+
+--
+-- AUTO_INCREMENT for table `superadmin`
+--
+ALTER TABLE `superadmin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3000;
 COMMIT;
 
-ALTER TABLE 'student' AUTO_INCREMENT = 1000;
-ALTER TABLE 'company' AUTO_INCREMENT = 2000;
-ALTER TABLE 'superadmin' AUTO_INCREMENT = 3000;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`nama_perusahaan`, `username`, `siup`, `alamat`, `telepon`, `email`, `password`) VALUES
+('PT Persemakmuran', 'margarin', 123, '123', '123', 'margarin@gmail.com', 'margarin');
+
+-- --------------------------------------------------------
+
+--
+-- Dumping data for table `superadmin`
+--
+
+INSERT INTO `superadmin` (`fullname`, `username`, `email`, `password`) VALUES
+('Margarin', 'admin', 'margarin@gmail.com', 'margarin');
+
+-- --------------------------------------------------------
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`nama_lengkap`, `username`, `nis`, `alamat`, `telepon`, `email`, `password`) VALUES
+('awidya andika', 'aan', 123, 'jl. aan', '085848834566', 'aan@gmail.com', 'aan'),
+('wulan', 'wulan', 123, 'jl.wulan', '123', 'wulan@gmail.com', 'wulan'),
+('ana', 'ana', 1234, '1234', '1234', 'ana@gmail.com', 'ana');
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

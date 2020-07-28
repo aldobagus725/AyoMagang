@@ -269,7 +269,6 @@
                                 </div>
         					</div>
         				</div>
-        				
         				<ul class="nav nav-tabs" id="myTab" role="tablist">
         					<li class="nav-item">
         						<a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true"></a>
@@ -284,7 +283,6 @@
         						<a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"></a>
         					</li>
         				</ul>
-        				
         			</div>
         		</div>
         	</div>

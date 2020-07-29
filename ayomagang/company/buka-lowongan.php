@@ -46,30 +46,30 @@
 							<form method="POST" class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label">Nama Perusahaan</label>
-									<input type="text" class="form-control" name="company_name" required="" value="<?php echo $data['company_name']; ?>" readonly>
+									<input type="text" class="form-control" name="company_name" required value="<?php echo $data['company_name']; ?>" readonly>
 								</div>
 								<div class="form-group">
-									<input type="hidden" class="form-control" name="company_id" required="" value="<?php echo $_SESSION['company']['company_id']; ?>" readonly>
+									<input type="hidden" class="form-control" name="company_id" required value="<?php echo $_SESSION['company']['company_id']; ?>" readonly>
 								</div>
 								<div class="form-group">
 									<label class="control-label">Author</label>
-									<input type="text" class="form-control" name="author" required="" value="">
+									<input type="text" class="form-control" name="author" required>
 								</div>
 								<div class="form-group">
 									<label class="control-label">Alamat</label>
-									<textarea class="form-control" name="company_address" rows="2" required="" value="" readonly=""><?php echo $data['address']; ?></textarea>		
+									<textarea class="form-control" name="company_address" rows="2" required readonly><?php echo $data['address']; ?></textarea>		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Telepon</label>
-									<input type="text" class="form-control" name="phone" required="" value="<?php echo $data['phone']; ?>" readonly>		
+									<input type="text" class="form-control" name="phone" required value="<?php echo $data['phone']; ?>" readonly>		
 								</div>
 								<div class="form-group">
 									<label class="control-label">Bidang Perusahaan</label>
-									<input type="text" class="form-control" name="company_speciality" required="" value="">
+									<input type="text" class="form-control" name="company_speciality">
 								</div>
 								<div class="form-group">
 									<label class="control-label">Syarat Magang</label>
-									<textarea class="form-control" name="intern_policies" rows="2" required="" value=""></textarea>		
+									<textarea class="form-control" name="intern_policies" rows="2" required></textarea>		
 								</div>
 								<div class="form-group">
 									<button class="btn btn-primary" name="buat">Buat</button>
@@ -89,7 +89,6 @@
 																            company_name,
 																            author,
                                                                             company_address,
-									                                        address,
 									                                        phone,
 									                                        company_speciality,
 									                                        intern_policies)
@@ -101,7 +100,7 @@
 									                                        	'$company_speciality',
 									                                        	'$intern_policies')");
 										echo "<script>alert('Selamat, pembuatan buka lowongan berhasil!');</script>";
-                                        echo "<script>location='index.php';</script>";
+                                        echo "<script>location='home.php';</script>";
 								}
 							?>
 						</div>

@@ -1,5 +1,5 @@
-<?php
-	include'../koneksi.php'; 
+<?php	
+    include'../koneksi.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +99,7 @@
 									                                        	'$email',
 									                                        	'$password')");
 										echo "<script>alert('Selamat, pendaftaran berhasil ');</script>";
-										echo "<script>location='../login.php';</script>";
+										echo "<script>location='/ayomagang/login.php';</script>";
 									}
 								}
 							?>

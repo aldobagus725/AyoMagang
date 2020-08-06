@@ -52,6 +52,10 @@
 									<label class="control-label">Email</label>
 									<input type="email" class="form-control" name="email" required="">
 								</div>
+                                <div class="form-group">
+									<label class="control-label">Jurusan / Program Studi</label>
+									<input type="text" class="form-control" name="course" required="">
+								</div>
 								<div class="form-group">
 									<label class="control-label">Password</label>
 									<input type="text" class="form-control" name="password" required="">
@@ -70,7 +74,8 @@
 									$address = $_POST['address'];
 									$phone = $_POST['phone'];
 									$email = $_POST['email'];
-									$password = $_POST['password'];	
+									$password = md5($_POST['password']);	
+                                    $course = $_POST['course'];	
 
 									$query = $koneksi->query("SELECT * FROM student WHERE email = '$email' OR username = '$username'");
 									$valid_user = $query->num_rows;
@@ -89,6 +94,7 @@
 									                                            address,
 									                                            phone,
 									                                            email,
+                                                                                course,
 									                                            password)
 									                                    VALUES ('$fullname',
 									                                            '$username',
@@ -97,6 +103,7 @@
 									                                            '$address',
 									                                            '$phone',
 									                                        	'$email',
+                                                                                '$course',
 									                                        	'$password')");
 										echo "<script>alert('Selamat, pendaftaran berhasil ');</script>";
 										echo "<script>location='/ayomagang/login.php';</script>";

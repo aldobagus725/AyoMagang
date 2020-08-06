@@ -65,7 +65,7 @@
 									$address = $_POST['address'];
 									$phone = $_POST['phone'];
 									$email = $_POST['email'];
-									$password = $_POST['password'];	
+									$password = md5($_POST['password']);	
 
 									$query = $koneksi->query("SELECT * FROM company WHERE email = '$email' OR username = '$username'");
 									$valid_user = $query->num_rows;

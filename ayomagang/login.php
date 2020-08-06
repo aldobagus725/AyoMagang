@@ -44,7 +44,7 @@
                              <?php
                                 if(isset($_POST['logstudent'])){
                                     $username = $_POST['username'];
-                                    $password = $_POST['password'];
+                                    $password = md5($_POST['password']);
                                     //Mengambil data email_pelanggan dan password_pelanggan pada tabel "pelanggan"
                                     //Login berdasarkan username dan email
                                     $query = $koneksi->query("SELECT * FROM student WHERE 
@@ -90,7 +90,7 @@
                             <?php
                                 if(isset($_POST['logcompany'])){
                                     $username = $_POST['username'];
-                                    $password = $_POST['password'];
+                                    $password = md5($_POST['password']);
                                     //Mengambil data email_pelanggan dan password_pelanggan pada tabel "pelanggan"
                                     //Login berdasarkan username dan email
                                     $query = $koneksi->query("SELECT * FROM company WHERE 

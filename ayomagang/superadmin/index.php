@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="card-body">
 	            <pre>
-					<?php print_r($_SESSION);?>         
+					This is the dashboard of SuperAdmin    
 	            </pre>
         	</div>
 		</div>

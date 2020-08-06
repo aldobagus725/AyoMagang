@@ -40,7 +40,7 @@
 							<?php
 								if(isset($_POST['login'])){
 									$username = $_POST['username'];
-									$password = $_POST['password'];
+									$password = md5($_POST['password']);
 									//Mengambil data email dan password pada tabel "company"
 									//Login berdasarkan username dan email
 									$query = $koneksi->query("SELECT * FROM company WHERE 

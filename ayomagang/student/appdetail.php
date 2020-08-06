@@ -8,7 +8,6 @@
     }
 	$query = $koneksi->query("SELECT * FROM vacancies JOIN company ON vacancies.company_id = company.company_id WHERE vacancies_id = '$_GET[id]'");
 	$data  = $query->fetch_assoc();
-    //$result = $koneksi->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">

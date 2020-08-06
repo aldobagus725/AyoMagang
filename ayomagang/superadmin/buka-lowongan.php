@@ -40,7 +40,7 @@
 				<div class="col-sm-8 offset-sm-2">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Ayo buat lowongan magang akademik, dan temukan calon tenaga ahlimu</h3>
+							<h3 class="card-title">Form Bukaan Lowongan Magang Akademik</h3>
 						</div>
 						<div class="card-body">
 							<form method="POST" class="form-horizontal">

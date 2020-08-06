@@ -41,7 +41,7 @@
 			                <a class="nav-link scroll-link" href="#top-content">Beranda</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#about-us">Daftar Aplikasi Kamu</a>
+			                <a class="nav-link scroll-link" href="#about-us">Daftar Bukaan Magang Akademik</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link scroll-link" href="#portfolio">Kerjasama</a>
@@ -73,6 +73,7 @@
             </div>            
         </div>
         <!-- Services -->
+<!--
         <div class="services-container section-container">
 	        <div class="container">
 	            <div class="row">
@@ -124,6 +125,7 @@
 	            </div>
 	        </div>
         </div>
+-->
 
         <!-- About us -->
         <div class="about-us-container section-container section-container-gray-bg">

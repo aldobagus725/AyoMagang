@@ -71,6 +71,7 @@
             </div>            
         </div>
         <!-- Services -->
+<!--
         <div class="services-container section-container">
 	        <div class="container">
 	            <div class="row">
@@ -122,6 +123,7 @@
 	            </div>
 	        </div>
         </div>
+-->
 
         <!-- About us -->
         <div class="about-us-container section-container section-container-gray-bg">
@@ -141,7 +143,6 @@
                                     <th>Nama Perusahaan</th>
                                     <th>Alamat Perusahaan</th>
                                     <th>Email Perusahaan</th>
-                                    <th>Nama Kamu</th>
                                     <th>Status Lowongan Kamu</th>
                                 </tr>
                                 <?php
@@ -158,7 +159,6 @@
                                     <td><?php echo $data["company_name"];?></td>
                                     <td><?php echo $data["company_address"];?></td>
                                     <td><?php echo $data["company_email"];?></td>
-                                    <td><?php echo $data["student_name"];?></td>
                                     <td><?php echo $data["status"];?></td>
                                 </tr>
                                     <?php }} ?>
@@ -260,6 +260,9 @@
                                         </tr>
                                         <tr>
                                             <th>Nama Institusi</th><td><?php echo $_SESSION['student']['institution_name']; ?></td>
+                                        </tr>
+                                         <tr>
+                                            <th>Nama Institusi</th><td><?php echo $_SESSION['student']['course']; ?></td>
                                         </tr>
                                         <tr>
                                             <th>Alamat</th><td><?php echo $_SESSION['student']['address']; ?></td>

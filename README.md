@@ -1,5 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
@@ -21,26 +19,34 @@ Requirements
 
 Project Backround
 ============
-AyoMagang is a Web-based Application for Academic Internship. The purpose of this application of this development,<br>
-is to fulfill our requirements of bachelor degree in HELP University & ITB STIKOM Bali. We choose this idea <br>
-that began from our real-life experience (and further survey, many students) about how hard student (vocational school or college student)<br>
-to find companies that provide academic internship. Until this point, there is not much of company that understand the difference between<br>
-real internship and academic internship. We also find out that students still have hard times in order to get companies for academic internship.<br>
+<p align="justify">
+AyoMagang is a Web-based Application for Academic Internship. The purpose of this application of this development,
+is to fulfill our requirements of bachelor degree in HELP University & ITB STIKOM Bali. We choose this idea 
+that began from our real-life experience (and further survey, many students) about how hard student (vocational school or college student)
+to find companies that provide academic internship. Until this point, there is not much of company that understand the difference between
+real internship and academic internship. We also find out that students still have hard times in order to get companies for academic internship.
 So, we decide to take this idea for the whole project, helping by buildiung a web-based application that provide information about academic internship.
+</p>
 
 Installation
 ============
+<p align="justify">
 Since this project is a Laravel-based project, then you can go download this git, 
 extract, and then open command prompt in the current directory,
 then use <i>php artisan serve</i> to start the local server.
+</p>
+
 
 Configuration
 ============
-The project already used localhost:8000, so don't worry.
-for those who use XAMPP, might wanna to recheck every port used.
 
-don't forget to fire up MySQL, then do <i>php artisn migrate</i>
+<p align="justify">
+The project already used localhost:8000, so don't worry.
+for those who use XAMPP, might wanna to recheck every port used.<br>
+Don't forget to fire up MySQL, then do <i>php artisan migrate</i>
 to migrate the current data base used in the project.
+</p>
+
 
 Credits
 =======

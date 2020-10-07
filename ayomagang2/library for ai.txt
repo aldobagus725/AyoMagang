@@ -1,8 +1,0 @@
-https://php-ml.readthedocs.io/en/latest/
-https://stackoverflow.com/questions/2303357/are-there-any-artificial-intelligence-projects-in-php-out-there
-https://github.com/Program-O/Program-O
-https://sourceforge.net/projects/programe/
-
-
-other source:
-https://www.develindo.com/artikel/?b=ZoE%3D&title=part-1-tutorial-membuat-form-login-dengan-php-dan-bootstrap

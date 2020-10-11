@@ -29,7 +29,7 @@
                                             <div class="col-sm-6 text-right wow fadeInRight">
                                                 <h2 style="font-weight:bold;font-size:40px;color:white;">Mencari Magang Akademik <br>Menjadi Lebih Mudah!</h2><br>
                                                 <h6 style="font-size:24px;padding-bottom:40px;color:white">Ayo Eksplor!</h6><br>
-                                                <a href="student/login.php" class="btn btn-info">Cari Magang</a> <button class="btn btn-secondary">Daftar Akun</button>
+                                                <a href="student/login.php" class="btn btn-info">Cari Magang</a> <a href="student/login.php" class="btn btn-secondary">Daftar Akun</a>
                                             </div>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h2 style="font-weight:bold;font-size:40px;color:white;">For Student</h2><br>
-                                                <h6 style="font-size:24px;padding-bottom:40px;color:white;line-height:1.2;">
+                                                <h6 style="font-size:22px;padding-bottom:40px;color:white;line-height:1.2;">
                                                     Bagi kalian yang ingin magang, kerja praktek<br>
                                                     atau praktek kerja lapangan, AyoMagang<br>
                                                     membantu kamu untuk mencari tempat magang<br>

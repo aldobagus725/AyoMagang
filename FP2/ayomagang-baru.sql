@@ -33,6 +33,7 @@ CREATE TABLE `application` (
   `company_id` int(11) NOT NULL,
   `vacancies_id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
+  `vacancy_title` varchar(100) NOT NULL,
   `company_address` varchar(100) NOT NULL,
   `company_email` varchar(100) NOT NULL,
   `student_name` varchar(100) NOT NULL,
@@ -98,6 +99,7 @@ CREATE TABLE `vacancies` (
   `vacancies_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
+  `vacancy_title` varchar(100) NOT NULL,
   `company_address` varchar(100) NOT NULL,
   `company_speciality` varchar(100) NOT NULL,
   `phone` varchar(100) NOT NULL,
@@ -205,9 +207,8 @@ INSERT INTO `superadmin` (`fullname`, `username`, `email`, `password`) VALUES
 -- Dumping data untuk tabel `vacancies`
 --
 
-INSERT INTO `vacancies` (`company_id`, `company_name`, `company_address`, `company_speciality`, `phone`, `intern_policies`, `author`) VALUES
-(2000, 'PT Persemakmuran', 'jl.admin', 'web', '123', 'Harus bisa PHP', 'admin'),
-(2000, 'PT Persemakmuran', 'jl.admin', 'web', '123', 'Minimal Bisa Laravel', 'admin2');
+    INSERT INTO `vacancies` (`company_id`, `company_name`, `vacancy_title`, `company_address`, `company_speciality`, `phone`, `intern_policies`, `author`) VALUES
+    (2000, 'PT Persemakmuran', 'Freelance Admin di PT Persemakmuran', 'jl.admin', 'web', '123', 'Bisa PHP, HTML5, CSS3', 'admin')
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

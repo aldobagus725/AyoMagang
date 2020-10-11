@@ -6,14 +6,93 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-no-bg">
     <div class="container">
-        <a class="navbar-brand" href="http://localhost:8080/am/">
+        <?php if(isset($_SESSION['student'])) {?>
+        <a class="navbar-brand" href="dashboard.php">
+            <img src="../assets/img/logo/logo%20putih.png">
+        </a>
+        <?php }else if(isset($_SESSION['company'])){?>
+        <a class="navbar-brand" href="dashboard.php">
+            <img src="../assets/img/logo/logo%20putih.png">
+        </a>
+        <?php }else if(isset($_SESSION['superadmin'])){?>
+        <a class="navbar-brand" href="dashboard.php">
+            <img src="../assets/img/logo/logo%20putih.png">
+        </a>
+        <?php }else{  ?>
+        <a class="navbar-brand" href="index.php">  
             <img src="assets/img/logo/logo%20putih.png">
         </a>
+        <?php }?> 
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
+                <?php if(isset($_SESSION['student'])){?>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#student-home">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#student-application">Daftar Aplikasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#footer">Butuh Bantuan?</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <?php echo $_SESSION['student']['fullname']; ?>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="My Profile">My Profile</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
+                    </div>
+                </li>
+                <?php }else if(isset($_SESSION['company'])){?>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#home">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#company-vacancy">Daftar Aplikasi Masuk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#company-application">Daftar Bukaan Lowongan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <?php echo $_SESSION['company']['fullname']; ?>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="My Profile">My Profile</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
+                    </div>
+                </li>
+                <?php }else if(isset($_SESSION['superadmin'])){?>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#home">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#company-application">Daftar Aplikasi Masuk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#company-application">Daftar Bukaan Lowongan</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <?php echo $_SESSION['superadmin']['fullname']; ?>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="My Profile">My Profile</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
+                    </div>
+                </li>
+                <?php }else{  ?>
                 <li class="nav-item">
                     <a class="nav-link scroll-link" href="#home">Beranda</a>
                 </li>
@@ -32,6 +111,7 @@
                 <li class="nav-item">
                     <a class="nav-link scroll-link" href="company/login.php">Posting Magang</a>
                 </li>
+                <?php }?>              
             </ul>
         </div>
     </div>

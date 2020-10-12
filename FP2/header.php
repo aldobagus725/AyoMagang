@@ -29,6 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
+                <!--student primary navbar-->
                 <?php if(isset($_SESSION['student'])){?>
                 <li class="nav-item">
                     <a class="nav-link scroll-link" href="#student-home">Beranda</a>
@@ -44,11 +45,11 @@
                         <?php echo $_SESSION['student']['fullname']; ?>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="My Profile">My Profile</a>
-                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="myprofile.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
                 </li>
+                <!--company primary navbar-->
                 <?php }else if(isset($_SESSION['company'])){?>
                 <li class="nav-item">
                     <a class="nav-link scroll-link" href="#home">Beranda</a>
@@ -68,10 +69,10 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="My Profile">My Profile</a>
-                        <a class="dropdown-item" href="#">Change Password</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
                 </li>
+                <!--superadmin primary navbar-->
                 <?php }else if(isset($_SESSION['superadmin'])){?>
                 <li class="nav-item">
                     <a class="nav-link scroll-link" href="#home">Beranda</a>
@@ -88,7 +89,6 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="My Profile">My Profile</a>
-                        <a class="dropdown-item" href="#">Change Password</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
                 </li>

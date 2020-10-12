@@ -69,7 +69,7 @@
                                     if($data == 1){
                                         $akun = $query->fetch_assoc(); 
                                         $_SESSION['superadmin'] = $akun;
-                                        echo "<script>location='home.php';</script>";
+                                        echo "<script>location='dashboard.php';</script>";
                                     }
                                     //Jika akun tidak ada yang cocok
                                     else{

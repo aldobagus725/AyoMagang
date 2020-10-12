@@ -98,7 +98,7 @@
                         ?>
                         <div class="card">
                             <div class="card-header">
-                                <img src="../assets/img/partner/help.png" width="30%;"><br>
+                                <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;"><br>
                                 <h4><?php echo $data["vacancy_title"];?></h4>
                                 <h6><?php echo $data["company_name"];?></h6>
                             </div>

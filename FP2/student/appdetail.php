@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="row align-items-center" style="padding-top:10px;padding-bottom:20px;">
                     <div class="col-sm-9 text-left">
-                        <img src="../assets/img/partner/help.png" width="30%;"><br>
+                        <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;"><br>
                         <h4><?php echo $data["vacancy_title"];?></h4>
                         <h5><?php echo $data["company_name"];?></h5>
                         <table>
@@ -99,7 +99,7 @@
                             <div class="card-footer">
                                 <div class="row align-items-center text-right">
                                     <div class="col">
-                                        <h5>Author Bukaan: <?php echo $data["author"];?></h5>
+                                        <h5>Author: <?php echo $data["author"];?></h5>
                                     </div>
                                 </div>
                             </div>

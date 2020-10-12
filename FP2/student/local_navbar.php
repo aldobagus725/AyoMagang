@@ -25,8 +25,7 @@
                         <?php echo $_SESSION['student']['fullname']; ?>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="My Profile">My Profile</a>
-                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="myprofile.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
                 </li>

@@ -1,7 +1,6 @@
 <?php 
     session_start(); 
     include'../koneksi.php'; 
-
     if(!isset($_SESSION['student'])){
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
         echo "<script>location='login.php';</script>";
@@ -26,7 +25,7 @@
                 right: 0;
                 z-index: -1;
                 display: block;
-                filter: brightness(55%);
+                filter: brightness(60%);
                 background-repeat: no-repeat;
                 background-size:cover;
                 width: 100%;
@@ -75,7 +74,7 @@
             <div class="container">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
                     <div class="col">
-                        <h2>Aplikasi Kamu</h2>
+                        <h1>Aplikasi Kamu</h1>
                         <hr>
                     </div>
                 </div>

@@ -34,7 +34,7 @@
                 <div class="row align-items-center justify-content-center text-center">
                     <div class="col wow fadeInDown" style="color:white;">
                         <img src="../assets/img/logo/logo_putih_pas.png" style="width:30%;">
-                        <h1 style="color:white;font-weight:276;font-size:40px;">Company Login</h1>
+                        <h1 style="color:white;font-weight:276;font-size:40px;">Company Register</h1>
                     </div>
                 </div>
                 <form method="post" action="#">

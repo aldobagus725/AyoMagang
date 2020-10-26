@@ -20,10 +20,7 @@
         <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            #bar{
-                background-color: rgb(0, 133, 216);
-                width: 100%;
-            }
+            #bar{background-color: rgb(0, 133, 216);width: 100%;}
         </style>
     </head>
     <body>

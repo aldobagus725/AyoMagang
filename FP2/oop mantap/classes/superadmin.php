@@ -9,6 +9,7 @@ class superadmin{
         $koneksi = new database();
         $this->con = $koneksi->koneksi();
     }
+    //Getters
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select $action from superadmin where superadmin_id = $id");
@@ -16,6 +17,7 @@ class superadmin{
             return $row[$action];
         }
     }
+    //Views
     public function viewVacancy(){
         $query = mysqli_query($this->con, "select * from vacancies");
         return $query;
@@ -31,6 +33,83 @@ class superadmin{
     public function viewCompany(){
         $query = mysqli_query($this->con, "select * from company");
         return $query;
+    }
+    //Detail
+    public function viewVacancyDetail($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        $query = mysqli_query($this->con, "select * from vacancies where vacancies_id = '$id'");
+        return $query;
+    }
+    public function viewStudentDetail($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        $query = mysqli_query($this->con, "select * from student where student_id = '$id'");
+        return $query;
+    }
+    public function viewApplicationDetail($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        $query = mysqli_query($this->con, "select * from application where application_id = '$id'");
+        return $query;
+    }
+    public function viewCompanyDetail($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        $query = mysqli_query($this->con, "select * from company where company_id = '$id'");
+        return $query;
+    }
+    //Update & delete
+    public function editStudent($id,$fullname,$username,$student_number,$institution_name,$course,$address,$phone,$email){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if (!is_numeric($phone) || strlen($phone) > 14) {
+            return 2;
+        }
+        else{
+            if($query = mysqli_query($this->con, "update student set fullname='$fullname',username='$username',student_number='$student_number',institution_name='$institution_name', course='$course',address='$address',phone='$phone',email='$email' where student_id = $id")){return 1;}
+            else{return 4;}
+        }
+    }
+    public function deleteStudent($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if ($query = mysqli_query($this->con, "delete from student where student_id = '$id'")){return 1;}
+        else{return 2;}
+    }
+    public function editCompany($id,$company_name,$username,$siup,$address,$phone,$email){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if (!is_numeric($phone) || strlen($phone) > 14) {
+            return 2;
+        }
+        else{
+            if($query = mysqli_query($this->con, "update company set company_name='$company_name',username='$username',siup='$siup',address='$address',phone='$phone',email='$email' where company_id = $id")){return 1;}
+            else{return 4;}
+        }
+    }
+    public function deleteCompany($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if ($query = mysqli_query($this->con, "delete from company where company_id = '$id'")){return 1;}
+        else{return 2;}
+    }
+    public function editVacancy($id,$company_id,$company_name,$vacancy_title,$company_address,$phone,$intern_policies,$author){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if (!is_numeric($phone) || strlen($phone) > 14) {
+            return 2;
+        }
+        else{
+            if($query = mysqli_query($this->con, "update vacancies set company_id='$company_id',company_name='$company_name',vacancy_title='$vacancy_title',company_address='$company_address',phone='$phone',intern_policies='$intern_policies',author='$author' where vacancies_id = $id")){return 1;}
+            else{return 4;}
+        }
+    }
+    public function deleteVacancy($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if ($query = mysqli_query($this->con, "delete from vacancy where vacancies_id = '$id'")){return 1;}
+        else{return 2;}
+    }
+    public function editApplication($id,$student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if($query = mysqli_query($this->con, "update application set student_id = '$student_id',company_id='$company_id',vacancies_id='$vacancies_id',company_name='$company_name',vacancy_title='$vacancy_title',company_address='$company_address',company_email='$company_email',student_name='$student_name',student_address='$student_address',status='$status' where application_id = $id")){return 1;}
+        else{return 4;}
+    }
+    public function deleteApplication($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if ($query = mysqli_query($this->con, "delete from application where application_id = '$id'")){return 1;}
+        else{return 2;}
     }
 //more statistic function
 // JUMLAH DATA

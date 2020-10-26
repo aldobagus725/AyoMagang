@@ -1,12 +1,10 @@
 <?php 
+    include'../koneksi.php';
     session_start(); 
-//    include'../koneksi.php'; 
     if(!isset($_SESSION['superadmin'])){
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
         echo "<script>location='login.php';</script>";
     }
-//Data terakhir (jumlah)
-
     require"../classes/superadmin.php";
     $superadmin = new superadmin();
     $id = $_SESSION['superadmin']["superadmin_id"];
@@ -35,24 +33,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body class="wow fadeIn">
-<!--modal for editing student-->
-         <div class="modal fade" id="editStudent">
-             <div class="modal-dialog">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h4 class="modal-title">Edit</h4>
-                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                     </div>
-                     <div class="modal-body">
-                         
-                     </div>
-                     <div class="modal-footer">
-                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                         
-                     </div>
-                 </div>
-             </div>
-        </div>
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
             <a class="navbar-brand" href="dashboard.php">
                 <img src="../assets/img/logo/logo%20putih.png" width="100%;">
@@ -145,18 +125,10 @@
                                         <div class="card shadow-sm">
                                             <div class="card-body">
                                                 <table class="table table-hover">
-                                                    <tr>
-                                                        <th>ID Kamu</th><td><?php echo $id;?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Fullname</th><td><?php echo $fullname;?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Username</th><td><?php echo $username;?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Email</th><td><?php echo $email;?></td>
-                                                    </tr>
+                                                    <tr><th>ID Kamu</th><td><?php echo $id;?></td></tr>
+                                                    <tr><th>Fullname</th><td><?php echo $fullname;?></td></tr>
+                                                    <tr><th>Username</th><td><?php echo $username;?></td></tr>
+                                                    <tr><th>Email</th><td><?php echo $email;?></td></tr>
                                                 </table>
                                                 <br>
                                                 <a href="#" class="btn btn-success">Edit Info ini</a>
@@ -177,45 +149,231 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="table-responsive shadow-sm">
-                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:12px;">
+                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:14px;">
                                                 <thead>
                                                     <tr class="text-center">
                                                         <th>No</th>
                                                         <th>ID Siswa</th>
                                                         <th>Nama Lengkap</th>
                                                         <th>Username</th>
-                                                        <th>NIS/NIM</th>
                                                         <th>Institusi Pendidikan</th>
-                                                        <th>Alamat</th>
-                                                        <th>Telepon</th>
-                                                        <th>Email</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $query = $superadmin->viewStudent();
                                                         $nomor = 1;
-                                                        while ($dataapp = $query->fetch_assoc()){ 
+                                                        $query_view = $superadmin->viewStudent();
+                                                        while ($dataapp = $query_view->fetch_assoc()){
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $nomor; ?></td>
+                                                        <td><?php echo $nomor++;?></td>
                                                         <td><?php echo $dataapp['student_id']; ?></td>
                                                         <td><?php echo $dataapp['fullname']; ?></td>
                                                         <td><?php echo $dataapp['username']; ?></td>
-                                                        <td><?php echo $dataapp['student_number']; ?></td>
                                                         <td><?php echo $dataapp['institution_name']; ?></td>
-                                                        <td><?php echo $dataapp['address']; ?></td>
-                                                        <td><?php echo $dataapp['phone']; ?></td>
-                                                        <td><?php echo $dataapp['email']; ?></td>
                                                         <td colspan="2" class="text-center">
-                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"> Edit </a> <a href="#" class="btn btn-danger btn-sm"> Delete </a>
+                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewStudent<?php echo $nomor;?>"><i class='far fa-list-alt'></i>&nbsp;Detail</a>
+                                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editStudent<?php echo $nomor;?>"><i class='far fa-edit'></i>&nbsp;Edit</a> 
+                                                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteStudent<?php echo $nomor;?>"><i class='far fa-trash-alt'></i>&nbsp;Delete</a>
+                                                            <!-- =================== STUDENT MODAL ===================-->
+                                                            <!--modal for view student-->
+                                                            <div class="modal fade" id="viewStudent<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Rincian Student</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['student_id'];
+                                                                                $query = $superadmin->viewStudentDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Username</span>
+                                                                                </div>
+                                                                                <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">NIS/NIM</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_number" class="form-control" value="<?php echo $data['student_number'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Lengkap</span>
+                                                                                </div>
+                                                                                <input type="text" name="fullname" class="form-control" value="<?php echo $data['fullname'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Sekolah / Kampus</span>
+                                                                                </div>
+                                                                                <input type="text" name="institution_name" class="form-control" value="<?php echo $data['institution_name'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                       Bidang / Jurusan
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="text" name="course" class="form-control" value="<?php echo $data['course'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Telepon</span>
+                                                                                </div>
+                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Email</span>
+                                                                                </div>
+                                                                                <input type="email" name="email" class="form-control" value="<?php echo $data['email'];?>" required readonly>
+                                                                            </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for edit student-->
+                                                            <div class="modal fade" id="editStudent<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <form method="post">
+                                                                             <div class="modal-header">
+                                                                                 <h4 class="modal-title">Edit Student</h4>
+                                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                             </div>
+                                                                             <div class="modal-body">
+                                                                                <?php
+                                                                                    $id_user = $dataapp['student_id'];
+                                                                                    $query = $superadmin->viewStudentDetail($id_user);
+                                                                                    while ($data = $query->fetch_assoc()){ 
+                                                                                ?>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">ID Student</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" required readonly>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Username</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" required>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">NIS/NIM</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="student_number" class="form-control" value="<?php echo $data['student_number'];?>" required>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Nama Lengkap</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="fullname" class="form-control" value="<?php echo $data['fullname'];?>" required>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Nama Sekolah / Kampus</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="institution_name" class="form-control" value="<?php echo $data['institution_name'];?>" required>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                           Bidang / Jurusan
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="text" name="course_display" class="form-control" value="<?php echo $data['course'];?>(ubah)" required readonly>
+                                                                                    <?php
+                                                                                        $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);sort($spesialisasi);
+                                                                                    ?>
+                                                                                    <select name="course" class="custom-select" required>
+                                                                                    <?php
+                                                                                        for($i=0;$i<count($spesialisasi);$i++){
+                                                                                            echo "<option value=\"$spesialisasi[$i]\">$spesialisasi[$i]</option>";
+                                                                                        }
+                                                                                    ?>
+                                                                                </select>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Alamat</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Telepon</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required>
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Email</span>
+                                                                                    </div>
+                                                                                    <input type="email" name="email" class="form-control" value="<?php echo $data['email'];?>" required >
+                                                                                </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                            <input type="submit" name="update-student" value="Update Data!" class="btn btn-primary"> 
+                                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         </form>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for delete student-->
+                                                            <div class="modal fade" id="deleteStudent<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Hapus Student</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <h4 align="center">
+                                                                                 <?php $id_user = $dataapp['student_id'];?>
+                                                                                 Apakah anda yakin ingin menghapus User dengan ID <?php echo $id_user;?>
+                                                                                 <strong><span class="grt"></span></strong>?
+                                                                             </h4>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <form method="post">
+                                                                                 <input type="hidden" name="student_id" value="<?php echo $id_user;?>">
+                                                                                 <input type="submit" name="delete-student" value="Hapus"! class="btn btn-danger">
+                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                             </form>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
-                                                    <?php
-                                                        $nomor++;
-                                                        }
-                                                    ?>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -234,43 +392,191 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="table-responsive shadow-sm">
-                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:12px;">
+                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:14px;">
                                                 <thead>
                                                     <tr class="text-center">
                                                         <th>No</th>
                                                         <th>ID Perusahaan</th>
                                                         <th>Nama Perusahaan</th>
                                                         <th>Username</th>
-                                                        <th>SIUP</th>
-                                                        <th>Alamat</th>
-                                                        <th>Telepon</th>
-                                                        <th>Email</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $query = $superadmin->viewCompany();
+                                                        $query_view = $superadmin->viewCompany();
                                                         $nomor = 1;
-                                                        while ($dataapp = $query->fetch_assoc()){ 
+                                                        while ($dataapp = $query_view->fetch_assoc()){ 
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $nomor; ?></td>
+                                                        <td><?php echo $nomor++; ?></td>
                                                         <td><?php echo $dataapp['company_id']; ?></td>
                                                         <td><?php echo $dataapp['company_name']; ?></td>
                                                         <td><?php echo $dataapp['username']; ?></td>
-                                                        <td><?php echo $dataapp['siup']; ?></td>
-                                                        <td><?php echo $dataapp['address']; ?></td>
-                                                        <td><?php echo $dataapp['phone']; ?></td>
-                                                        <td><?php echo $dataapp['email']; ?></td>
                                                         <td colspan="2" class="text-center">
-                                                            <a href="#" class="btn btn-primary btn-sm"> Edit </a> <a href="#" class="btn btn-danger btn-sm"> Delete </a>
+                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewCompany<?php echo $nomor;?>"><i class='far fa-list-alt'></i>&nbsp;Detail</a>
+                                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editCompany<?php echo $nomor;?>"><i class='far fa-edit'></i>&nbsp;Edit</a>  
+                                                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCompany<?php echo $nomor;?>"><i class='far fa-trash-alt'></i>&nbsp;Delete</a>
+                                                            <!-- =================== COMPANY ===================-->
+                                                            <!--modal for view COMPANY-->
+                                                            <div class="modal fade" id="viewCompany<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Rincian Company</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['company_id'];
+                                                                                $query = $superadmin->viewCompanyDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Company</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Username</span>
+                                                                                </div>
+                                                                                <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">SIUP</span>
+                                                                                </div>
+                                                                                <input type="text" name="SIUP" class="form-control" value="<?php echo $data['siup'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Telepon</span>
+                                                                                </div>
+                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Email</span>
+                                                                                </div>
+                                                                                <input type="text" name="email" class="form-control" value="<?php echo $data['email'];?>" required readonly>
+                                                                            </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for edit company-->
+                                                            <div class="modal fade" id="editCompany<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <form method="post">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Edit Company</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['company_id'];
+                                                                                $query = $superadmin->viewCompanyDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Company</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Username</span>
+                                                                                </div>
+                                                                                <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">SIUP</span>
+                                                                                </div>
+                                                                                <input type="text" name="SIUP" class="form-control" value="<?php echo $data['siup'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Telepon</span>
+                                                                                </div>
+                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required >
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Email</span>
+                                                                                </div>
+                                                                                <input type="text" name="email" class="form-control" value="<?php echo $data['email'];?>" required >
+                                                                            </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <input type="submit" name="update-company" value="Update Data!" class="btn btn-primary">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                     </form>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for delete company-->
+                                                            <div class="modal fade" id="deleteCompany<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Hapus Company</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <h4 align="center">
+                                                                                 <?php $id_user = $dataapp['company_id'];?>
+                                                                                 Apakah anda yakin ingin menghapus User dengan ID <?php echo $id_user;?>
+                                                                                 <strong><span class="grt"></span></strong>?
+                                                                             </h4>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <form method="post">
+                                                                                 <input type="hidden" name="company_id" value="<?php echo $id_user;?>">
+                                                                                 <input type="submit" name="delete-company" value="Hapus"! class="btn btn-danger">
+                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                             </form>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
-                                                    <?php
-                                                        $nomor++;
-                                                        }
-                                                    ?>
+                                                    <?php }?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -289,45 +595,217 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="table-responsive shadow-sm">
-                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:12px;">
+                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:14px;">
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
                                                         <th>ID Lowongan</th>
-                                                        <th>ID Perusahaan</th>
                                                         <th>Nama Perusahaan</th>
-                                                        <th>Alamat Perusahaan</th>
                                                         <th>Bidang Perusahaan</th>
-                                                        <th>Telepon</th>
-                                                        <th>Syarat Magang</th>
                                                         <th>Author</th>
                                                         <th class="text-center">Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $query = $superadmin->viewVacancy();
+                                                        $query_view = $superadmin->viewVacancy();
                                                         $nomor = 1;
-                                                        while ($dataapp = $query->fetch_assoc()){ 
+                                                        while ($dataapp = $query_view->fetch_assoc()){ 
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $nomor; ?></td>
+                                                        <td><?php echo $nomor++; ?></td>
                                                         <td><?php echo $dataapp['vacancies_id']; ?></td>
-                                                        <td><?php echo $dataapp['company_id']; ?></td>
                                                         <td><?php echo $dataapp['company_name']; ?></td>
-                                                        <td><?php echo $dataapp['company_address']; ?></td>
                                                         <td><?php echo $dataapp['company_speciality']; ?></td>
-                                                        <td><?php echo $dataapp['phone']; ?></td>
-                                                        <td><?php echo $dataapp['intern_policies']; ?></td>
                                                         <td><?php echo $dataapp['author']; ?></td>
                                                         <td colspan="2" class="text-center">
-                                                            <a href="#" class="btn btn-primary btn-sm"> Edit </a> <a href="#" class="btn btn-danger btn-sm"> Delete </a>
+                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewVacancy<?php echo $nomor;?>"><i class='far fa-list-alt'></i>&nbsp;Detail</a>
+                                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editVacancy<?php echo $nomor;?>"><i class='far fa-edit'></i>&nbsp;Edit</a> 
+                                                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteVacancy<?php echo $nomor;?>"><i class='far fa-trash-alt'></i>&nbsp;Delete</a>
+                                                            <!-- =================== VACANCY ===================-->
+                                                            <!--modal for view Vacancy-->
+                                                            <div class="modal fade" id="viewVacancy<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Rincian Vacancy</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['vacancies_id'];
+                                                                                $query = $superadmin->viewVacancyDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Judul Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Bidang / Job Desc</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_speciality" class="form-control" value="<?php echo $data['company_speciality'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Telepon</span>
+                                                                                </div>
+                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Syarat Magang</span>
+                                                                                </div>
+                                                                                <input type="text" name="intern_policies" class="form-control" value="<?php echo $data['intern_policies'];?>" required readonly>
+                                                                            </div>
+                                                                             <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Author Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="author" class="form-control" value="<?php echo $data['author'];?>" required readonly>
+                                                                            </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--modal for edit Vacancy-->
+                                                            <div class="modal fade" id="editVacancy<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <form method="post">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Edit Vacancy</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['vacancies_id'];
+                                                                                $query = $superadmin->viewVacancyDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Judul Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Bidang / Job Desc</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_speciality" class="form-control" value="<?php echo $data['company_speciality'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Telepon</span>
+                                                                                </div>
+                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required >
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Syarat Magang</span>
+                                                                                </div>
+                                                                                <input type="text" name="intern_policies" class="form-control" value="<?php echo $data['intern_policies'];?>" required >
+                                                                            </div>
+                                                                             <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Author Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="author" class="form-control" value="<?php echo $data['author'];?>" required >
+                                                                            </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <input type="submit" name="update-vacancy" value="Update Data!" class="btn btn-primary">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                     </form>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for delete Vacancy-->
+                                                            <div class="modal fade" id="deleteVacancy<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Hapus Vacancy</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <h4 align="center">
+                                                                                 <?php $id = $dataapp['vacancies_id'];?>
+                                                                                 Apakah anda yakin ingin menghapus Bukaan Magang dengan ID <?php echo $id;?>
+                                                                                 <strong><span class="grt"></span></strong>?
+                                                                             </h4>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <form method="post">
+                                                                                 <input type="hidden" name="company_id" value="<?php echo $id;?>">
+                                                                                 <input type="submit" name="delete-vacancy" value="Hapus"! class="btn btn-danger">
+                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                             </form>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
-                                                    <?php
-                                                        $nomor++;
-                                                        }
-                                                    ?>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -346,17 +824,12 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="table-responsive shadow-sm">
-                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:12px;">
+                                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:14px;">
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
                                                         <th>ID Aplikasi</th>
-                                                        <th>ID Lowongan</th>
-                                                        <th>ID Siswa</th>
-                                                        <th>ID Perusahaan</th>
                                                         <th>Nama Perusahaan</th>
-                                                        <th>Alamat Perusahaan</th>
-                                                        <th>Email Perusahaan</th>
                                                         <th>Nama Siswa</th>
                                                         <th>Status Lowongan</th>
                                                         <th class="text-center">Aksi</th>
@@ -364,36 +837,249 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $query = $superadmin->viewApplication();
+                                                        $query_view = $superadmin->viewApplication();
                                                         $nomor = 1;
-                                                        while ($data = $query->fetch_assoc()){ 
+                                                        while ($dataapp = $query_view->fetch_assoc()){ 
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $nomor; ?></td>
-                                                        <td><?php echo $data["application_id"];?></td>
-                                                        <td><?php echo $data["vacancies_id"];?></td>
-                                                        <td><?php echo $data["student_id"];?></td>
-                                                        <td><?php echo $data["company_id"];?></td>
-                                                        <td><?php echo $data["company_name"];?></td>
-                                                        <td><?php echo $data["company_address"];?></td>
-                                                        <td><?php echo $data["company_email"];?></td>
-                                                        <td><?php echo $data["student_name"];?></td>
+                                                        <td><?php echo $nomor++; ?></td>
+                                                        <td><?php echo $dataapp["application_id"];?></td>
+                                                        <td><?php echo $dataapp["company_name"];?></td>
+                                                        <td><?php echo $dataapp["student_name"];?></td>
                                                         <td>
                                                             <?php 
-                                                                $status = $data["status"];
+                                                                $status = $dataapp["status"];
                                                                 if ($status ==1){echo "Processing";}
                                                                 else if ($status==2){echo "Accepted";}
                                                                 else{echo "Rejected!";}
                                                             ?>
                                                         </td>
                                                         <td colspan="2" class="text-center">
-                                                            <a href="#" class="btn btn-primary btn-sm"> Edit </a> <a href="#" class="btn btn-danger btn-sm"> Delete </a>
+                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewApplication<?php echo $nomor;?>"><i class='far fa-list-alt'></i>&nbsp;Detail</a>
+                                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editApplication<?php echo $nomor;?>"><i class='far fa-edit'></i>&nbsp;Edit</a>  
+                                                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteApplication<?php echo $nomor;?>"><i class='far fa-trash-alt'></i>&nbsp;Delete</a>
+                                                            <!-- =================== Application ===================-->
+                                                            <!--modal for view Application-->
+                                                            <div class="modal fade" id="viewApplication<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Rincian Application</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['application_id'];
+                                                                                $query = $superadmin->viewApplicationDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Pengajuan Magang</span>
+                                                                                </div>
+                                                                                <input type="text" name="application_id" class="form-control" value="<?php echo $data['application_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Bukaan Magang</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Judul Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Email Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_email" class="form-control" value="<?php echo $data['company_email'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_name" class="form-control" value="<?php echo $data['student_name'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_address" class="form-control" value="<?php echo $data['student_address'];?>" required readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Status Aplikasi</span>
+                                                                                </div>
+                                                                                <input type="text" name="status" class="form-control" value="<?php echo $data['status'];?>" required readonly>
+                                                                            </div>
+                                                                             <br>
+                                                                            <p class="text-left">
+                                                                                Status aplikasi:<br>
+                                                                                <i>1 = Processing</i><br>
+                                                                                <i>2 = Accepted</i><br>
+                                                                                <i>3 = Rejected</i><br>
+                                                                            </p> 
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for edit Application-->
+                                                            <div class="modal fade" id="editApplication<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <form method="post">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Edit Application</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id_user = $dataapp['application_id'];
+                                                                                $query = $superadmin->viewApplicationDetail($id_user);
+                                                                                while ($data = $query->fetch_assoc()){
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Pengajuan Magang</span>
+                                                                                </div>
+                                                                                <input type="text" name="application_id" class="form-control" value="<?php echo $data['application_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Bukaan Magang</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Judul Bukaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Email Perusahaan</span>
+                                                                                </div>
+                                                                                <input type="text" name="company_email" class="form-control" value="<?php echo $data['company_email'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Nama Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_name" class="form-control" value="<?php echo $data['student_name'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Alamat Student</span>
+                                                                                </div>
+                                                                                <input type="text" name="student_address" class="form-control" value="<?php echo $data['student_address'];?>" required>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Status Aplikasi</span>
+                                                                                </div>
+                                                                                <input type="text" name="status" class="form-control" value="<?php echo $data['status'];?>" required>
+                                                                            </div>
+                                                                             <br>
+                                                                            <p class="text-left">
+                                                                                Status aplikasi:<br>
+                                                                                <i>1 = Processing</i><br>
+                                                                                <i>2 = Accepted</i><br>
+                                                                                <i>3 = Rejected</i><br>
+                                                                            </p> 
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <input type="submit" name="update-application" value="Update Data!" class="btn btn-primary">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                        <?php } ?>
+                                                                     </div>
+                                                                     </form>
+                                                                 </div>
+                                                            </div>
+                                                            <!--modal for delete Application-->
+                                                            <div class="modal fade" id="deleteApplication<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Hapus Application</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <h4 align="center">
+                                                                                 <?php $id = $dataapp['application_id'];?>
+                                                                                 Apakah anda yakin ingin menghapus Pengajuan Magang dengan ID <?php echo $id;?>
+                                                                                 <strong><span class="grt"></span></strong>?
+                                                                             </h4>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <form method="post">
+                                                                                 <input type="hidden" name="application_id" value="<?php echo $id;?>">
+                                                                                 <input type="submit" name="delete-application" value="Hapus"! class="btn btn-danger">
+                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            </form>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
-                                                    <?php
-                                                        $nomor++;
-                                                        }
-                                                    ?>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -405,13 +1091,93 @@
                 </div>
             </div>
         </div>
-        <?php
-        include ('../footer.php');;
-        ?>
+        <?php include ('../footer.php');?>
     </body>
+    <?php
+        if(isset($_POST['update-student'])){
+            $student_id = $_POST['student_id'];
+            $fullname = $_POST['fullname'];
+            $username = $_POST['username'];
+            $student_number = $_POST['student_number'];
+            $institution_name = $_POST['institution_name'];
+            $course = $_POST['course'];
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
+            $email = $_POST['email'];
+            $update_student = $superadmin->editStudent($student_id,$fullname,$username,$student_number,$institution_name,$course,$address,$phone,$email);
+            if ($update_student==1){echo "<script>alert('Data Student Berhasil di ubah!');location = 'dashboard.php';</script>";}
+            elseif ($update_student==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['delete-student'])){
+            $student_id = $_POST['student_id'];
+            $delete_student = $superadmin->deleteStudent($student_id);
+            if ($delete_student==1){echo "<script>alert('Data Student Berhasil di hapus!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['update-company'])){
+            $company_id = $_POST['company_id'];
+            $company_name = $_POST['company_name'];
+            $username = $_POST['username'];
+            $siup = $_POST['siup'];
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
+            $email = $_POST['email'];
+            $update_company = $superadmin->editCompany($student_id,$fullname,$username,$student_number,$institution_name,$course,$address,$phone,$email);
+            if ($update_company==1){echo "<script>alert('Data Company Berhasil di ubah!');location = 'dashboard.php';</script>";}
+            elseif ($update_company==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['delete-company'])){
+            $company_id = $_POST['company_id'];
+            $delete_company = $superadmin->deleteCompany($company_id);
+            if ($delete_company==1){echo "<script>alert('Data Company Berhasil di hapus!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['update-vacancy'])){
+            $vacancies_id = $_POST['vacancies_id'];
+            $company_id = $_POST['company_id'];
+            $company_name = $_POST['company_name'];
+            $vacancy_title = $_POST['vacancy_title'];
+            $company_address = $_POST['company_address'];
+            $phone = $_POST['phone'];
+            $intern_policies = $_POST['intern_policies'];
+            $author = $_POST['author'];
+            $update_vacancy = $superadmin->editVacancy($vacancies_id,$company_id,$company_name,$vacancy_title,$company_address,$phone,$intern_policies,$author);
+            if ($update_vacancy==1){echo "<script>alert('Data Vacancy Berhasil di ubah!');location = 'dashboard.php';</script>";}
+            elseif ($update_vacancy==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['delete-vacancy'])){
+            $vacancies_id = $_POST['vacancies_id'];
+            $delete_vacancy = $superadmin->deleteVacancy($vacancies_id);
+            if ($delete_vacancy==1){echo "<script>alert('Data Vacancy Berhasil di hapus!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['update-application'])){
+            $application_id = $_POST['application_id'];
+            $vacancies_id = $_POST['vacancies_id'];
+            $company_id = $_POST['company_id'];
+            $company_name = $_POST['company_name'];
+            $vacancy_title = $_POST['vacancy_title'];
+            $company_address = $_POST['company_address'];
+            $company_email = $_POST['company_email'];
+            $student_name = $_POST['student_name'];
+            $student_address = $_POST['student_address'];
+            $status = $_POST['status'];
+            $update_application = $superadmin->editApplication($application_id,$student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status);
+            if ($update_application==1){echo "<script>alert('Data Application Berhasil di ubah!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+        else if(isset($_POST['delete-application'])){
+            $application_id = $_POST['application_id'];
+            $delete_app = $superadmin->deleteApplication($application_id);
+            if ($delete_app==1){echo "<script>alert('Data Application Berhasil di hapus!');location = 'dashboard.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}
+        }
+    ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/waypoints.min.js"></script>
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/fontawesome/js/all.min.js"></script>

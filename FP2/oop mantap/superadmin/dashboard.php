@@ -1,5 +1,4 @@
 <?php 
-    include'../koneksi.php';
     session_start(); 
     if(!isset($_SESSION['superadmin'])){
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
@@ -1178,7 +1177,6 @@
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/fontawesome/js/all.min.js"></script>
     <script>jQuery(document).ready(function() { new WOW().init(); });</script>

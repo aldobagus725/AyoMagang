@@ -21,6 +21,9 @@
     $student_number = $student->getters($student_id,"student_number");
     $institution_name = $student->getters($student_id,"institution_name");
     $course = $student->getters($student_id,"course");
+//array
+    $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);
+    sort($spesialisasi);
 ?>
 <html>
     <head>
@@ -68,7 +71,7 @@
                                                     <tr><td><h6><?php echo $course;?></h6></td></tr>
                                                     <tr><td><h6><?php echo $institution_name; ?></h6></td></tr>
                                                 </table>
-                                                <table>
+                                                <table style="font-size:12px;">
                                                     <tr>
                                                         <td><i class='fas fas fa-phone'></i> &nbsp; <?php echo $phone; ?>&nbsp;|&nbsp;</td>
                                                         <td><i class='fas fa-envelope'></i> &nbsp; <?php echo $email; ?>&nbsp;|&nbsp;</td>
@@ -123,7 +126,44 @@
                                         </table>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <a href="change_password.php" class="btn btn-primary">Ganti Password</a>
+                                        <a href="#" class="btn btn-primary"data-toggle="modal" data-target="#changePwD">Ganti Password</a>
+                                        <!--modal for change password-->
+                                        <div class="modal fade" id="changePwD">
+                                             <div class="modal-dialog">
+                                                 <div class="modal-content">
+                                                     <form method="post">
+                                                         <div class="modal-header">
+                                                             <h4 class="modal-title">Change Password</h4>
+                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                         </div>
+                                                         <div class="modal-body">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Masukkan Password Lama</span>
+                                                                </div>
+                                                                <input type="password" name="old_password" class="form-control" value="">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Masukkan Password Baru</span>
+                                                                </div>
+                                                                <input type="password" name="new_password" class="form-control" value="">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Konfirmasi Password Baru</span>
+                                                                </div>
+                                                                <input type="password" name="confirm_new_password" class="form-control" value="">
+                                                            </div>
+                                                        </div>
+                                                     <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-primary btn" name="change-password" value="Ganti Password">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                     </div>
+                                                     </form>
+                                                 </div>
+                                             </div>
+                                        </div>
                                         <a href="#" class="btn btn-info">Ganti Email</a>
                                     </div>
                                 </div>
@@ -142,7 +182,88 @@
                                         </table>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <a href="edit_profile.php" class="btn btn-success">Edit Info</a>
+                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editStudent">Edit Info</a>
+                                        <!--modal for edit student-->
+                                        <div class="modal fade" id="editStudent">
+                                             <div class="modal-dialog">
+                                                 <div class="modal-content">
+                                                     <form method="post">
+                                                         <div class="modal-header">
+                                                             <h4 class="modal-title">Edit Student</h4>
+                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                         </div>
+                                                         <div class="modal-body">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">ID Student</span>
+                                                                </div>
+                                                                <input type="text" name="student_id" class="form-control" value="<?php echo $student_id;?>"readonly>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">NIS/NIM</span>
+                                                                </div>
+                                                                <input type="text" name="student_number" class="form-control" value="<?php echo $student_number;?>" readonly>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Username</span>
+                                                                </div>
+                                                                <input type="text" name="username" class="form-control" value="<?php echo $userName;?>" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Nama Lengkap</span>
+                                                                </div>
+                                                                <input type="text" name="fullname" class="form-control" value="<?php echo $fullName;?>" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Nama Sekolah / Kampus</span>
+                                                                </div>
+                                                                <input type="text" name="institution_name" class="form-control" value="<?php echo $institution_name;?>" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                       Bidang / Jurusan
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" name="course_display" class="form-control" value="<?php echo $course;?>(ubah)" required readonly>
+                                                                <?php
+                                                                    $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);sort($spesialisasi);
+                                                                ?>
+                                                                <select name="course" class="custom-select" required>
+                                                                <?php
+                                                                    for($i=0;$i<count($spesialisasi);$i++){
+                                                                        echo "<option value=\"$spesialisasi[$i]\">$spesialisasi[$i]</option>";}
+                                                                ?>
+                                                            </select>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Alamat</span>
+                                                                </div>
+                                                                <input type="text" name="address" class="form-control" value="<?php echo $address;?>" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Telepon</span>
+                                                                </div>
+                                                                <input type="text" name="phone" class="form-control" value="<?php echo $phone;?>" required>
+                                                            </div>
+                                                            <p class="text-left">
+                                                                <i>*untuk pengubahan NIS/NIM, silakan hubungi admin!</i><br>
+                                                            </p> 
+                                                     </div>
+                                                     <div class="modal-footer">
+                                                        <input type="submit" name="edit-profile" value="Update Data!" class="btn btn-primary"> 
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                     </div>
+                                                     </form>
+                                                 </div>
+                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -153,6 +274,36 @@
         </div>
         <?php include ('../footer.php'); ?>
     </body>
+        <?php
+        if(isset($_POST['edit-profile'])){
+            $student_id = $_POST['student_id'];
+            $fullname = $_POST['fullname'];
+            $username = $_POST['username'];
+            $institution_name = $_POST['institution_name'];
+            $course = $_POST['course'];
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
+            $edit = $student->editProfile($student_id,$username,$fullname,$institution_name,$course,$address,$phone);
+            if ($edit==1){echo "<script>alert('Selamat! Data anda telah berubah!');location = 'myprofile.php';</script>";}
+            elseif ($edit==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'myprofile.php';</script>";}
+            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
+            
+        }
+        elseif(isset($_POST['change-password'])){
+            $old_password = md5($_POST['old_password']);
+            $new_password = md5($_POST['new_password']);
+            $confirm_new_password = md5($_POST['confirm_new_password']);
+            if ($old_password!=$student->getters($student_id,'password')){echo "<script>alert('Password Lama Salah!');location = 'myprofile.php';</script>";}
+            else{
+                if ($new_password!=$confirm_new_password){echo "<script>alert('Password Baru tidak sama! Konfirmasi Ulang!');location = 'myprofile.php';</script>";}
+                else{
+                    $change = $student->changePassword($student_id,$new_password);
+                    if ($change == 1){echo "<script>alert('Selamat! Password anda telah berubah!');location = 'myprofile.php';</script>";}
+                    else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
+                }
+            }
+        }
+    ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>

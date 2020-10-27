@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    include'../koneksi.php';
     if (isset($_SESSION['company'])) {echo "<script>location='dashboard.php';</script>";die;}
     else{}
 ?>
@@ -8,18 +7,13 @@
     <head>
         <style>
             #login-superadmin::before{
-                content: "";
-                position: fixed;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
+                content: "";position: fixed;
+                left: 0;right: 0;
+                z-index: -1;display: block;
                 background-image: url(../assets/img/backgrounds/1@2x.jpg);
                 filter: brightness(60%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
+                background-repeat: no-repeat;background-size:cover;
+                width: 100%;height: 100%;
             }
         </style>
         <title>Login</title>
@@ -50,7 +44,6 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary" value="Masuk" name="login-superadmin"> 
-<!--                                        <a href="#" class="ForgetPwd btn btn-secondary" style="text-decoration: none;color:white;">Lupa Password</a>-->
                                     </div>
                                 </form>
                                 <br>
@@ -62,19 +55,14 @@
                                 if(isset($_POST['login-superadmin'])){
                                     $username = $_POST['username'];
                                     $password = md5($_POST['password']);
-                                    $query = $koneksi->query("SELECT * FROM superadmin WHERE 
-                                        (email    = '$username' OR username = '$username' ) AND 
-                                         password = '$password'");
+                                    $query = $koneksi->query("SELECT * FROM superadmin WHERE (email='$username' OR username='$username') AND password='$password'");
                                     $data = $query->num_rows;
                                     if($data == 1){
                                         $akun = $query->fetch_assoc(); 
                                         $_SESSION['superadmin'] = $akun;
                                         echo "<script>location='dashboard.php';</script>";
                                     }
-                                    //Jika akun tidak ada yang cocok
-                                    else{
-                                        echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";
-                                    }
+                                    else{echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>"; }
                                 }
                             ?>  
                     </div>
@@ -85,9 +73,5 @@
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
-    <script>
-        jQuery(document).ready(function() { 
-            new WOW().init();
-        });
-    </script>
+    <script>jQuery(document).ready(function() { new WOW().init();});</script>
 </html>

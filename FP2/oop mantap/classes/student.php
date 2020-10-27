@@ -84,7 +84,7 @@ class student{
         $query = mysqli_query($this->con, "select * from student where student_id = $id");
         return $query;
     }
-    public function editProfile($id,$fullname,$institution_name,$course,$address,$phone){
+    public function editProfile($id,$username,$fullname,$institution_name,$course,$address,$phone){
         $id = mysqli_real_escape_string($this->con, $id);
         if (!is_numeric($phone) || strlen($phone) > 14) {
             return 2;

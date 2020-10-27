@@ -8,18 +8,13 @@
     <head>
         <style>
             #login-student::before{
-                content: "";
-                position: fixed;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
+                content: "";position: fixed;
+                left: 0;right: 0;
+                z-index: -1;display: block;
                 background-image: url(../assets/img/carousel/4.jpg);
                 filter: brightness(60%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
+                background-repeat: no-repeat;background-size:cover;
+                width: 100%;height: 100%;
             }
         </style>
         <title>Login</title>
@@ -82,9 +77,7 @@
                 $_SESSION['student'] = $akun;
                 echo "<script>location='dashboard.php';</script>";
             }
-            else{
-                echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";
-            }
+            else{echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";}
         }
     ?>  
     <script src="../assets/js/jquery-3.4.1.min.js"></script>

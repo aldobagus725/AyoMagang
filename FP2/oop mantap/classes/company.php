@@ -9,10 +9,7 @@ class company{
     private $address;
     private $phone;
     private $email;
-    public function __construct(){
-        $koneksi = new database();
-        $this->con = $koneksi->koneksi();
-    }
+    public function __construct(){$koneksi = new database();$this->con = $koneksi->koneksi();}
     //Getters -- experimental, can be unused --
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
@@ -30,26 +27,20 @@ class company{
         $this->address = $address;
         $this->phone = $phone;
         $this->email = $email;
-        if (empty($name) || empty($username) || empty($email) || empty($password)) {
-            return 0;
-        } elseif (!is_numeric($phone) || strlen($phone) > 14) {
-            return 2;
-        } else {
+        if (empty($name) || empty($username) || empty($email) || empty($password)) {return 0;} 
+        elseif (!is_numeric($phone) || strlen($phone) > 14) {return 2;} 
+        else {
             $check = mysqli_query($this->con, "select * from company where email = '$email' or username = '$username'");
             $checkRow = mysqli_num_rows($check);
-            if ($checkRow > 0) {
-                return 3;
-            } else {
+            if ($checkRow > 0) {return 3;} 
+            else {
                 $check_siup = mysqli_query($this->con, "select * from company where siup = '$siup'");
                 $checkRow_siup = mysqli_num_rows($check_siup);
-                if ($checkRow_siup > 0) {
-                    return 4;
-                }
+                if ($checkRow_siup > 0) {return 4;}
                 else{
                 mysqli_query($this->con, "insert into company (company_name,username,siup,address,phone,email,password) values ('$company_name','$username','$siup','$company_address','$phone','$email','$password')");
                 return 1;                   
                 }
-
             }
         }
     }

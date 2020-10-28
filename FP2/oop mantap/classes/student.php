@@ -84,7 +84,7 @@ class student{
             return 2;
         }
         else{
-            if($query = mysqli_query($this->con, "update student set fullname='$fullname',institution_name='$institution_name', course='$course',address='$address',phone='$phone' where student_id = $id")){return 1;}
+            if($query = mysqli_query($this->con, "update student set fullname='$fullname', username='$username',institution_name='$institution_name', course='$course',address='$address',phone='$phone' where student_id = $id")){return 1;}
             else{return 3;}
         }
     }

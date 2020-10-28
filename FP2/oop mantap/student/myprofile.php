@@ -182,7 +182,8 @@
                                         </table>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editStudent">Edit Info</a>
+                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editStudent">Edit Profile</a>
+                                        <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#reqChangeNumber">Ajukan Perubahan NIS / NIM</a>
                                         <!--modal for edit student-->
                                         <div class="modal fade" id="editStudent">
                                              <div class="modal-dialog">
@@ -253,7 +254,7 @@
                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $phone;?>" required>
                                                             </div>
                                                             <p class="text-left">
-                                                                <i>*untuk pengubahan NIS/NIM, silakan hubungi admin!</i><br>
+                                                                <i>*untuk pengubahan NIS/NIM, harap melakukan pengajuan melalui tombol "Ajukan Perubahan NIS/NIM"</i><br>
                                                             </p> 
                                                      </div>
                                                      <div class="modal-footer">
@@ -264,6 +265,55 @@
                                                  </div>
                                              </div>
                                         </div>
+                                    <div class="modal fade" id="reqChangeNumber">
+                                     <div class="modal-dialog">
+                                         <div class="modal-content">
+                                             <form method="post">
+                                                 <div class="modal-header">
+                                                     <h4 class="modal-title">Form Perubahan NIS/NIM Siswa</h4>
+                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                 </div>
+                                                 <div class="modal-body">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Judul Form</span>
+                                                        </div>
+                                                        <input type="text" name="req_title" class="form-control" value="Form Perubahan NIS/NIM Siswa <?php echo $student_id;?>" readonly>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Alasan Pengajuan</span>
+                                                        </div>
+                                                        <textarea class="form-control" name="req_detail" rows="4"></textarea>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Upload Surat Pernyataan</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" class="btn btn-primary btn" name="status" value="0">
+                                             <div class="modal-footer">
+                                                <input type="submit" class="btn btn-primary btn" name="reqChange" value="Ajukan Perubahan">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                             </div>
+                                             </form>
+                                                <?php
+                                                    if(isset($_POST['reqChange'])){
+                                                        $req_title = $_POST['req_title'];
+                                                        $req_detail = $_POST['req_detail'];
+                                                        $status = $_POST['status'];
+                                                        $reqSubmit = $student->CreateRequest($req_title,$req_detail,$status);
+                                                        if ($reqSubmit == 1) {
+                                                             echo "<script>alert('Permintaan Pengajuan Perubahan Sudah terkirim! Admin kami akan memproses!');location = 'dashboard.php';</script>";
+                                                        } else {
+                                                            echo "<script>alert('Error! Coba Lagi');location = 'dashboard.php';</script>";
+                                                        }
+                                                    }
+                                                ?>
+                                         </div>
+                                     </div>
+                                </div>
                                     </div>
                                 </div>
                             </div>
@@ -287,7 +337,6 @@
             if ($edit==1){echo "<script>alert('Selamat! Data anda telah berubah!');location = 'myprofile.php';</script>";}
             elseif ($edit==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'myprofile.php';</script>";}
             else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
-            
         }
         elseif(isset($_POST['change-password'])){
             $old_password = md5($_POST['old_password']);

@@ -61,14 +61,8 @@ class student{
         $this->student_name = $student_name;
         $this->student_address = $student_address;
         $this->status = $status;
-        $check = mysqli_query($this->con, "select vacancies_id from application where vacancies_id = '$vacancies_id'");
-        $checkRow = mysqli_num_rows($check);
-        if ($checkRow > 0) {
-            return 3;
-        } else {
-            mysqli_query($this->con, "insert into application (student_id,company_id,vacancies_id,company_name,vacancy_title,company_address,company_email,student_name,student_address,status) values ('$student_id','$company_id','$vacancies_id','$company_name','$vacancy_title','$company_address','$company_email','$student_name','$student_address','$status')");
-            return 1;
-        }
+        mysqli_query($this->con, "insert into application (student_id,company_id,vacancies_id,company_name,vacancy_title,company_address,company_email,student_name,student_address,status) values ('$student_id','$company_id','$vacancies_id','$company_name','$vacancy_title','$company_address','$company_email','$student_name','$student_address','$status')");
+        return 1;
     }
     public function viewInternshipList(){
         $query = mysqli_query($this->con, "select * from vacancies");
@@ -97,6 +91,10 @@ class student{
     public function changePassword($id,$password){
         $id = mysqli_real_escape_string($this->con, $id);
         if($query = mysqli_query($this->con, "update student set password = '$password' where student_id = $id")){return 1;}
+        else{return 2;}
+    }
+    public function CreateRequest($req_title,$req_detail,$status){
+        if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status) values ('$req_title','$req_detail','$status')")){return 1;}
         else{return 2;}
     }
 }

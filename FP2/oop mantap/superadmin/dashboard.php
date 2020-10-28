@@ -41,6 +41,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <span class="badge badge-pill badge-primary count" style="float:right;margin-bottom:-10px;"></span>
+                            <i class='far fa-bell'></i>
+                        </a>
+                        <ul class="dropdown-menu"></ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link scroll-link" href="#footer">Butuh Bantuan?</a>
                     </li>
@@ -48,6 +55,7 @@
                         <a class="nav-link scroll-link" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </li>
                 </ul>
+
             </div>
         </nav>
         <div class="container-fluid">
@@ -60,6 +68,7 @@
                       <a class="nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-company" role="tab" aria-controls="v-pills-company" aria-selected="false">Companies</a>
                       <a class="nav-link" id="v-pills-vacancy-tab" data-toggle="pill" href="#v-pills-vacancy" role="tab" aria-controls="v-pills-vacancy" aria-selected="false">Vacancies</a>
                       <a class="nav-link" id="v-pills-application-tab" data-toggle="pill" href="#v-pills-application" role="tab" aria-controls="v-pills-application" aria-selected="false">Applications</a>
+                      <a class="nav-link" id="v-pills-request-tab" data-toggle="pill" href="#v-pills-request" role="tab" aria-controls="v-pills-request" aria-selected="false">Requests</a>
                     </div>
                 </div>
                 <div class="col-sm-10" id="homemade-navbar2">
@@ -1086,6 +1095,99 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="v-pills-request" role="tabpanel" aria-labelledby="v-pills-request-tab">
+                            <div class="container" style="padding-top:20px;padding-bottom:20px;">
+                                <div class="row">
+                                    <div class="col text-left">
+                                        <h4>Request</h4>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-8">
+                                        <div class="card shadow-sm">
+                                            <div class="card-body">
+                                                <div class="table-responsive shadow-sm">
+                                                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size:14px;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>Judul Request</th>
+                                                                <th>Detail Request</th>
+                                                                <th>Status</th>
+                                                                <th class="text-center">Aksi</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                                $query_view = $superadmin->viewRequest();
+                                                                $nomor = 1;
+                                                                while ($dataapp = $query_view->fetch_assoc()){ 
+                                                            ?>
+                                                            <tr>
+                                                                <td><?php echo $nomor++; ?></td>
+                                                                <td><?php echo $dataapp["req_title"];?></td>
+                                                                <td><?php echo $dataapp["req_detail"];?></td>
+                                                                <td><?php echo $dataapp["status"];?></td>
+                                                                <td>
+                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewReq<?php echo $nomor;?>"><i class='far fa-list-alt'></i>&nbsp;Detail</a>
+                                                            <!--modal for view Detail-->
+                                                            <div class="modal fade" id="viewReq<?php echo $nomor;?>">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h4 class="modal-title">Rincian Request</h4>
+                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                         </div>
+                                                                         <div class="modal-body">
+                                                                             <?php
+                                                                                $id = $dataapp['req_id'];
+                                                                                $query = $superadmin->viewRequestDetail($id);
+                                                                                while ($data = $query->fetch_assoc()){ 
+                                                                              ?>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">ID Request</span>
+                                                                                </div>
+                                                                                <input type="text" name="req_id" class="form-control" value="<?php echo $data['req_id'];?>" readonly>
+                                                                            </div>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Judul Request</span>
+                                                                                </div>
+                                                                                <input type="text" name="req_title" class="form-control" value="<?php echo $data['req_title'];?>" readonly>
+                                                                            </div>
+                                                                             <br>
+                                                                                <div class="card">
+                                                                                    <div class="card-header">
+                                                                                        <h4>Rincian Request</h4>
+                                                                                    </div>
+                                                                                    <div class="card-body">
+                                                                                        <p class="card-text">
+                                                                                            <?php echo $data['req_detail'];?>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                         </div>
+                                                                         <div class="modal-footer">
+                                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                         </div>
+                                                                         <?php } ?>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                                </td>
+                                                            </tr>
+                                                            <?php } ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1180,4 +1282,30 @@
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/fontawesome/js/all.min.js"></script>
     <script>jQuery(document).ready(function() { new WOW().init(); });</script>
+    <script>
+        $(document).ready(function(){
+            function load_unseen_notification(view = ''){
+                $.ajax({
+                    url:"fetch.php",
+                    method:"POST",
+                    data:{view:view},
+                    dataType:"json",
+                    success:function(data){
+                        $('.dropdown-menu').html(data.notification);
+                        if(data.unseen_notification > 0){
+                            $('.count').html(data.unseen_notification);
+                        }
+                    }
+                });
+            }
+            load_unseen_notification();
+        $(document).on('click', '.dropdown-toggle', function(){
+            $('.count').html('');
+            load_unseen_notification('yes');
+        });
+            setInterval(function(){ 
+                load_unseen_notification();; 
+            }, 5000);
+        });
+</script>
 </html>

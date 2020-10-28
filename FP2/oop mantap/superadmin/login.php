@@ -1,4 +1,5 @@
-<?php 
+<?php
+    include"../koneksi.php";
     session_start();
     if (isset($_SESSION['company'])) {echo "<script>location='dashboard.php';</script>";die;}
     else{}

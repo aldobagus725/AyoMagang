@@ -34,6 +34,10 @@ class superadmin{
         $query = mysqli_query($this->con, "select * from company");
         return $query;
     }
+    public function viewRequest(){
+        $query = mysqli_query($this->con, "select * from request");
+        return $query;
+    }
     //Detail
     public function viewVacancyDetail($id){
         $id = mysqli_real_escape_string($this->con, $id);
@@ -53,6 +57,11 @@ class superadmin{
     public function viewCompanyDetail($id){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select * from company where company_id = '$id'");
+        return $query;
+    }
+    public function viewRequestDetail($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        $query = mysqli_query($this->con, "select * from request where req_id = '$id'");
         return $query;
     }
     //Update & delete

@@ -1,4 +1,5 @@
-<?php 
+<?php
+    include"../koneksi.php";
     session_start(); 
     if (empty($_SESSION)){
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
@@ -13,6 +14,7 @@
     $vacancy = new vacancies();
     $company = new company();
     $vacancy_id = $_GET['id'];
+    $student_id = $_SESSION['student']['student_id'];
     //variable initialiation
     $title = $vacancy->getters($vacancy_id,'vacancy_title');
     $company_name = $vacancy->getters($vacancy_id,'company_name');
@@ -56,8 +58,20 @@
                         </table> 
                     </div>
                     <div class="col-sm-3 text-right">
-                        <a href="apply.php?&id=<?php echo $vacancy_id; ?>" class="btn btn-primary btn-block ">Ajukan KP/PKL</a><br>
-                        <a href="#" class="btn btn-danger btn-block">Laporkan Bukaan Ini</a><br>
+                        <?php
+                            $check = mysqli_query($koneksi,"select * from application where student_id = '$student_id' AND vacancies_id = '$vacancy_id'");
+                            $checkRow = mysqli_num_rows($check);
+                            if ($checkRow > 0) {
+                            ?>
+                        <h3>Kamu sudah Melakukan Pengajuan disini!</h3>
+                        <?php
+                            } else {
+                        ?>
+                         <a href="apply.php?&id=<?php echo $vacancy_id; ?>" class="btn btn-primary btn-block ">Ajukan KP/PKL</a><br>
+                            <a href="#" class="btn btn-danger btn-block">Laporkan Bukaan Ini</a><br>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

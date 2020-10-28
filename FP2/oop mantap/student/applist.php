@@ -1,4 +1,5 @@
 <?php 
+    include"../koneksi.php";
     session_start(); 
     if (empty($_SESSION)) {
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
@@ -9,7 +10,9 @@
         die;
     } 
     require '../classes/student.php';
+
     $student = new student();
+    $student_id = $_SESSION['student']["student_id"];
     //	Array berisi data daerah.
     $daerah = array("Banda Aceh", "Langsa", "Lhokseumawe", "Badung", "Depok", "Bekasi", "Jakarta", "Makassar", "Kupang", "Gorontalo", "Merauke", "Gianyar", "Tangerang" );
     sort($daerah);
@@ -115,6 +118,7 @@
                         $query = $student->viewInternshipList();
                         if(mysqli_num_rows($query)>0){
                             while($data = mysqli_fetch_array($query)){
+                                $v_id = $data['vacancies_id'];
                         ?>
                         <div class="card">
                             <div class="card-header">
@@ -137,9 +141,22 @@
                             <div class="card-footer">
                                 <div class="row align-items-center">
                                     <div class="col">
+                                        <?php
+                                            $check = mysqli_query($koneksi,"select * from application where student_id = '$student_id' AND vacancies_id = '$v_id'");
+                                            $checkRow = mysqli_num_rows($check);
+                                            if ($checkRow > 0) {
+                                            ?>
+                                        <h6>Kamu sudah Melakukan Pengajuan disini!</h6>
+                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
+                                        <?php
+                                            } else {
+                                        ?>
                                         <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
                                         <a href="apply.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-success btn-sm">Ajukan Magang</a>
                                         <a href="#" class="btn btn-danger btn-sm">Laporkan</a>
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

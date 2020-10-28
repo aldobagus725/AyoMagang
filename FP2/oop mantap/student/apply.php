@@ -149,11 +149,8 @@
             $company_email = $_POST['company_email'];
             $status = $_POST['status'];
             $apply = $student->ApplyInternship($student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status);
-            if ($apply == 01) {
-                echo "<script>alert('Selamat Pengajuan Berhasil!');location = 'dashboard.php';</script>";
-            } elseif ($apply == 3) {
-                echo "<script>alert('Error! -> Pengajuan ini sudah ada!');location = 'dashboard.php';</script>";
-            } 
+            if ($apply == 01) {echo "<script>alert('Selamat Pengajuan Berhasil!');location = 'dashboard.php';</script>";} 
+            elseif ($apply == 3) {echo "<script>alert('Error! -> Pengajuan ini sudah ada!');location = 'dashboard.php';</script>";} 
         }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>

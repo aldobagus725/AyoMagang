@@ -57,7 +57,7 @@
                         <?php echo $_SESSION['company']['company_name']; ?>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="myprofile.php">My Profile</a>
+                        <a class="dropdown-item" href="myprofilecom.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
                 </li>

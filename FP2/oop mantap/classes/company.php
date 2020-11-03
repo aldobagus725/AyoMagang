@@ -82,4 +82,24 @@ class company{
             return 1;
         }
     }
+    public function editProfileC($id,$username,$company_name,$address,$phone){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if (!is_numeric($phone) || strlen($phone) > 14) {
+            return 2;
+        }
+        else{
+            if($query = mysqli_query($this->con, "update company set company_name='$company_name', username='$username',address='$address',phone='$phone' where company_id = $id")){return 1;}
+            else{return 3;}
+        }
+    }
+    public function changePasswordC($id,$password){
+        $id = mysqli_real_escape_string($this->con, $id);
+        if($query = mysqli_query($this->con, "update company set password = '$password' where company_id = '$id'")){return 1;}
+        else{return 2;}
+    }
+    public function CreateRequest($req_title,$req_detail,$status){
+        if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status) values ('$req_title','$req_detail','$status')")){return 1;}
+        else{return 2;}
+    }
+    
 }

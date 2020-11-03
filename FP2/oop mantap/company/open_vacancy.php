@@ -128,7 +128,7 @@
                     $vacancy_title = $_POST['vacancy_title'];
                     $buka = $company->OpenVacancy($company_id,$company_name,$vacancy_title,$company_address,$company_speciality,$phone,$intern_policies,$author);
                     if ($buka == 0){"<script>alert('Error! Silakan coba lagi');location='open_vacancy.php';</script>";}
-                    elseif($buka == 1){echo "<script>alert('Selamat, lowongan berhasil di publish!');location='dashboard.php';</script>";}
+                    elseif($buka == 1){echo "<script>alert('Selamat, lowongan berhasil di publish!');location='dashboardcom.php';</script>";}
                 }
                 ?>
             </div>

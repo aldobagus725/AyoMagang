@@ -60,7 +60,7 @@
                         <div class="card rounded border-0" style="background-color:rgba(255,255,255,0);">
                             <div class="card-body" style="color:white;">
                                   <div class="form-group">
-                                      <input type="text" class="form-control" name="siup" autofocus placeholder="Nomor SIU Perusahaan Anda (Opsional)">
+                                      <input type="text" class="form-control" name="siup" autofocus placeholder="Nomor SIUP Perusahaan Anda (Opsional)">
                                   </div>
                                   <div class="form-group">
                                       <input type="text" class="form-control" name="address" autofocus placeholder="Alamat Perusahaan Anda (Opsional)">
@@ -107,7 +107,7 @@
             $phone = $_POST['phone'];
             $email = $_POST['email'];
             $password = md5($_POST['password']);	
-            $daftar_company = $company->register_company($company_name,$username,$password,$siup,$address,$phone,$email)
+            $daftar_company = $company->register_company($company_name,$username,$password,$siup,$address,$phone,$email);
             if($daftar_company==0){
                 echo "<script>alert('Data diri tidak valid!);location='register.php';</script>";
             }

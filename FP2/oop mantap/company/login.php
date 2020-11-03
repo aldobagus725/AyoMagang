@@ -1,8 +1,8 @@
 <?php 
     session_start();
     include '../koneksi.php';
-    if (isset($_SESSION['company'])) {echo "<script>location='dashboard.php';</script>";die;} 
-    elseif (isset($_SESSION['student'])) {echo "<script>location='../student/dashboard.php';</script>";die;}
+    if (isset($_SESSION['company'])) {echo "<script>location='dashboardcom.php';</script>";die;} 
+    elseif (isset($_SESSION['student'])) {echo "<script>location='../student/dashboardcom.php';</script>";die;}
 ?>
 <html>
     <head>
@@ -70,7 +70,7 @@
                                         if($data == 1){
                                             $akun = $query->fetch_assoc(); 
                                             $_SESSION['company'] = $akun;
-                                            echo "<script>location='dashboard.php';</script>";
+                                            echo "<script>location='dashboardcom.php';</script>";
                                         }
                                         else{
                                             echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";

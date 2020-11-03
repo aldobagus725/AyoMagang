@@ -1,5 +1,8 @@
-<?php 
-    session_start(); 
+<?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
     include'../koneksi.php'; 
     if (empty($_SESSION)) {
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
@@ -43,7 +46,9 @@
                         </table> 
                     </div>
                     <div class="col-sm-3 text-right">
-                        <a href="#" class="btn btn-primary btn-block ">Edit Bukaan</a><br>
+                        
+                        <a href="edit_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-primary btn-block ">Edit Bukaan</a><br>
+                        <a href="#" class="btn btn-danger btn-block ">Hapus Bukaan</a><br>
                     </div>
                 </div>
             </div>

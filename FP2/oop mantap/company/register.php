@@ -1,5 +1,6 @@
-<?php 
-    session_start();
+<?php
+    include '../koneksi.php';
+    if(!isset($_SESSION)) {session_start();}
     require '../classes/company.php';
     $company = new company();
 ?>
@@ -99,33 +100,37 @@
         </div>
     </body>
     <?php
-        if(isset($_POST['register-company'])){
+        if (isset($_POST['register-company'])) {
+            //ambil data dari form
             $company_name = $_POST['company_name'];
             $username = $_POST['username'];
             $siup= $_POST['siup'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
-            $password = md5($_POST['password']);	
-            $daftar_company = $company->register_company($company_name,$username,$password,$siup,$address,$phone,$email);
-            if($daftar_company==0){
-                echo "<script>alert('Data diri tidak valid!);location='register.php';</script>";
-            }
-            elseif($daftar_company==2){
-                echo "<script>alert('Nomor Telepon tidak valid!);location='register.php';</script>";
-            }
-            else{
-                if($daftar_company==3){
-                    echo "<script>alert('Email atau Username telah terdaftar!');location='register.php'</script>";
-                }
-                elseif($daftar_company==4){
-                    echo "<script>alert('terdeteksi SIUP Duplikat!');location='register.php'</script>";
-                }
-                elseif($daftar_company==1){
-                    echo "<script>alert('Pendaftaran berhasil!');location='login.php'</script>";
-                }
-                else{
-                    echo "<script>alert('Error! Silakan coba lagi!');location='register.php'</script>";
+            $password = md5($_POST['password']);
+            //buat token
+            $token=hash('sha256', md5(date('Y-m-d'))) ;
+            //cek user terdaftar
+            $email_cek = mysqli_query($koneksi,"SELECT * FROM company WHERE email='".$email."'");
+            $cek_mail = mysqli_num_rows($email_cek);
+            if ($cek_mail>0) {
+                echo '<div class="alert alert-warning">
+                        Email anda sudah pernah terdaftar!
+                      </div>';
+            }else{
+                //jika data kosong maka insert ke tabel;
+                //aktif =0 user belum aktif
+                $insert=mysqli_query($koneksi,"INSERT INTO company(company_name,username,siup,address,phone,email,password,token,aktif) 
+                                                    VALUES('".$company_name."','".$username."','".$siup."','".$address."','".$phone."','".$email."','".$password."','".$token."','0')");
+                //include kirim email
+                include("regisMail.php");
+
+                if ($insert) {
+                    echo '<div class="alert alert-success">
+                                Pendaftaran anda berhasil, silahkan cek email anda untuk aktifasi. 
+                                <a href="login.php">Login</a>
+                              </div>';
                 }
             }
         }

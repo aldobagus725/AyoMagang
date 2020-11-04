@@ -9,6 +9,8 @@ class company{
     private $address;
     private $phone;
     private $email;
+    private $token;
+    private $aktif;
     public function __construct(){$koneksi = new database();$this->con = $koneksi->koneksi();}
     //Getters -- experimental, can be unused --
     public function getters($id, $action){
@@ -19,7 +21,7 @@ class company{
         }
     }
     //-----------more functions-------------
-    public function register_company($company_name,$username,$password,$siup,$address,$phone,$email){
+    public function register_company($company_name,$username,$password,$siup,$address,$phone,$email,$token,$aktif){
         $this->company_name = $company_name;
         $this->username = $username;
         $this->password = $password;
@@ -27,6 +29,8 @@ class company{
         $this->address = $address;
         $this->phone = $phone;
         $this->email = $email;
+        $this->token = $token;
+        $this->aktif = $aktif;
         if (empty($name) || empty($username) || empty($email) || empty($password)) {return 0;} 
         elseif (!is_numeric($phone) || strlen($phone) > 14) {return 2;} 
         else {
@@ -38,7 +42,8 @@ class company{
                 $checkRow_siup = mysqli_num_rows($check_siup);
                 if ($checkRow_siup > 0) {return 4;}
                 else{
-                mysqli_query($this->con, "insert into company (company_name,username,siup,address,phone,email,password) values ('$company_name','$username','$siup','$company_address','$phone','$email','$password')");
+                mysqli_query($this->con, "insert into company (company_name,username,siup,address,phone,email,password,token,aktif) 
+                                                values ('$company_name','$username','$siup','$address','$phone','$email','$password','$token','$aktif')");
                 return 1;                   
                 }
             }

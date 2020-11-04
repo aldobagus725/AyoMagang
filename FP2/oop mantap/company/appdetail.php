@@ -46,9 +46,8 @@
                         </table> 
                     </div>
                     <div class="col-sm-3 text-right">
-                        
                         <a href="edit_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-primary btn-block ">Edit Bukaan</a><br>
-                        <a href="#" class="btn btn-danger btn-block ">Hapus Bukaan</a><br>
+                        <a href="delete_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-danger btn-block" onclick="return confirm('Yakin ingin menghapus?')">Hapus Bukaan</a>
                     </div>
                 </div>
             </div>

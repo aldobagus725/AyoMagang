@@ -180,6 +180,55 @@ $siup = $company->getters($id_company,"siup");
                                     </div>
                                 </div>
                             </div>
+                            <!-- <div class="modal fade" id="reqChangeNumber">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form method="post">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Form Perubahan SIUP Perusahaan</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Judul Form</span>
+                                                            </div>
+                                                            <input type="text" name="req_title" class="form-control" value="Form Perubahan SIUP Perusahaan <?php echo $company_id; ?>" readonly>
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Alasan Pengajuan</span>
+                                                            </div>
+                                                            <textarea class="form-control" name="req_detail" rows="4"></textarea>
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Upload Surat Pernyataan</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" class="btn btn-primary btn" name="status" value="0">
+                                                    <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-primary btn" name="reqChange" value="Ajukan Perubahan">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
+                                                <--?php
+                                                if (isset($_POST['reqChange'])) {
+                                                    $req_title = $_POST['req_title'];
+                                                    $req_detail = $_POST['req_detail'];
+                                                    $status = $_POST['status'];
+                                                    $reqSubmit = $company->CreateRequest($req_title, $req_detail, $status);
+                                                    if ($reqSubmit == 1) {
+                                                        echo "<script>alert('Permintaan Pengajuan Perubahan Sudah terkirim! Admin kami akan memproses!');location = 'dashboardcom.php';</script>";
+                                                    } else {
+                                                        echo "<script>alert('Error! Coba Lagi');location = 'dashboardcom.php';</script>";
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div> -->
                         </div>
                     </div>
                 </div>

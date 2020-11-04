@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary" value="Masuk" name="login-student"> 
-                                        <a href="#" class="ForgetPwd btn btn-secondary" style="text-decoration: none;color:white;">Lupa Password? Klik Di sini!</a>
+                                        <a href="requestReset.php" class="ForgetPwd btn btn-secondary" style="text-decoration: none;color:white;">Lupa Password? Klik Di sini!</a>
                                     </div>
                                     <div class="form-group">
                                         <p style="color:white;font-size:19px;">

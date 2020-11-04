@@ -1,4 +1,4 @@
-<?php 
+<?php
     session_start();
     include '../koneksi.php';
     if (isset($_SESSION['company'])) {echo "<script>location='dashboardcom.php';</script>";die;} 
@@ -50,7 +50,7 @@
                                         </div>
                                       <div class="form-group">
                                           <input type="submit" class="btn btn-primary" value="Masuk" name="login-company"> 
-                                          <a href="#" class="ForgetPwd btn btn-secondary" style="text-decoration: none;color:white;">Lupa Password? Klik Di sini!</a>
+                                          <a href="requestReset.php" class="ForgetPwd btn btn-secondary" style="text-decoration: none;color:white;">Lupa Password? Klik Di sini!</a>
                                       </div>
                                     <div class="form-group">
                                         <p style="color:white;font-size:19px;">
@@ -65,10 +65,10 @@
                                         $password = md5($_POST['password']);
                                         $query = $koneksi->query("SELECT * FROM company WHERE 
                                             (email    = '$username' OR username = '$username' ) AND 
-                                             password = '$password'");
+                                             password = '$password' AND aktif='1'");
                                         $data = $query->num_rows;
                                         if($data == 1){
-                                            $akun = $query->fetch_assoc(); 
+                                            $akun = $query->fetch_assoc();
                                             $_SESSION['company'] = $akun;
                                             echo "<script>location='dashboardcom.php';</script>";
                                         }
@@ -76,7 +76,7 @@
                                             echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";
                                         }
                                     }
-                                ?>  
+                                ?>
                                 <br>
                                 <a href="../index.php"><img src="../assets/img/logo/logo%20putih.png" style="padding-bottom:20px;"></a>
                                 <h6>Copyright &copy; 2020 Ayo Magang</h6>

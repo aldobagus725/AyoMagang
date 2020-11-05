@@ -16,15 +16,15 @@ try {
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth = true;                                   // Enable SMTP authentication
-    $mail->Username = 'awidyaml@gmail.com';                     // SMTP username
-    $mail->Password = 'Zero482815';                               // SMTP password
+    $mail->Username = 'ayomagangayo@gmail.com';                     // SMTP username
+    $mail->Password = 'ayomagang123';                               // SMTP password
     $mail->SMTPSecure = 'tsl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('awidyaml@gmail.com', 'Ayo Magang - Register');
+    $mail->setFrom('ayomagangayo@gmail.com', 'Ayo Magang - Register');
     $mail->addAddress($_POST['email'], $_POST['company_name']);
-    $mail->addReplyTo('awidyaml@gmail.com', 'No Replay');
+    $mail->addReplyTo('ayomagangayo@gmail.com', 'No Replay');
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML

@@ -1,7 +1,7 @@
 <?php
     include"../koneksi.php";
-    session_start();
-    if (isset($_SESSION['company'])) {echo "<script>location='dashboard.php';</script>";die;}
+    if (!isset($_SESSION)) {session_start();}
+    elseif (isset($_SESSION['superadmin'])) {echo "<script>location='dashboard.php';</script>";die;}
     else{}
 ?>
 <html>

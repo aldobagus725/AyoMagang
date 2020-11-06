@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Nov 2020 pada 06.35
--- Versi server: 8.0.21
--- Versi PHP: 7.4.10
+-- Generation Time: Nov 04, 2020 at 02:24 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+08:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,14 +24,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `application`
+-- Table structure for table `application`
 --
 
 CREATE TABLE `application` (
-  `application_id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `company_id` int NOT NULL,
-  `vacancies_id` int NOT NULL,
+  `application_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `vacancies_id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `vacancy_title` varchar(100) NOT NULL,
   `company_address` varchar(100) NOT NULL,
@@ -39,11 +39,11 @@ CREATE TABLE `application` (
   `student_name` varchar(100) NOT NULL,
   `student_address` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `application`
+-- Dumping data for table `application`
 --
 
 INSERT INTO `application` (`application_id`, `student_id`, `company_id`, `vacancies_id`, `company_name`, `vacancy_title`, `company_address`, `company_email`, `student_name`, `student_address`, `status`, `create_time`) VALUES
@@ -53,11 +53,11 @@ INSERT INTO `application` (`application_id`, `student_id`, `company_id`, `vacanc
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE `company` (
-  `company_id` int NOT NULL,
+  `company_id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -67,11 +67,11 @@ CREATE TABLE `company` (
   `email` varchar(100) NOT NULL,
   `token` varchar(255) NOT NULL,
   `aktif` enum('1','0') NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`company_id`, `company_name`, `username`, `password`, `siup`, `address`, `phone`, `email`, `token`, `aktif`, `create_time`) VALUES
@@ -83,18 +83,18 @@ INSERT INTO `company` (`company_id`, `company_name`, `username`, `password`, `si
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `request`
+-- Table structure for table `request`
 --
 
 CREATE TABLE `request` (
-  `req_id` int NOT NULL,
+  `req_id` int(11) NOT NULL,
   `req_title` varchar(100) NOT NULL,
   `req_detail` longtext NOT NULL,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `request`
+-- Dumping data for table `request`
 --
 
 INSERT INTO `request` (`req_id`, `req_title`, `req_detail`, `status`) VALUES
@@ -108,11 +108,11 @@ INSERT INTO `request` (`req_id`, `req_title`, `req_detail`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `resetpasswords`
+-- Table structure for table `resetpasswords`
 --
 
 CREATE TABLE `resetpasswords` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `code` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -120,11 +120,11 @@ CREATE TABLE `resetpasswords` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `student`
+-- Table structure for table `student`
 --
 
 CREATE TABLE `student` (
-  `student_id` int NOT NULL,
+  `student_id` int(11) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -134,28 +134,26 @@ CREATE TABLE `student` (
   `phone` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `course` varchar(100) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `aktif` enum('1','0') NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `student`
+-- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `fullname`, `username`, `password`, `student_number`, `institution_name`, `address`, `phone`, `email`, `course`, `token`, `aktif`, `create_time`) VALUES
-(1000, 'I Putu Senna Hakkinanda', 'senna', '202cb962ac59075b964b07152d234b70', '1700304', 'ITB STIKOM BALI', 'Pantai Nyanyi, Pandak Gede, Tabanan, Bali', '082214619304', 'senna@gmail.com', 'Teknologi', '', '1', '2020-10-17 10:22:17'),
-(1001, 'Rukma Wira', 'rukma', '0e3b9179e7a26c1007ac81b803ec191e', '1709123891', 'ITB STIKOM BALI', 'Ratna, Denpasar, Bali, Indonesia', '08123642113', 'rukma@gmail.com', 'Akuntansi', '', '1', '2020-10-17 13:43:55'),
-(1002, 'Wulandari Maharani', 'wulan', 'e10adc3949ba59abbe56e057f20f883e', '17211231', 'ITB STIKOM Bali', 'Jln. Badak Agung, Renon, Denpasar, Bali', '08123642113', 'wulan@wulan.com', 'Teknologi', '', '1', '2020-10-23 01:40:48');
+INSERT INTO `student` (`student_id`, `fullname`, `username`, `password`, `student_number`, `institution_name`, `address`, `phone`, `email`, `course`, `create_time`) VALUES
+(1000, 'I Putu Senna Hakkinanda', 'senna', '202cb962ac59075b964b07152d234b70', '1700304', 'ITB STIKOM BALI', 'Pantai Nyanyi, Pandak Gede, Tabanan, Bali', '082214619304', 'senna@gmail.com', 'Teknologi', '2020-10-17 10:22:17'),
+(1001, 'Rukma Wira', 'rukma', '0e3b9179e7a26c1007ac81b803ec191e', '1709123891', 'ITB STIKOM BALI', 'Ratna, Denpasar, Bali, Indonesia', '08123642113', 'rukma@gmail.com', 'Akuntansi', '2020-10-17 13:43:55'),
+(1002, 'Wulandari Maharani', 'wulan', 'e10adc3949ba59abbe56e057f20f883e', '17211231', 'ITB STIKOM Bali', 'Jln. Badak Agung, Renon, Denpasar, Bali', '08123642113', 'wulan@wulan.com', 'Teknologi', '2020-10-23 01:40:48');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `superadmin`
+-- Table structure for table `superadmin`
 --
 
 CREATE TABLE `superadmin` (
-  `superadmin_id` int NOT NULL,
+  `superadmin_id` int(11) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -163,7 +161,7 @@ CREATE TABLE `superadmin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `superadmin`
+-- Dumping data for table `superadmin`
 --
 
 INSERT INTO `superadmin` (`superadmin_id`, `fullname`, `username`, `email`, `password`) VALUES
@@ -172,12 +170,12 @@ INSERT INTO `superadmin` (`superadmin_id`, `fullname`, `username`, `email`, `pas
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vacancies`
+-- Table structure for table `vacancies`
 --
 
 CREATE TABLE `vacancies` (
-  `vacancies_id` int NOT NULL,
-  `company_id` int NOT NULL,
+  `vacancies_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `vacancy_title` varchar(100) NOT NULL,
   `company_address` varchar(100) NOT NULL,
@@ -185,11 +183,11 @@ CREATE TABLE `vacancies` (
   `phone` varchar(100) NOT NULL,
   `intern_policies` varchar(200) NOT NULL,
   `author` varchar(100) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `vacancies`
+-- Dumping data for table `vacancies`
 --
 
 INSERT INTO `vacancies` (`vacancies_id`, `company_id`, `company_name`, `vacancy_title`, `company_address`, `company_speciality`, `phone`, `intern_policies`, `author`, `create_time`) VALUES
@@ -201,92 +199,92 @@ INSERT INTO `vacancies` (`vacancies_id`, `company_id`, `company_name`, `vacancy_
 --
 
 --
--- Indeks untuk tabel `application`
+-- Indexes for table `application`
 --
 ALTER TABLE `application`
   ADD PRIMARY KEY (`application_id`);
 
 --
--- Indeks untuk tabel `company`
+-- Indexes for table `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`company_id`);
 
 --
--- Indeks untuk tabel `request`
+-- Indexes for table `request`
 --
 ALTER TABLE `request`
   ADD PRIMARY KEY (`req_id`);
 
 --
--- Indeks untuk tabel `resetpasswords`
+-- Indexes for table `resetpasswords`
 --
 ALTER TABLE `resetpasswords`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `student`
+-- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
 
 --
--- Indeks untuk tabel `superadmin`
+-- Indexes for table `superadmin`
 --
 ALTER TABLE `superadmin`
   ADD PRIMARY KEY (`superadmin_id`);
 
 --
--- Indeks untuk tabel `vacancies`
+-- Indexes for table `vacancies`
 --
 ALTER TABLE `vacancies`
   ADD PRIMARY KEY (`vacancies_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `application`
+-- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `application_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5003;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5003;
 
 --
--- AUTO_INCREMENT untuk tabel `company`
+-- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2009;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2009;
 
 --
--- AUTO_INCREMENT untuk tabel `request`
+-- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `req_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8008;
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8008;
 
 --
--- AUTO_INCREMENT untuk tabel `resetpasswords`
+-- AUTO_INCREMENT for table `resetpasswords`
 --
 ALTER TABLE `resetpasswords`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `student`
+-- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
 
 --
--- AUTO_INCREMENT untuk tabel `superadmin`
+-- AUTO_INCREMENT for table `superadmin`
 --
 ALTER TABLE `superadmin`
-  MODIFY `superadmin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3001;
+  MODIFY `superadmin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3001;
 
 --
--- AUTO_INCREMENT untuk tabel `vacancies`
+-- AUTO_INCREMENT for table `vacancies`
 --
 ALTER TABLE `vacancies`
-  MODIFY `vacancies_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4003;
+  MODIFY `vacancies_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4003;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -32,7 +32,7 @@ class company{
         $this->token = $token;
         $this->aktif = $aktif;
         if (empty($name) || empty($username) || empty($email) || empty($password)) {return 0;} 
-        elseif (!is_numeric($phone) || strlen($phone) > 14) {return 2;} 
+        elseif (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;} 
         else {
             $check = mysqli_query($this->con, "select * from company where email = '$email' or username = '$username'");
             $checkRow = mysqli_num_rows($check);
@@ -43,7 +43,7 @@ class company{
                 if ($checkRow_siup > 0) {return 4;}
                 else{
                 mysqli_query($this->con, "insert into company (company_name,username,siup,address,phone,email,password,token,aktif) 
-                                                values ('$company_name','$username','$siup','$address','$phone','$email','$password','$token','$aktif')");
+                            values ('$company_name','$username','$siup','$address','$phone','$email','$password','$token','$aktif')");
                 return 1;                   
                 }
             }
@@ -89,9 +89,7 @@ class company{
     }
     public function editProfileC($id,$username,$company_name,$address,$phone){
         $id = mysqli_real_escape_string($this->con, $id);
-        if (!is_numeric($phone) || strlen($phone) > 14) {
-            return 2;
-        }
+        if (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;}
         else{
             if($query = mysqli_query($this->con, "update company set company_name='$company_name', username='$username',address='$address',phone='$phone' where company_id = $id")){return 1;}
             else{return 3;}
@@ -100,6 +98,11 @@ class company{
     public function changePasswordC($id,$password){
         $id = mysqli_real_escape_string($this->con, $id);
         if($query = mysqli_query($this->con, "update company set password = '$password' where company_id = '$id'")){return 1;}
+        else{return 2;}
+    }
+    public function ResetPassword($email,$password){
+        $email = mysqli_real_escape_string($this->con, $email);
+        if($query = mysqli_query($this->con, "update company set password = '$password' where email = '$email'")){return 1;}
         else{return 2;}
     }
     public function CreateRequest($req_title,$req_detail,$status){

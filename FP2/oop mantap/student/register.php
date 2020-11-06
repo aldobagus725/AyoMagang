@@ -128,17 +128,14 @@
             $email = $_POST['email'];
             $password = md5($_POST['password']);	
             $course = $_POST['course'];
-            
-            $register_student = $student->register_student($fullname,$username,$password,$student_number,$institution_name,$course,$address,$phone,$email);
-            if ($register_student == 0) {
-                echo "<script>alert('Silahkan Lengkapi Data Departemen');location='register.php';</script>";
-            } elseif ($register_student == 2) {
-                echo "<script>alert('Nomor Telepon Tidak Valid');location='register.php';</script>";
-            } elseif ($register_student == 3) {
-                echo "<script>alert('Email atau Username telah terdaftar!');location = 'register.php';</script>";
-            } else {
-                echo "<script>alert('Selamat Pendaftaran Berhasil!');location = 'login.php';</script>";
-            }
+            $aktif = 0;
+            //buat token
+            $token=hash('sha256', md5(date('Y-m-d')));
+            $register_student = $student->register_student($fullname,$username,$password,$student_number,$institution_name,$course,$address,$phone,$email,$token,$aktif);
+            if ($register_student==0){echo "<script>alert('Silahkan Lengkapi Data Departemen');location='register.php';</script>";}
+            elseif ($register_student==2){echo "<script>alert('Nomor Telepon Tidak Valid');location='register.php';</script>";} 
+            elseif ($register_student==3){echo "<script>alert('Email atau Username telah terdaftar!');location='register.php';</script>";} 
+            elseif ($register_student==1){include("regisMail.php");echo "<script>alert('Pendaftaran anda berhasil, silahkan cek email anda untuk aktivasi. ');location = 'login.php';</script>";}
         }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>

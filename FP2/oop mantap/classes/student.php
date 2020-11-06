@@ -20,12 +20,10 @@ class student{
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select $action from student where student_id = $id");
-        while ($row = $query->fetch_assoc()){
-            return $row[$action];
-        }
+        while ($row = $query->fetch_assoc()){return $row[$action];}
     }
     //-----------more functions-------------
-    public function register_student($fullname,$username,$password,$student_number,$institution_name,$course,$address,$phone,$email){
+    public function register_student($fullname,$username,$password,$student_number,$institution_name,$course,$address,$phone,$email,$token,$aktif){
         $this->fullname = $fullname;
         $this->username = $username;
         $this->password = $password;
@@ -35,17 +33,16 @@ class student{
         $this->address = $address;
         $this->phone = $phone;
         $this->email = $email;
-        if (empty($fullname) || empty($username) || empty($email) || empty($password)){
-            return 0;
-        } elseif (!is_numeric($phone) || strlen($phone) > 14) {
-            return 2;
-        } else {
+        $this->token = $token;
+        $this->aktif = $aktif;
+        if (empty($fullname) || empty($username) || empty($email) || empty($password)){ return 0;} 
+        elseif (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;} 
+        else {
             $check = mysqli_query($this->con, "select * from student where email = '$email' or username = '$username'");
             $checkRow = mysqli_num_rows($check);
-            if ($checkRow > 0) {
-                return 3;
-            } else {
-                mysqli_query($this->con, "insert into student (fullname,username,password,student_number,institution_name,address,phone,email,course) values ('$fullname','$username','$password','$student_number','$institution_name','$address','$phone','$email','$course')");
+            if ($checkRow > 0) {return 3;} 
+            else {
+                mysqli_query($this->con, "insert into student (fullname,username,password,student_number,institution_name,address,phone,email,course,token,aktif) values ('$fullname','$username','$password','$student_number','$institution_name','$address','$phone','$email','$course''$token','$aktif')");
                 return 1;
             }
         }
@@ -80,9 +77,7 @@ class student{
     }
     public function editProfile($id,$username,$fullname,$institution_name,$course,$address,$phone){
         $id = mysqli_real_escape_string($this->con, $id);
-        if (!is_numeric($phone) || strlen($phone) > 14) {
-            return 2;
-        }
+        if (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;}
         else{
             if($query = mysqli_query($this->con, "update student set fullname='$fullname', username='$username',institution_name='$institution_name', course='$course',address='$address',phone='$phone' where student_id = $id")){return 1;}
             else{return 3;}
@@ -91,6 +86,11 @@ class student{
     public function changePassword($id,$password){
         $id = mysqli_real_escape_string($this->con, $id);
         if($query = mysqli_query($this->con, "update student set password = '$password' where student_id = $id")){return 1;}
+        else{return 2;}
+    }
+    public function ResetPassword($email,$password){
+        $email = mysqli_real_escape_string($this->con, $email);
+        if($query = mysqli_query($this->con, "update student set password = '$password' where email = '$email'")){return 1;}
         else{return 2;}
     }
     public function CreateRequest($req_title,$req_detail,$status){

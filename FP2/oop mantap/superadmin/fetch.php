@@ -20,10 +20,7 @@ include"../koneksi.php";
                 ';
             }
         }
-        else{
-            $output .= '
-            <li><a href="#" class="text-bold text-italic">No Noti Found</a></li>';
-        }
+        else{ $output .= '<li><a href="#" class="text-bold text-italic">No Noti Found</a></li>'; }
         
         $status_query = "SELECT * FROM request WHERE status=0";
         $result_query = mysqli_query($koneksi, $status_query);

@@ -109,31 +109,20 @@
             $phone = $_POST['phone'];
             $email = $_POST['email'];
             $password = md5($_POST['password']);
+            $aktif = 0;
             //buat token
             $token=hash('sha256', md5(date('Y-m-d'))) ;
-            //cek user terdaftar
-            $email_cek = mysqli_query($koneksi,"SELECT * FROM company WHERE email='".$email."'");
-            $cek_mail = mysqli_num_rows($email_cek);
-            if ($cek_mail>0) {
-                echo '<div class="alert alert-warning">
-                        Email anda sudah pernah terdaftar!
-                      </div>';
-            }else{
-                //jika data kosong maka insert ke tabel;
-                //aktif =0 user belum aktif
-                $insert=mysqli_query($koneksi,"INSERT INTO company(company_name,username,siup,address,phone,email,password,token,aktif) 
-                                                    VALUES('".$company_name."','".$username."','".$siup."','".$address."','".$phone."','".$email."','".$password."','".$token."','0')");
-                //include kirim email
+            $register_company = $company->$register_company($company_name,$username,$password,$siup,$address,$phone,$email,$token,$aktif);
+            if ($register_company == 0) {
+                echo "<script>alert('Silahkan Lengkapi Data Departemen');location='register.php';</script>";
+            } elseif ($register_company == 2) {
+                echo "<script>alert('Nomor Telepon Tidak Valid');location='register.php';</script>";
+            } elseif ($register_company == 3) {
+                echo "<script>alert('Email atau Username telah terdaftar!');location = 'register.php';</script>";
+            } elseif ($register_company == 1) {
                 include("regisMail.php");
-
-                if ($insert) {
-                    echo '<div class="alert alert-success">
-                                Pendaftaran anda berhasil, silahkan cek email anda untuk aktifasi. 
-                                <a href="login.php">Login</a>
-                              </div>';
-                }
+                echo "<script>alert('Pendaftaran anda berhasil, silahkan cek email anda untuk aktivasi. ');location = 'login.php';</script>";
             }
-        }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/wow.min.js"></script>

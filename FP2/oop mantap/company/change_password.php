@@ -1,5 +1,5 @@
 <?php    
-    session_start(); 
+    if(!isset($_SESSION)){session_start();} 
     if (empty($_SESSION)) {
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
         echo "<script>location='login.php';</script>";
@@ -94,5 +94,4 @@
     <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/fontawesome/js/all.min.js"></script>
 </html>

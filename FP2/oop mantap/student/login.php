@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    if(!isset($_SESSION)){session_start();}
     include '../koneksi.php';
     if (isset($_SESSION['company'])) {echo "<script>location='../company/dashboard.php';</script>";die;} 
     elseif (isset($_SESSION['student'])) {echo "<script>location='dashboard.php';</script>";die;}
@@ -70,7 +70,7 @@
             $password = md5($_POST['password']);
             $query = $koneksi->query("SELECT * FROM student WHERE 
                 (email    = '$username' OR username = '$username' ) AND 
-                 password = '$password'");
+                 password = '$password' AND aktif='1'");
             $data = $query->num_rows;
             if($data == 1){
                 $akun = $query->fetch_assoc(); 

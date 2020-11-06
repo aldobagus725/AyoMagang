@@ -11,7 +11,7 @@
                 <strong>Email:</strong>
                 <ul>
                     <li>aldobagus@hotmail.co.id</li>
-                    <li>luhwulandari@gmail.com</li>
+                    <li>ayomagangayo@gmail.com</li>
                 </ul>
                 <strong>Nomor Telepon:</strong>
                 <ul>

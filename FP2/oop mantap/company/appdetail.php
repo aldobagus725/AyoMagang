@@ -1,8 +1,5 @@
 <?php
-    if(!isset($_SESSION))
-    {
-        session_start();
-    }
+    if(!isset($_SESSION)){session_start();}
     include'../koneksi.php'; 
     if (empty($_SESSION)) {
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";

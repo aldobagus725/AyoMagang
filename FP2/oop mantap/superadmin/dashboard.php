@@ -1,5 +1,5 @@
 <?php 
-    session_start(); 
+    if(!isset($_SESSION)){session_start();} 
     if(!isset($_SESSION['superadmin'])){
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
         echo "<script>location='login.php';</script>";

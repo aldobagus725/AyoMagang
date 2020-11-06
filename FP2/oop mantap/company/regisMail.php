@@ -32,7 +32,6 @@ try {
     $mail->Body = "Selamat, anda berhasil membuat akun. Untuk mengaktifkan akun anda silahkan klik link dibawah ini.
     <a href='http://localhost/ayomagang/company/activation.php?t=".$token."'>http://localhost/ayomagang/company/activation.php?t=".$token."</a>  ";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {

@@ -110,16 +110,15 @@
             $email = $_POST['email'];
             $password = md5($_POST['password']);
             $aktif = 0;
-            //buat token
             $token=hash('sha256', md5(date('Y-m-d'))) ;
-            $register_company = $company->$register_company($company_name,$username,$password,$siup,$address,$phone,$email,$token,$aktif);
-            if ($register_company == 0) {
+            $company_reg = $company->register_company($company_name,$username,$password,$siup,$address,$phone,$email,$token,$aktif);
+            if ($company_reg == 0) {
                 echo "<script>alert('Silahkan Lengkapi Data Departemen');location='register.php';</script>";
-            } elseif ($register_company == 2) {
+            } elseif ($company_reg == 2) {
                 echo "<script>alert('Nomor Telepon Tidak Valid');location='register.php';</script>";
-            } elseif ($register_company == 3) {
+            } elseif ($company_reg == 3) {
                 echo "<script>alert('Email atau Username telah terdaftar!');location = 'register.php';</script>";
-            } elseif ($register_company == 1) {
+            } elseif ($company_reg == 1) {
                 include("regisMail.php");
                 echo "<script>alert('Pendaftaran anda berhasil, silahkan cek email anda untuk aktivasi. ');location = 'login.php';</script>";
             }

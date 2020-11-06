@@ -31,7 +31,7 @@ class company{
         $this->email = $email;
         $this->token = $token;
         $this->aktif = $aktif;
-        if (empty($name) || empty($username) || empty($email) || empty($password)) {return 0;} 
+        if (empty($company_name) || empty($username) || empty($email) || empty($password)) {return 0;} 
         elseif (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;} 
         else {
             $check = mysqli_query($this->con, "select * from company where email = '$email' or username = '$username'");

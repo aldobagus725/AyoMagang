@@ -123,6 +123,7 @@
                 include("regisMail.php");
                 echo "<script>alert('Pendaftaran anda berhasil, silahkan cek email anda untuk aktivasi. ');location = 'login.php';</script>";
             }
+        }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/wow.min.js"></script>

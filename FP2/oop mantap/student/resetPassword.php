@@ -78,13 +78,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Password Baru</span>
                                 </div>
-                                <input type="new_password" class="form-control" name="password" required autofocus placeholder="Masukkan Password baru anda disini">
+                                <input type="password" class="form-control" name="new_password" required autofocus placeholder="Masukkan Password baru anda disini">
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Confirm Password Baru</span>
                                 </div>
-                                <input type="confirm_new_password" class="form-control" name="password" required autofocus placeholder="Konfirmasi Password baru anda disini">
+                                <input type="password" class="form-control" name="confirm_new_password" required autofocus placeholder="Konfirmasi Password baru anda disini">
                             </div>
                             <input type="submit" name="submit" value="Reset Password">
                         </form>

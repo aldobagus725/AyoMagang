@@ -37,11 +37,6 @@
         }
     }
 ?>
-<form method="POST">
-    <input type="password" name="password" placeholder="Password Baru">
-    <br>
-    <input type="submit" name="submit" value="Rubah password">
-</form>
 <html>
     <head>
         <title>Reset Password</title>

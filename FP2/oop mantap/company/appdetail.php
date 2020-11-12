@@ -1,6 +1,6 @@
 <?php
-    if(!isset($_SESSION)){session_start();}
     include'../koneksi.php'; 
+    if(!isset($_SESSION)){session_start();}
     if (empty($_SESSION)) {
         echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
         echo "<script>location='login.php';</script>";
@@ -108,7 +108,6 @@
         <?php include ('../footer.php'); ?>
     </body>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
-    <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/fontawesome/js/all.min.js"></script>

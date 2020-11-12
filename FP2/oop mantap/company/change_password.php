@@ -18,12 +18,8 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/ayomagang.css">
         <link rel="shortcut icon" href="../assets/ico/favicon.png">
-        <link rel="stylesheet" href="../assets/css/animate.css">
-        <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            #utama{background-color:white;}
-        </style>
+        <style>#utama{background-color:white;}</style>
     </head>
     <body>
         <?php include ('local_navbar.php'); ?>
@@ -37,21 +33,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Masukkan Password Lama</span>
-                                        </div>
+                                        <div class="input-group-prepend"><span class="input-group-text">Masukkan Password Lama</span></div>
                                         <input type="password" name="old_password" class="form-control" value="">
                                     </div>
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Masukkan Password Baru</span>
-                                        </div>
+                                        <div class="input-group-prepend"><span class="input-group-text">Masukkan Password Baru</span></div>
                                         <input type="password" name="new_password" class="form-control" value="">
                                     </div>
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Konfirmasi Password Baru</span>
-                                        </div>
+                                        <div class="input-group-prepend"><span class="input-group-text">Konfirmasi Password Baru</span></div>
                                         <input type="password" name="confirm_new_password" class="form-control" value="">
                                     </div>
                                 </div>
@@ -73,17 +63,14 @@
             $confirm_new_password = md5($_POST['confirm_new_password']);
             if ($old_password!=$student->getters($student_id,'password')){
                 echo "<script>alert('Password Lama Salah!');location = 'change_password.php';</script>";
-            }
-            else{
+            }else{
                 if ($new_password!=$confirm_new_password){
                     echo "<script>alert('Password Baru tidak sama! Konfirmasi Ulang!');location = 'change_password.php';</script>";
-                }
-                else{
+                }else{
                     $change = $student->changePassword($student_id,$new_password);
                     if ($change == 1){
                         echo "<script>alert('Selamat! Password anda telah berubah!');location = 'myprofile.php';</script>";
-                    }
-                    else{
+                    }else{
                         echo "<script>alert('Error!Silakan coba lagi!');location = 'change_password.php';</script>";
                     }
                 }
@@ -91,7 +78,6 @@
         }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
-    <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
 </html>

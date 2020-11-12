@@ -1,5 +1,6 @@
 <?php 
-    session_start();
+    include '../koneksi.php';
+    if(!isset($_SESSION)) {session_start();}
     $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);
     sort($spesialisasi);
     require '../classes/student.php';
@@ -9,18 +10,13 @@
     <head>
         <style>
             #register-student::before{
-                content: "";
-                position: fixed;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
+                content: "";position: fixed;
+                left: 0;right: 0;
+                z-index: -1;display: block;
                 background-image: url(../assets/img/carousel/1.jpg);
                 filter: brightness(65%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
+                background-repeat: no-repeat;background-size:cover;
+                width: 100%;height: 100%;
             }
         </style>
     <title>Register</title>
@@ -38,7 +34,7 @@
                         <h1 style="color:white;font-weight:276;font-size:40px;">Student Register</h1>
                     </div>
                 </div>
-                <form method="post" action="#">
+                <form method="post">
                 <div class="row align-items-top justify-content-start text-left" style="padding-top:10px;">
                     <div class="col-sm-6 wow fadeInLeft">
                         <div class="card rounded border-0" style="background-color:rgba(255,255,255,0);">
@@ -76,9 +72,7 @@
                                   <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                   Bidang
-                                                </span>
+                                                <span class="input-group-text">Bidang</span>
                                             </div>
                                             <select name="course" class="custom-select" required>
                                                 <?php
@@ -129,13 +123,12 @@
             $password = md5($_POST['password']);	
             $course = $_POST['course'];
             $aktif = 0;
-            //buat token
             $token=hash('sha256', md5(date('Y-m-d')));
-            $register_student = $student->register_student($fullname,$username,$password,$student_number,$institution_name,$course,$address,$phone,$email,$token,$aktif);
+            $register_student = $student->register_student($fullname,$username,$password,$student_number,$institution_name,$course,$address,$phone,$email,$token,$aktif);           
             if ($register_student==0){echo "<script>alert('Silahkan Lengkapi Data Departemen');location='register.php';</script>";}
             elseif ($register_student==2){echo "<script>alert('Nomor Telepon Tidak Valid');location='register.php';</script>";} 
             elseif ($register_student==3){echo "<script>alert('Email atau Username telah terdaftar!');location='register.php';</script>";} 
-            elseif ($register_student==1){include("regisMail.php");echo "<script>alert('Pendaftaran anda berhasil, silahkan cek email anda untuk aktivasi. ');location = 'login.php';</script>";}
+            elseif ($register_student==1){include("regisMail.php");echo "<script>alert('Pendaftaran anda berhasil, silahkan cek email anda untuk aktivasi.');location = 'login.php';</script>";}
         }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>

@@ -8,18 +8,12 @@
     <head>
         <style>
             #login-company::before{
-                content: "";
-                position: fixed;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
+                content: "";position: fixed;
+                left: 0;right: 0;
+                z-index: -1;display: block;
                 background-image: url(../assets/img/carousel/3.jpg);
-                filter: brightness(70%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
+                filter: brightness(70%); background-repeat: no-repeat;
+                background-size:cover;width: 100%;height: 100%;
             }
         </style>
         <title>Login</title>
@@ -71,8 +65,7 @@
                                             $akun = $query->fetch_assoc();
                                             $_SESSION['company'] = $akun;
                                             echo "<script>location='dashboardcom.php';</script>";
-                                        }
-                                        else{
+                                        }else{
                                             echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";
                                         }
                                     }
@@ -88,7 +81,7 @@
         </div>
     </body>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
-    <script src="../assets/js/wow.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script>jQuery(document).ready(function() { new WOW().init(); });</script>
 </html>

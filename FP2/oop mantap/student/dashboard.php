@@ -54,9 +54,7 @@
                         <input class="form-control mr-sm-2" type="text" placeholder="Nama Jurusan, Bidang Studi, Jenis Pekerjaan, contoh : Sistem Informasi">
                         <br/>
                         <a href="applist.php" class="btn btn-success" type="submit" style="font-size:20px;font-weight:bold;">Cari Lagi</a>
-                        <?php
-                        }else{
-                        ?>
+                        <?php }else{ ?>
                         <p style="font-size:24px; color:white;">Yuk Langsung Cari Magang Akademikmu!</p>
                         <br>
                         <input class="form-control mr-sm-2" type="text" placeholder="Nama Jurusan, Bidang Studi, Jenis Pekerjaan, contoh : Sistem Informasi">
@@ -70,18 +68,14 @@
         <div class="container-fluid" id="student-application">
             <div class="container">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
-                    <div class="col">
-                        <h1>Aplikasi Kamu</h1>
-                        <hr>
-                    </div>
+                    <div class="col"><h1>Aplikasi Kamu</h1><hr></div>
                 </div>
                 <div class="row align-items-center justify-content-end text-left" style="padding-top:40px;padding-bottom:40px;">
                     <div class="col-sm-9">
                         <?php
                         $query = $query = $student->viewApplication($id_student);
                         if(mysqli_num_rows($query)>0){
-                            while($data = mysqli_fetch_array($query)){
-                        ?>
+                            while($data = mysqli_fetch_array($query)){?>
                         <div class="card">
                             <div class="card-header">
                                 <div class="row">
@@ -168,9 +162,7 @@
                         <hr>
                         <?php }}
                         else{?>
-                            <div class="alert alert-info">
-                                Pengajuan Magang Akademikmu belum ada nih! Yuk <a href="applist.php">Gas Ajukan!</a>
-                            </div>
+                            <div class="alert alert-info">Pengajuan Magang Akademikmu belum ada nih! Yuk <a href="applist.php">Gas Ajukan!</a></div>
                         <?php } ?>
                     </div>
                 </div>

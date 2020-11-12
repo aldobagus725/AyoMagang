@@ -8,19 +8,12 @@
     <head>
         <style>
             #register-company::before{
-            content: "";
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: -1;
-            display: block;
+            content: "";position: fixed;
+            left: 0;right: 0;
+            z-index: -1;display: block;
             background-image: url(../assets/img/backgrounds/reg-comp.jpg);
-            filter: brightness(50%);
-            background-repeat: no-repeat;
-            background-size:cover;
-            width: 100%;
-            height: 100%;
-            }
+            filter: brightness(50%);background-repeat: no-repeat;
+            background-size:cover;width: 100%;height: 100%;}
         </style>
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

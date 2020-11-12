@@ -76,8 +76,7 @@
                 $akun = $query->fetch_assoc(); 
                 $_SESSION['student'] = $akun;
                 echo "<script>location='dashboard.php';</script>";
-            }
-            else{echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";}
+            }else{echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";}
         }
     ?>  
     <script src="../assets/js/jquery-3.4.1.min.js"></script>

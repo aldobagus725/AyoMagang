@@ -1,8 +1,9 @@
 <?php
     include"../koneksi.php";
     if (!isset($_SESSION)) {session_start();}
-    elseif (isset($_SESSION['superadmin'])) {echo "<script>location='dashboard.php';</script>";die;}
-    else{}
+    else{
+        if(isset($_SESSION['superadmin'])) {echo "<script>location='dashboard.php';</script>";die;} 
+    }
 ?>
 <html>
     <head>

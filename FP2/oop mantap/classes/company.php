@@ -16,9 +16,7 @@ class company{
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select $action from company where company_id = $id");
-        while ($row = $query->fetch_assoc()){
-            return $row[$action];
-        }
+        while ($row = $query->fetch_assoc()){return $row[$action];}
     }
     //-----------more functions-------------
     public function register_company($company_name,$username,$password,$siup,$address,$phone,$email,$token,$aktif){
@@ -42,9 +40,9 @@ class company{
                 $checkRow_siup = mysqli_num_rows($check_siup);
                 if ($checkRow_siup > 0) {return 4;}
                 else{
-                mysqli_query($this->con, "insert into company (company_name,username,siup,address,phone,email,password,token,aktif) 
-                            values ('$company_name','$username','$siup','$address','$phone','$email','$password','$token','$aktif')");
-                return 1;                   
+                    mysqli_query($this->con, "insert into company (company_name,username,siup,address,phone,email,password,token,aktif) 
+                                values ('$company_name','$username','$siup','$address','$phone','$email','$password','$token','$aktif')");
+                    return 1;                   
                 }
             }
         }
@@ -109,5 +107,4 @@ class company{
         if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status) values ('$req_title','$req_detail','$status')")){return 1;}
         else{return 2;}
     }
-    
 }

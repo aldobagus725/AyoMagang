@@ -11,11 +11,10 @@ class student{
     private $address;
     private $phone;
     private $email;
+    private $token;
+    private $aktif;
     //__construct function
-    public function __construct(){
-        $koneksi = new database();
-        $this->con = $koneksi->koneksi();
-    }
+    public function __construct(){$koneksi = new database();$this->con = $koneksi->koneksi();}
     //Getters -- experimental, can be unused --
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
@@ -28,7 +27,7 @@ class student{
         $this->username = $username;
         $this->password = $password;
         $this->student_number = $student_number;
-        $this->institution_name = $institution_number;
+        $this->institution_name = $institution_name;
         $this->course = $course;
         $this->address = $address;
         $this->phone = $phone;
@@ -42,7 +41,7 @@ class student{
             $checkRow = mysqli_num_rows($check);
             if ($checkRow > 0) {return 3;} 
             else {
-                mysqli_query($this->con, "insert into student (fullname,username,password,student_number,institution_name,address,phone,email,course,token,aktif) values ('$fullname','$username','$password','$student_number','$institution_name','$address','$phone','$email','$course''$token','$aktif')");
+                mysqli_query($this->con, "insert into student (fullname,username,password,student_number,institution_name,address,phone,email,course,token,aktif) values ('$fullname','$username','$password','$student_number','$institution_name','$address','$phone','$email','$course','$token','$aktif')");
                 return 1;
             }
         }

@@ -34,18 +34,14 @@
         <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
         <link rel="shortcut icon" href="../assets/ico/favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            #bar{background-color: rgb(0, 133, 216);width: 100%;}
-        </style>
+        <style>#bar{background-color: rgb(0, 133, 216);width: 100%;}</style>
     </head>
     <body>
         <?php include ('local_navbar.php'); ?>
         <div class="container-fluid" id="student-application">
             <div class="container">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
-                    <div class="col">
-                        <h2>Profil Anda</h2>
-                        <hr>
+                    <div class="col"><h2>Profil Anda</h2><hr>
                     </div>
                 </div>
                 <div class="row align-items-top justfiy-content-start" style="padding-top:30px;padding-bottom:40px;">
@@ -62,9 +58,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row align-items-center">
-                                            <div class="col-sm-3">
-                                                <img src="../assets/img/testimonials/1.jpg" width="100%;">
-                                            </div>
+                                            <div class="col-sm-3"><img src="../assets/img/testimonials/1.jpg" width="100%;"></div>
                                             <div class="col-sm-9">
                                                 <table>
                                                     <tr><td><h4><?php echo $fullName;?></h4></td></tr>
@@ -99,9 +93,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row align-items-center">
-                                            <div class="col-sm-3">
-                                                <img src="../assets/img/testimonials/1.jpg" width="100%;">
-                                            </div>
+                                            <div class="col-sm-3"><img src="../assets/img/testimonials/1.jpg" width="100%;"></div>
                                             <div class="col-sm-9">
                                                 <table>
                                                     <tr><td><h4><?php echo $fullName;?></h4></td></tr>
@@ -138,21 +130,15 @@
                                                          </div>
                                                          <div class="modal-body">
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Masukkan Password Lama</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Masukkan Password Lama</span></div>
                                                                 <input type="password" name="old_password" class="form-control" value="">
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Masukkan Password Baru</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Masukkan Password Baru</span></div>
                                                                 <input type="password" name="new_password" class="form-control" value="">
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Konfirmasi Password Baru</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Konfirmasi Password Baru</span></div>
                                                                 <input type="password" name="confirm_new_password" class="form-control" value="">
                                                             </div>
                                                         </div>
@@ -195,41 +181,27 @@
                                                          </div>
                                                          <div class="modal-body">
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">ID Student</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">ID Student</span></div>
                                                                 <input type="text" name="student_id" class="form-control" value="<?php echo $student_id;?>"readonly>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">NIS/NIM</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">NIS/NIM</span></div>
                                                                 <input type="text" name="student_number" class="form-control" value="<?php echo $student_number;?>" readonly>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Username</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Username</span></div>
                                                                 <input type="text" name="username" class="form-control" value="<?php echo $userName;?>" required>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Nama Lengkap</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Lengkap</span></div>
                                                                 <input type="text" name="fullname" class="form-control" value="<?php echo $fullName;?>" required>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Nama Sekolah / Kampus</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Sekolah / Kampus</span></div>
                                                                 <input type="text" name="institution_name" class="form-control" value="<?php echo $institution_name;?>" required>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">
-                                                                       Bidang / Jurusan
-                                                                    </span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Bidang / Jurusan</span></div>
                                                                 <input type="text" name="course_display" class="form-control" value="<?php echo $course;?>(ubah)" required readonly>
                                                                 <?php
                                                                     $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);sort($spesialisasi);
@@ -242,15 +214,11 @@
                                                             </select>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Alamat</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                 <input type="text" name="address" class="form-control" value="<?php echo $address;?>" required>
                                                             </div>
                                                             <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Telepon</span>
-                                                                </div>
+                                                                <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $phone;?>" required>
                                                             </div>
                                                             <p class="text-left">
@@ -275,21 +243,15 @@
                                                  </div>
                                                  <div class="modal-body">
                                                     <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">Judul Form</span>
-                                                        </div>
+                                                        <div class="input-group-prepend"><span class="input-group-text">Judul Form</span></div>
                                                         <input type="text" name="req_title" class="form-control" value="Form Perubahan NIS/NIM Siswa <?php echo $student_id;?>" readonly>
                                                     </div>
                                                     <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">Alasan Pengajuan</span>
-                                                        </div>
+                                                        <div class="input-group-prepend"><span class="input-group-text">Alasan Pengajuan</span></div>
                                                         <textarea class="form-control" name="req_detail" rows="4"></textarea>
                                                     </div>
                                                     <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">Upload Surat Pernyataan</span>
-                                                        </div>
+                                                        <div class="input-group-prepend"><span class="input-group-text">Upload Surat Pernyataan</span></div>
                                                     </div>
                                                 </div>
                                                 <input type="hidden" class="btn btn-primary btn" name="status" value="0">

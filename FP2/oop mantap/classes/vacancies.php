@@ -10,15 +10,12 @@ class vacancies{
     private $phone;
     private $intern_policies;
     private $author;
-    
     public function __construct(){$koneksi = new database();$this->con = $koneksi->koneksi();}
     //Getters -- experimental, can be unused --
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select $action from vacancies where vacancies_id = $id");
-        while ($row = $query->fetch_assoc()){
-            return $row[$action];
-        }
+        while ($row = $query->fetch_assoc()){return $row[$action];}
     }
     public function editVacancy($id,$company_id,$company_name,$company_address,$phone,$vacancy_title,$author,$company_speciality,$intern_policies){
         $id = mysqli_real_escape_string($this->con, $id);

@@ -1,8 +1,10 @@
 <?php 
-    if(!isset($_SESSION)){session_start();} 
-    if(!isset($_SESSION['superadmin'])){
-        echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
-        echo "<script>location='login.php';</script>";
+    if(!isset($_SESSION)){session_start();}
+    else{
+        if(!isset($_SESSION['superadmin'])){
+            echo "<script>alert('Silahkan login terlebih dahulu!');</script>";
+            echo "<script>location='login.php';</script>";
+        }
     }
     require"../classes/superadmin.php";
     $superadmin = new superadmin();
@@ -33,9 +35,7 @@
     </head>
     <body class="wow fadeIn">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
-            <a class="navbar-brand" href="dashboard.php">
-                <img src="../assets/img/logo/logo%20putih.png" width="100%;">
-            </a>
+            <a class="navbar-brand" href="dashboard.php"><img src="../assets/img/logo/logo%20putih.png" width="100%;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,14 +48,9 @@
                         </a>
                         <ul class="dropdown-menu"></ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link scroll-link" href="#footer">Butuh Bantuan?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link scroll-link" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Butuh Bantuan?</a></li>
+                    <li class="nav-item"><a class="nav-link scroll-link" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a></li>
                 </ul>
-
             </div>
         </nav>
         <div class="container-fluid">
@@ -84,21 +79,18 @@
                             <div class="row">
                                 <div class="col" style="padding-top:20px;padding-bottom:20px;">
                                     <div class="jumbotron shadow">
-                                        <h5><i class='fas fa-graduation-cap'></i> &nbsp;<i class='fas fa-building'></i> &nbsp;Total User : <?php echo $total_user;?></h5>
-                                        <hr>
+                                        <h5><i class='fas fa-graduation-cap'></i> &nbsp;<i class='fas fa-building'></i> &nbsp;Total User: <?php echo $total_user;?></h5><hr>
                                     </div>
                                 </div>
                                 <div class="col" style="padding-top:20px;padding-bottom:20px;">
                                     <div class="jumbotron shadow bg-primary" style="color:white;">
-                                        <h5><i class='fas fa-graduation-cap'></i> &nbsp;Total Student terdaftar: <?php echo $total_student;?></h5>
-                                        <hr>
+                                        <h5><i class='fas fa-graduation-cap'></i> &nbsp;Total Student terdaftar: <?php echo $total_student;?></h5><hr>
                                         <h6 style="font-style:italic;">Daftar Baru at : <?php echo $studentLastEntry; ?></h6>
                                     </div>
                                 </div>
                                 <div class="col" style="padding-top:20px;padding-bottom:20px;">
                                     <div class="jumbotron shadow bg-info" style="color:white;">
-                                        <h5><i class='fas fa-building'></i> &nbsp;Total Company terdaftar: <?php echo $total_company;?></h5>
-                                        <hr>
+                                        <h5><i class='fas fa-building'></i> &nbsp;Total Company terdaftar: <?php echo $total_company;?></h5><hr>
                                         <h6 style="font-style:italic;">Daftar Baru at : <?php echo $companyLastEntry;?></h6>
                                     </div>
                                 </div>
@@ -106,15 +98,13 @@
                             <div class="row">
                                 <div class="col" style="padding-top:20px;padding-bottom:20px;">
                                     <div class="jumbotron shadow bg-secondary" style="color:white;">
-                                        <h5><i class='fas fa-info-circle'></i> &nbsp;Total Bukaan Magang: <?php echo $total_vacancy;?></h5>
-                                        <hr>
+                                        <h5><i class='fas fa-info-circle'></i> &nbsp;Total Bukaan Magang: <?php echo $total_vacancy;?></h5><hr>
                                         <h6 style="font-style:italic;">Entry Bukaan Terakhir: <?php echo $vacancyLastEntry;?></h6>
                                     </div>
                                 </div>
                                 <div class="col" style="padding-top:20px;padding-bottom:20px;">
                                     <div class="jumbotron shadow bg-success" style="color:white;">
-                                        <h5><i class='far fa-file-alt'></i> &nbsp;Total Ajuan KP/PKL Siswa: <?php echo $total_application;?></h5>
-                                        <hr>
+                                        <h5><i class='far fa-file-alt'></i> &nbsp;Total Ajuan KP/PKL Siswa: <?php echo $total_application;?></h5><hr>
                                         <h6 style="font-style:italic;">Entry Aplikasi Terakhir: <?php echo $applicationLastEntry; ?></h6>
                                     </div>
                                 </div>
@@ -123,10 +113,7 @@
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <div class="container" style="padding-top:20px;padding-bottom:20px;">
                                 <div class="row">
-                                    <div class="col text-left">
-                                        <h4>Profile</h4>
-                                        <hr>
-                                    </div>
+                                    <div class="col text-left"><h4>Profile</h4><hr></div>
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="col-sm-8">
@@ -148,12 +135,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-student" role="tabpanel" aria-labelledby="v-pills-student-tab">
                             <div class="container" style="padding-top:20px;padding-bottom:20px;">
-                                <div class="row">
-                                    <div class="col text-left">
-                                        <h4>Student</h4>
-                                        <hr>
-                                    </div>
-                                </div>
+                                <div class="row"><div class="col text-left"><h4>Student</h4><hr></div></div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="table-responsive shadow-sm">
@@ -200,59 +182,39 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Student</span></div>
                                                                                 <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Username</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Username</span></div>
                                                                                 <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">NIS/NIM</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">NIS/NIM</span></div>
                                                                                 <input type="text" name="student_number" class="form-control" value="<?php echo $data['student_number'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Lengkap</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Lengkap</span></div>
                                                                                 <input type="text" name="fullname" class="form-control" value="<?php echo $data['fullname'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Sekolah / Kampus</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Sekolah / Kampus</span></div>
                                                                                 <input type="text" name="institution_name" class="form-control" value="<?php echo $data['institution_name'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                       Bidang / Jurusan
-                                                                                    </span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Bidang / Jurusan</span></div>
                                                                                 <input type="text" name="course" class="form-control" value="<?php echo $data['course'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Telepon</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Email</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Email</span></div>
                                                                                 <input type="email" name="email" class="form-control" value="<?php echo $data['email'];?>" required readonly>
                                                                             </div>
                                                                          </div>
@@ -279,41 +241,27 @@
                                                                                     while ($data = $query->fetch_assoc()){ 
                                                                                 ?>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">ID Student</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">ID Student</span></div>
                                                                                     <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" required readonly>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">Username</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Username</span></div>
                                                                                     <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" required>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">NIS/NIM</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">NIS/NIM</span></div>
                                                                                     <input type="text" name="student_number" class="form-control" value="<?php echo $data['student_number'];?>" required>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">Nama Lengkap</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Nama Lengkap</span></div>
                                                                                     <input type="text" name="fullname" class="form-control" value="<?php echo $data['fullname'];?>" required>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">Nama Sekolah / Kampus</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Nama Sekolah / Kampus</span></div>
                                                                                     <input type="text" name="institution_name" class="form-control" value="<?php echo $data['institution_name'];?>" required>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">
-                                                                                           Bidang / Jurusan
-                                                                                        </span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Bidang / Jurusan</span></div>
                                                                                     <input type="text" name="course_display" class="form-control" value="<?php echo $data['course'];?>(ubah)" required readonly>
                                                                                     <?php
                                                                                         $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);sort($spesialisasi);
@@ -327,21 +275,15 @@
                                                                                 </select>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">Alamat</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                     <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">Telepon</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                                     <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required>
                                                                                 </div>
                                                                                 <div class="input-group mb-3">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">Email</span>
-                                                                                    </div>
+                                                                                    <div class="input-group-prepend"><span class="input-group-text">Email</span></div>
                                                                                     <input type="email" name="email" class="form-control" value="<?php echo $data['email'];?>" required >
                                                                                 </div>
                                                                          </div>
@@ -441,45 +383,31 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Company</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Company</span></div>
                                                                                 <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Username</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Username</span></div>
                                                                                 <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">SIUP</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">SIUP</span></div>
                                                                                 <input type="text" name="SIUP" class="form-control" value="<?php echo $data['siup'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
                                                                                 <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Telepon</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Email</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Email</span></div>
                                                                                 <input type="text" name="email" class="form-control" value="<?php echo $data['email'];?>" required readonly>
                                                                             </div>
                                                                          </div>
@@ -506,45 +434,31 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Company</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Company</span></div>
                                                                                 <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Username</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Username</span></div>
                                                                                 <input type="text" name="username" class="form-control" value="<?php echo $data['username'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">SIUP</span>
-                                                                                </div>
-                                                                                <input type="text" name="SIUP" class="form-control" value="<?php echo $data['siup'];?>" required>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">SIUP</span></div>
+                                                                                <input type="text" name="siup" class="form-control" value="<?php echo $data['siup'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
                                                                                 <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="address" class="form-control" value="<?php echo $data['address'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Telepon</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required >
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Email</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Email</span></div>
                                                                                 <input type="text" name="email" class="form-control" value="<?php echo $data['email'];?>" required >
                                                                             </div>
                                                                          </div>
@@ -646,57 +560,39 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Bukaan</span></div>
                                                                                 <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Perusahaan</span></div>
                                                                                 <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
                                                                                 <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Judul Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Judul Bukaan</span></div>
                                                                                 <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Bidang / Job Desc</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Bidang / Job Desc</span></div>
                                                                                 <input type="text" name="company_speciality" class="form-control" value="<?php echo $data['company_speciality'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Telepon</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Syarat Magang</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Syarat Magang</span></div>
                                                                                 <input type="text" name="intern_policies" class="form-control" value="<?php echo $data['intern_policies'];?>" required readonly>
                                                                             </div>
                                                                              <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Author Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Author Bukaan</span></div>
                                                                                 <input type="text" name="author" class="form-control" value="<?php echo $data['author'];?>" required readonly>
                                                                             </div>
                                                                          </div>
@@ -723,58 +619,40 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Bukaan</span></div>
                                                                                 <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Perusahaan</span></div>
                                                                                 <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
                                                                                 <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Judul Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Judul Bukaan</span></div>
                                                                                 <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Bidang / Job Desc</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Bidang / Job Desc</span></div>
                                                                                 <input type="text" name="company_speciality" class="form-control" value="<?php echo $data['company_speciality'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Telepon</span>
-                                                                                </div>
-                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required >
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
+                                                                                <input type="text" name="phone" class="form-control" value="<?php echo $data['phone'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Syarat Magang</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Syarat Magang</span></div>
                                                                                 <input type="text" name="intern_policies" class="form-control" value="<?php echo $data['intern_policies'];?>" required >
                                                                             </div>
                                                                              <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Author Bukaan</span>
-                                                                                </div>
-                                                                                <input type="text" name="author" class="form-control" value="<?php echo $data['author'];?>" required >
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Author Bukaan</span></div>
+                                                                                <input type="text" name="author" class="form-control" value="<?php echo $data['author'];?>" required>
                                                                             </div>
                                                                          </div>
                                                                          <div class="modal-footer">
@@ -882,69 +760,47 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Pengajuan Magang</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Pengajuan Magang</span></div>
                                                                                 <input type="text" name="application_id" class="form-control" value="<?php echo $data['application_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Student</span></div>
                                                                                 <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Perusahaan</span></div>
                                                                                 <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Bukaan Magang</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Bukaan Magang</span></div>
                                                                                 <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
                                                                                 <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Judul Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Judul Bukaan</span></div>
                                                                                 <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Email Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Email Perusahaan</span></div>
                                                                                 <input type="text" name="company_email" class="form-control" value="<?php echo $data['company_email'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Student</span></div>
                                                                                 <input type="text" name="student_name" class="form-control" value="<?php echo $data['student_name'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat Student</span></div>
                                                                                 <input type="text" name="student_address" class="form-control" value="<?php echo $data['student_address'];?>" required readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Status Aplikasi</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Status Aplikasi</span></div>
                                                                                 <input type="text" name="status" class="form-control" value="<?php echo $data['status'];?>" required readonly>
                                                                             </div>
                                                                              <br>
@@ -978,69 +834,47 @@
                                                                                 while ($data = $query->fetch_assoc()){
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Pengajuan Magang</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Pengajuan Magang</span></div>
                                                                                 <input type="text" name="application_id" class="form-control" value="<?php echo $data['application_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Student</span></div>
                                                                                 <input type="text" name="student_id" class="form-control" value="<?php echo $data['student_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Perusahaan</span></div>
                                                                                 <input type="text" name="company_id" class="form-control" value="<?php echo $data['company_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Bukaan Magang</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Bukaan Magang</span></div>
                                                                                 <input type="text" name="vacancies_id" class="form-control" value="<?php echo $data['vacancies_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
                                                                                 <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Judul Bukaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Judul Bukaan</span></div>
                                                                                 <input type="text" name="vacancy_title" class="form-control" value="<?php echo $data['vacancy_title'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                                                                                 <input type="text" name="company_address" class="form-control" value="<?php echo $data['company_address'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Email Perusahaan</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Email Perusahaan</span></div>
                                                                                 <input type="text" name="company_email" class="form-control" value="<?php echo $data['company_email'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Nama Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Nama Student</span></div>
                                                                                 <input type="text" name="student_name" class="form-control" value="<?php echo $data['student_name'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Alamat Student</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Alamat Student</span></div>
                                                                                 <input type="text" name="student_address" class="form-control" value="<?php echo $data['student_address'];?>" required>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Status Aplikasi</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Status Aplikasi</span></div>
                                                                                 <input type="text" name="status" class="form-control" value="<?php echo $data['status'];?>" required>
                                                                             </div>
                                                                              <br>
@@ -1146,26 +980,18 @@
                                                                                 while ($data = $query->fetch_assoc()){ 
                                                                               ?>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">ID Request</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">ID Request</span></div>
                                                                                 <input type="text" name="req_id" class="form-control" value="<?php echo $data['req_id'];?>" readonly>
                                                                             </div>
                                                                             <div class="input-group mb-3">
-                                                                                <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">Judul Request</span>
-                                                                                </div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Judul Request</span></div>
                                                                                 <input type="text" name="req_title" class="form-control" value="<?php echo $data['req_title'];?>" readonly>
                                                                             </div>
                                                                              <br>
                                                                                 <div class="card">
-                                                                                    <div class="card-header">
-                                                                                        <h4>Rincian Request</h4>
-                                                                                    </div>
+                                                                                    <div class="card-header"><h4>Rincian Request</h4></div>
                                                                                     <div class="card-body">
-                                                                                        <p class="card-text">
-                                                                                            <?php echo $data['req_detail'];?>
-                                                                                        </p>
+                                                                                        <p class="card-text"><?php echo $data['req_detail'];?></p>
                                                                                     </div>
                                                                                 </div>
                                                                          </div>
@@ -1224,7 +1050,7 @@
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
-            $update_company = $superadmin->editCompany($student_id,$fullname,$username,$student_number,$institution_name,$course,$address,$phone,$email);
+            $update_company = $superadmin->editCompany($company_id,$company_name,$username,$siup,$address,$phone,$email);
             if ($update_company==1){echo "<script>alert('Data Company Berhasil di ubah!');location = 'dashboard.php';</script>";}
             elseif ($update_company==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'dashboard.php';</script>";}
             else{echo "<script>alert('Error!Silakan coba lagi!');location = 'dashboard.php';</script>";}

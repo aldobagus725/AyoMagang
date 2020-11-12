@@ -60,18 +60,11 @@
         <style>
             #reset-pass:before{
                 background-image: url(../assets/img/backgrounds/1@2x.jpg);
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
-                filter: brightness(60%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
-            }
+                content: "";position: absolute;
+                left: 0;right: 0;
+                z-index: -1;display: block;
+                filter: brightness(60%);background-repeat: no-repeat;
+                background-size:cover;width: 100%;height: 100%;}
         </style>
     </head>
     <body>
@@ -88,9 +81,7 @@
                     <div class="col-sm-6 mx-auto">
                         <form method="POST">
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Alamat</span>
-                                </div>
+                                <div class="input-group-prepend"><span class="input-group-text">Alamat Email</span></div>
                                 <input type="email" class="form-control" name="email" required autofocus placeholder="Email">
                             </div>
                             <input type="submit" name="submit" value="Reset Password">
@@ -116,7 +107,3 @@
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
 </html>
-
-
-
-

@@ -10,7 +10,6 @@
         die;
     } 
     require '../classes/student.php';
-
     $student = new student();
     $student_id = $_SESSION['student']["student_id"];
     //	Array berisi data daerah.
@@ -29,9 +28,7 @@
         <link rel="stylesheet" href="../assets/css/animate.css">
         <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            #filter{background-color: rgb(0, 133, 216);width: 100%;}
-        </style>
+        <style>#filter{background-color: rgb(0, 133, 216);width: 100%;}</style>
     </head>
     <body>
         <?php include ('local_navbar.php'); ?>
@@ -41,9 +38,7 @@
                     <div class="col-sm-4" style="padding-bottom:10px;">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class='fas fa-building'></i>  
-                                </span>
+                                <span class="input-group-text"><i class='fas fa-building'></i>  </span>
                             </div>
                             <input type="text" class="form-control" placeholder="Perusahaan yang kamu cari">
                         </div>
@@ -51,9 +46,7 @@
                     <div class="col-sm-4" style="padding-bottom:10px;">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                     <i class='fas fa-map-marker-alt'></i> &nbsp; Daerah
-                                </span>
+                                <span class="input-group-text"><i class='fas fa-map-marker-alt'></i> &nbsp; Daerah</span>
                             </div>
                             <select name="daerah" class="custom-select" required>
                                 <?php
@@ -67,9 +60,7 @@
                     <div class="col-sm-4" style="padding-bottom:10px;">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class='fas fa-user-alt'></i> &nbsp; Bidang
-                                </span>
+                                <span class="input-group-text"><i class='fas fa-user-alt'></i> &nbsp; Bidang</span>
                             </div>
                             <select name="daerah" class="custom-select" required>
                                 <?php
@@ -84,9 +75,7 @@
                 <div class="row align-items-center justify-content-end text-right" style="padding-top:10px;">
                     <div class="col-sm-3" style="padding-bottom:10px;">
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Sort By</span>
-                            </div>
+                            <div class="input-group-prepend"><span class="input-group-text">Sort By</span></div>
                             <select name="sortby" class="custom-select">
                                 <option value="new">Post Terbaru</option>
                                 <option value="old">Post Terlama</option>
@@ -95,9 +84,7 @@
                         </div>
                     </div>
                     <div class="col" style="padding-bottom:10px;">
-                        <div class="input-group text-right">
-                            <a href="#" class="btn btn-success">Cari</a>
-                        </div>
+                        <div class="input-group text-right"><a href="#" class="btn btn-success">Cari</a></div>
                     </div>
                 </div>
             </div>
@@ -105,10 +92,7 @@
         <div class="container-fluid" id="student-application">
             <div class="container">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
-                    <div class="col">
-                        <h2>List Bukaan</h2>
-                        <hr>
-                    </div>
+                    <div class="col"><h2>List Bukaan</h2><hr></div>
                 </div>
                 <div class="row align-items-center justfiy-content-start" style="padding-top:30px;padding-bottom:40px;">
                     <div class="col-sm-4">
@@ -148,15 +132,11 @@
                                             ?>
                                         <h6>Kamu sudah Melakukan Pengajuan disini!</h6>
                                         <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
-                                        <?php
-                                            } else {
-                                        ?>
+                                        <?php } else { ?>
                                         <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
                                         <a href="apply.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-success btn-sm">Ajukan Magang</a>
                                         <a href="#" class="btn btn-danger btn-sm">Laporkan</a>
-                                        <?php
-                                            }
-                                        ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -164,12 +144,8 @@
                         <br>
                         <?php }}
                         else{?>
-                            <div class="alert alert-primary">
-                                Maaf ya! Belum ada bukaan nih! Sabar ya!
-                            </div>
-                        <?php
-                            }
-                        ?>
+                            <div class="alert alert-primary">Maaf ya! Belum ada bukaan nih! Sabar ya!</div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

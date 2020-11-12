@@ -20,13 +20,11 @@
                         </div>
                   </script>
                  ';
-        }
-        else{
+        }else{
             $resetPwd = $company->ResetPassword($email,$new_password);
             if($resetPwd == 1){
                 echo "<script>alert('Password berhasil direset! Silakan login ulang!');location='login.php';</script>";
-            }
-            else{
+            }else{
                 echo '<script>
                         <div class="alert alert-danger">
                            Something Went Wrong!
@@ -47,18 +45,12 @@
         <style>
             #reset-pass:before{
                 background-image: url(../assets/img/backgrounds/1@2x.jpg);
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
+                content: "";position: absolute;
+                left: 0;right: 0;
                 z-index: -1;
-                display: block;
-                filter: brightness(60%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
-            }
+                display: block;filter: brightness(60%);
+                background-repeat: no-repeat;background-size:cover;
+                width: 100%;height: 100%;}
         </style>
     </head>
     <body>
@@ -75,15 +67,11 @@
                     <div class="col-sm-6 mx-auto">
                         <form method="POST">
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Password Baru</span>
-                                </div>
+                                <div class="input-group-prepend"><span class="input-group-text">Password Baru</span></div>
                                 <input type="password" class="form-control" name="new_password" required autofocus placeholder="Masukkan Password baru anda disini">
                             </div>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Confirm Password Baru</span>
-                                </div>
+                                <div class="input-group-prepend"><span class="input-group-text">Confirm Password Baru</span></div>
                                 <input type="password" class="form-control" name="confirm_new_password" required autofocus placeholder="Konfirmasi Password baru anda disini">
                             </div>
                             <input type="submit" name="submit" value="Reset Password">

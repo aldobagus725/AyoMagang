@@ -5,39 +5,19 @@ class superadmin{
     private $fullname;
     private $username;
     private $email;
-    public function __construct(){
-        $koneksi = new database();
-        $this->con = $koneksi->koneksi();
-    }
+    public function __construct(){$koneksi = new database();$this->con = $koneksi->koneksi();}
     //Getters
     public function getters($id, $action){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select $action from superadmin where superadmin_id = $id");
-        while ($row = $query->fetch_assoc()){
-            return $row[$action];
-        }
+        while ($row = $query->fetch_assoc()){return $row[$action];}
     }
     //Views
-    public function viewVacancy(){
-        $query = mysqli_query($this->con, "select * from vacancies");
-        return $query;
-    }
-    public function viewStudent(){
-        $query = mysqli_query($this->con, "select * from student");
-        return $query;
-    }
-    public function viewApplication(){
-        $query = mysqli_query($this->con, "select * from application");
-        return $query;
-    }
-    public function viewCompany(){
-        $query = mysqli_query($this->con, "select * from company");
-        return $query;
-    }
-    public function viewRequest(){
-        $query = mysqli_query($this->con, "select * from request");
-        return $query;
-    }
+    public function viewVacancy(){$query = mysqli_query($this->con, "select * from vacancies");return $query;}
+    public function viewStudent(){$query = mysqli_query($this->con, "select * from student");return $query;}
+    public function viewApplication(){$query = mysqli_query($this->con, "select * from application");return $query;}
+    public function viewCompany(){$query = mysqli_query($this->con, "select * from company");return $query;}
+    public function viewRequest(){$query = mysqli_query($this->con, "select * from request");return $query;}
     //Detail
     public function viewVacancyDetail($id){
         $id = mysqli_real_escape_string($this->con, $id);
@@ -82,7 +62,7 @@ class superadmin{
     }
     public function editCompany($id,$company_name,$username,$siup,$address,$phone,$email){
         $id = mysqli_real_escape_string($this->con, $id);
-        if (!is_numeric($phone) || strlen($phone) > 14) {
+        if (!is_numeric($phone) || strlen($phone) > 14 || strlen($phone) < 11) {
             return 2;
         }
         else{
@@ -107,7 +87,7 @@ class superadmin{
     }
     public function deleteVacancy($id){
         $id = mysqli_real_escape_string($this->con, $id);
-        if ($query = mysqli_query($this->con, "delete from vacancy where vacancies_id = '$id'")){return 1;}
+        if ($query = mysqli_query($this->con, "delete from vacancies where vacancies_id = '$id'")){return 1;}
         else{return 2;}
     }
     public function editApplication($id,$student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status){

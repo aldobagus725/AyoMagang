@@ -64,14 +64,10 @@
                             if ($checkRow > 0) {
                             ?>
                         <h3>Kamu sudah Melakukan Pengajuan disini!</h3>
-                        <?php
-                            } else {
-                        ?>
+                        <?php } else { ?>
                          <a href="apply.php?&id=<?php echo $vacancy_id; ?>" class="btn btn-primary btn-block ">Ajukan KP/PKL</a><br>
                             <a href="#" class="btn btn-danger btn-block">Laporkan Bukaan Ini</a><br>
-                        <?php
-                            }
-                        ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -81,9 +77,7 @@
                 <div class="row align-items-center justfiy-content-start" style="padding-top:30px;padding-bottom:40px;">
                     <div class="col">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>Deskripsi Bukaan</h4>
-                            </div>
+                            <div class="card-header"><h4>Deskripsi Bukaan</h4></div>
                             <div class="card-body">
                                 <table>
                                     <tr>
@@ -96,7 +90,6 @@
                                     </tr>
                                 </table>
                                 <br>
-                                
                                 <table>
                                     <tr>
                                         <td><i class='fas fa-map-marker-alt'></i> &nbsp;</td>
@@ -122,9 +115,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="row align-items-center text-right">
-                                    <div class="col">
-                                        <h5>Author: <?php echo $author;?></h5>
-                                    </div>
+                                    <div class="col"><h5>Author: <?php echo $author;?></h5></div>
                                 </div>
                             </div>
                         </div>

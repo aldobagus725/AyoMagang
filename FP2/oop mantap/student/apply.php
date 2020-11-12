@@ -12,7 +12,6 @@
     require '../classes/student.php';
     require '../classes/company.php';
     require '../classes/vacancies.php';
-    
     $student = new student();
     $vacancy = new vacancies();
     $company = new company();
@@ -28,7 +27,6 @@
     $student_name = $student->getters($student_id_helper,"fullname");
     $student_address = $student->getters($student_id_helper,"address");
     $status = 1;
-// UHUY
 ?>
 <html>
     <head>
@@ -83,27 +81,19 @@
                                         <input type="text" name="company_email" value="<?php echo $company_email; ?>" hidden>
                                         <input type="text" name="status" value="<?php echo $status ?>" hidden>
                                         <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Vacancy Title</span>
-                                            </div>
+                                            <div class="input-group-prepend"><span class="input-group-text">Vacancy Title</span></div>
                                             <input type="text" name="vacancy_title" class="form-control" value="<?php echo $vacancy_title; ?>" readonly>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Student Name</span>
-                                            </div>
+                                            <div class="input-group-prepend"><span class="input-group-text">Student Name</span></div>
                                             <input type="text" name="student_name" class="form-control" value="<?php echo $student_name; ?>" readonly>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Student Address</span>
-                                            </div>
+                                            <div class="input-group-prepend"><span class="input-group-text">Student Address</span></div>
                                             <input type="text" name="student_address" class="form-control" value="<?php echo $student_address; ?>" readonly>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Upload Dokumen Penting disini</span>
-                                            </div>
+                                            <div class="input-group-prepend"><span class="input-group-text">Upload Dokumen Penting disini</span></div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">

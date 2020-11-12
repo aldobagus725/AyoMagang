@@ -28,23 +28,15 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/ayomagang.css">
         <link rel="shortcut icon" href="../assets/ico/favicon.png">
-        <link rel="stylesheet" href="../assets/css/animate.css">
         <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             #company-home:before{
                 background-image: url(../assets/img/backgrounds/1@2x.jpg);
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
-                filter: brightness(60%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 70%;
+                content: "";position: absolute;left: 0;right: 0;
+                z-index: -1;display: block;
+                filter: brightness(60%); background-repeat: no-repeat;
+                background-size:cover;width: 100%;height: 70%;
             }
             #company-vacancy{background-color:#f8f8f8;}
             #company-application{background-color:white;}
@@ -83,10 +75,7 @@
         <div class="container-fluid" id="company-vacancy">
             <div class="container">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
-                    <div class="col">
-                        <h1>List Bukaan Perusahaan</h1>
-                        <hr>
-                    </div>
+                    <div class="col"><h1>List Bukaan Perusahaan</h1><hr></div>
                 </div>
                 <div class="row align-items-center text-left justify-content-end" style="padding-top:40px;padding-bottom:40px;">
                     <div class="col-sm-7 ">
@@ -146,14 +135,10 @@
         <div class="container-fluid" id="company-application">
             <div class="container">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
-                    <div class="col">
-                        <h1>List Pengajuan KP / PKL</h1>
-                        <hr>
-                    </div>
+                    <div class="col"><h1>List Pengajuan KP / PKL</h1><hr></div>
                 </div>
                 <div class="row align-items-center text-left" style="padding-top:40px;padding-bottom:40px;">
                     <div class="col-sm-7">
-<!--                        unfinished code-->
                     <?php
                         $query = $company->viewApplication($id_company);
                         if(mysqli_num_rows($query)>0){
@@ -208,7 +193,6 @@
         <?php include ('../footer.php'); ?>
     </body>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
-    <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/fontawesome/js/all.js"></script>

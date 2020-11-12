@@ -12,13 +12,13 @@
         <?php
             include "../koneksi.php";
             $token=$_GET['t'];
-            $sql_cek=mysqli_query($koneksi,"SELECT * FROM company WHERE token='".$token."' and aktif='0'");
+            $sql_cek=mysqli_query($koneksi,"SELECT * FROM student WHERE token='".$token."' and aktif='0'");
             $jml_data=mysqli_num_rows($sql_cek);
             if($jml_data>0){
                 //update data company aktif
-                $query = mysqli_query($koneksi,"UPDATE company SET aktif='1' WHERE token='".$token."' and aktif='0'");
+                $query = mysqli_query($koneksi,"UPDATE student SET aktif='1' WHERE token='".$token."' and aktif='0'");
                 if($query){
-                    $query = mysqli_query($koneksi, "UPDATE company SET token = NULL WHERE token='$token'");
+                    $query = mysqli_query($koneksi, "UPDATE student SET token = NULL WHERE token='$token'");
                     echo '<div class="alert alert-success">Akun anda sudah aktif, silahkan <a href="login.php">Login</a></div>';
                 }
             }else{echo '<div class="alert alert-warning">Invalid Token!</div>';}

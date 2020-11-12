@@ -25,23 +25,16 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/ayomagang.css">
         <link rel="shortcut icon" href="../assets/ico/favicon.png">
         <link rel="stylesheet" href="../assets/css/animate.css">
-        <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             #daftar:before{
                 background-image: url(../assets/img/blog/3.jpg);
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                display: block;
+                content: "";position: absolute;
+                left: 0;right: 0;
+                z-index: -1;display: block;
                 filter: brightness(60%);
-                background-repeat: no-repeat;
-                background-size:cover;
-                width: 100%;
-                height: 100%;
-            }
+                background-repeat: no-repeat;background-size:cover;
+                width: 100%;height: 100%;}
         </style>
     </head>
     <body>
@@ -49,9 +42,7 @@
         <div class="container-fluid" id="daftar">
             <div class="container" style="padding-bottom:50px;">
                 <div class="row align-items-center text-center" style="padding-top:40px;">
-                    <div class="col" style="padding-top:75px;">
-                        <h1 style="color:white;">Buka Lamaran</h1>
-                    </div>
+                    <div class="col" style="padding-top:75px;"><h1 style="color:white;">Buka Lamaran</h1></div>
                 </div>
                 <form method="post">
                 <div class="row align-items-top text-center">
@@ -59,27 +50,19 @@
                         <h3 style="color:white;">Perusahaan</h3>
                         <br>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Nama Perusahaan</span>
-                          </div>
-                          <input type="text" readonly class="form-control" name="company_name" value="<?php echo $company_name;?>">
+                            <div class="input-group-prepend"><span class="input-group-text">Nama Perusahaan</span></div>
+                            <input type="text" readonly class="form-control" name="company_name" value="<?php echo $company_name;?>">
                         </div>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">ID Perusahaan</span>
-                          </div>
-                          <input type="text" readonly class="form-control" name="company_id" value="<?php echo $id; ?>">
+                            <div class="input-group-prepend"><span class="input-group-text">ID Perusahaan</span></div>
+                            <input type="text" readonly class="form-control" name="company_id" value="<?php echo $id; ?>">
                         </div>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Alamat</span>
-                          </div>
+                            <div class="input-group-prepend"><span class="input-group-text">Alamat</span></div>
                             <textarea class="form-control" name="company_address" rows="3" required readonly><?php echo $company_address; ?></textarea>
                         </div>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Telepon</span>
-                          </div>
+                            <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                             <input type="text" class="form-control" name="phone" required value="<?php echo $phone; ?>" readonly>		
                         </div>  
                     </div>
@@ -87,31 +70,23 @@
                         <h3 style="color:white;">Detail Bukaan</h3>
                         <br>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Judul Bukaan</span>
-                          </div>
-                          <input type="text" class="form-control" name="vacancy_title" required>
+                            <div class="input-group-prepend"><span class="input-group-text">Judul Bukaan</span></div>
+                            <input type="text" class="form-control" name="vacancy_title" required>
                         </div>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Author</span>
-                          </div>
-                          <input type="text" class="form-control" name="author" required>
+                            <div class="input-group-prepend"><span class="input-group-text">Author</span></div><input type="text" class="form-control" name="author" required>
                         </div>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Bidang Perusahaan</span>
-                          </div>
-                          <input type="text" class="form-control" name="company_speciality" required>
+                            <div class="input-group-prepend"><span class="input-group-text">Bidang Perusahaan</span></div>
+                            <input type="text" class="form-control" name="company_speciality" required>
                         </div>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Syarat Magang</span>
-                          </div>
+                            <div class="input-group-prepend"><span class="input-group-text">Syarat Magang</span>
+                            </div>
                             <textarea class="form-control" name="intern_policies" rows="3" required></textarea>	
                         </div>
                         <div class="input-group mb-3">
-                              <input class="btn btn-primary" type="submit" name="submit" value="Publish!">
+                            <input class="btn btn-primary" type="submit" name="submit" value="Publish!">
                         </div>
                     </div>
                 </div>
@@ -139,5 +114,4 @@
     <script src="../assets/js/wow.min.js"></script>
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/fontawesome/js/all.min.js"></script>
 </html>

@@ -10,12 +10,10 @@
             <div class="col-sm-4">
                 <strong>Email:</strong>
                 <ul>
-                    <li>aldobagus@hotmail.co.id</li>
                     <li>ayomagangayo@gmail.com</li>
                 </ul>
                 <strong>Nomor Telepon:</strong>
                 <ul>
-                    <li>+6282146931611</li>
                     <li>+6282146931611</li>
                 </ul>
                 <strong>Social Media:</strong>

@@ -105,4 +105,32 @@ class company{
         if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status) values ('$req_title','$req_detail','$status')")){return 1;}
         else{return 2;}
     }
+    public function clickgraph($from, $to, $uid)
+    {
+        $graph = [];
+        $data = Clicks::select(DB::raw("count('short_link_id') as count,date"))->whereBetween('date',[$from,$to])->orWhere('date','=',$to)->where('user_id','=',$uid)->get();
+        $now = new \DateTime($from);
+        $end = new \DateTime($to);
+        $interval = new \DateInterval( 'P1D'); // 1 Day interval
+        $period = new \DatePeriod( $now, $interval, $end); // 7 Days
+        foreach( $period as $day) {
+            $key = $day->format('M d');
+            foreach($data as $value)
+            {
+                if(!is_null($value->date) && ($key == Carbon::createFromFormat('Y-m-d',$value->date)->format('M d')))
+                {
+                    $graph['count'][] = (int) $value->count;
+                    $graph['date'][] = $key;
+                }
+                else
+                {
+                    $graph['count'][] = 0;
+                    $graph['date'][] = $key;
+                }
+            }
+        }
+        return $graph;
+    }
+    
+
 }

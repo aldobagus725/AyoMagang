@@ -138,9 +138,13 @@
                 </div>
             </div>
         </div>
+        <div id="display">0</div>
+<button class="trigger" id="trigger" onclick="trigger()">SUBMIT</button>
+        
 <!--        VACANCY-->
         <div class="container-fluid" id="company-vacancy">
             <div class="container">
+            <div class="round"><p clas="values"><php echo $totalviews;?></p></div></div>
                 <?php 
                     $checker_siup = $company->getters($id_company,"siup");
                     $checker_address = $company->getters($id_company,"address");
@@ -213,7 +217,8 @@
                             <div class="card-footer">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
+                                       
+                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm" button class="trigger" id="trigger" onclick="trigger()">Kunjungi</a>
                                         <a href="edit_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-success btn-sm">Edit Bukaan</a>
                                         <a href="delete_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus Bukaan</a>
                                     </div>
@@ -274,8 +279,8 @@
                             <div class="card-footer">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
-                                        <a href="edit_vacancy.php&id=<?php echo $data['vacancies_id'];?>" class="btn btn-success btn-sm">Edit Bukaan</a>
+                                        <a href="detailpengajuan.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Lihat Pengajuan</a>
+                                       
                                     </div>
                                 </div>
                             </div>

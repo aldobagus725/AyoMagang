@@ -26,6 +26,7 @@
                         <a class="dropdown-item" href="myprofile.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
+                <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Translate</a></li>
                 </li>
                 <!--company primary navbar-->
                 <?php }else if(isset($_SESSION['company'])){?>
@@ -37,6 +38,7 @@
                         <a class="dropdown-item" href="myprofilecom.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
+                <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Translate</a></li>
                 </li>
                 <?php }else{  ?>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#home">Beranda</a></li>

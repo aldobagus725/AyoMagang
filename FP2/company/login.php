@@ -79,7 +79,7 @@
                                                         }else{echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";}
                                                     }
                                                 }  
-                                            }       
+                                            }else{echo "<div class='alert alert-danger'>Login Gagal! Silakan masukkan kembali username & password anda!</div>";}       
                                         }
                                     ?>  
                                     <div class="form-group">

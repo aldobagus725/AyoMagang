@@ -47,7 +47,18 @@
             <div class="container">
                 <div class="row align-items-center" style="padding-top:10px;padding-bottom:20px;">
                     <div class="col-sm-9 text-left">
-                        <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;"><br>
+                        <?php
+                            if($company->getters($company_id,"profile_picture")==NULL){
+                        ?>
+                                <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;">
+                        <?php
+                            }else{
+                        ?>
+                                <img src="../company/profile_picture/<?php echo $company->getters($company_id,"profile_picture");?>" width="50%;">
+                        <?php
+                            }
+                        ?>
+                        <br>
                         <h4><?php echo $title;?></h4>
                         <h5><?php echo $company_name;?></h5>
                         <table>

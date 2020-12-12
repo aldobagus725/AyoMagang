@@ -65,7 +65,7 @@
             <div class="container">
                 <div class="row align-items-center justfiy-content-start" style="padding-top:30px;padding-bottom:40px;">
                     <div class="col">
-                        <form method="post" action="#">
+                        <form method="post" action="#" enctype="multipart/form-data">
                         <div class="card">
                             <div class="card-header">
                                 <h4>Form Pengajuan</h4>
@@ -92,8 +92,16 @@
                                             <div class="input-group-prepend"><span class="input-group-text">Student Address</span></div>
                                             <input type="text" name="student_address" class="form-control" value="<?php echo $student_address; ?>" readonly>
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend"><span class="input-group-text">Upload Dokumen Penting disini</span></div>
+                                         <div class="input-group mb-3">
+                                            <label>Upload Surat Pernyataan :</label>
+                                            <input type="file" name="file_pengajuan" value="Pilih Berkas" required>
+                                            <p style="color: red;font-size:10px;">
+                                                <i>
+                                                    Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf | .zip <br>
+                                                    Maksimal Ukuran File 10 MB! <br>
+                                                    Jika ingin mengupload lebih dari satu file, kumpulkan dalam bentuk terkompress (.zip)
+                                                </i>
+                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -138,9 +146,26 @@
             $student_address = $_POST['student_address'];
             $company_email = $_POST['company_email'];
             $status = $_POST['status'];
-            $apply = $student->ApplyInternship($student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status);
-            if ($apply == 01) {echo "<script>alert('Selamat Pengajuan Berhasil!');location = 'dashboard.php';</script>";} 
-            elseif ($apply == 3) {echo "<script>alert('Error! -> Pengajuan ini sudah ada!');location = 'dashboard.php';</script>";} 
+            //upload operaton, courtesy by malasngoding.com
+            $rand = rand();
+            $ekstensi =  array('png','jpg','jpeg','pdf', 'zip');
+            $filename = $_FILES['file_pengajuan']['name'];
+            $ukuran = $_FILES['file_pengajuan']['size'];
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if(!in_array($ext,$ekstensi) ) {
+                echo "<script>alert('Ekstensi file salah!');location = 'dashboard.php';</script>";
+            }else{
+                if($ukuran < 10440700){		
+                    $xx = $rand.'_'.$filename;
+                    move_uploaded_file($_FILES['file_pengajuan']['tmp_name'], 'application/'.$rand.'_'.$filename);
+                    $apply = $student->ApplyInternship($student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status,$xx);
+                    if ($apply == 1) {echo "<script>alert('Selamat Pengajuan Berhasil!');location = 'dashboard.php';</script>";} 
+                    elseif ($apply == 3) {echo "<script>alert('Error! -> Pengajuan ini sudah ada!');location = 'dashboard.php';</script>";} 
+                }else{
+                    echo "<script>alert('Ukuran file terlalu besar');location = 'dashboard.php';</script>";
+                }
+            }
+
         }
     ?>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>

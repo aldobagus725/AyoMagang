@@ -24,7 +24,7 @@
                                             <div class="col-sm-6 text-right wow fadeInRight">
                                                 <h2 style="font-weight:bold;font-size:40px;color:white;">Mencari Magang Akademik <br>Menjadi Lebih Mudah!</h2><br>
                                                 <h6 style="font-size:24px;padding-bottom:40px;color:white">Ayo Eksplor!</h6><br>
-                                                <a href="student/login.php" class="btn btn-info">Cari Magang</a> <a href="student/login.php" class="btn btn-secondary">Daftar Akun</a>
+                                                <a href="student/login.php" class="btn btn-info">Cari Magang</a> <a href="company/login.php" class="btn btn-secondary">Daftar Akun</a>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                                     Sistem kita juga membantu menyediakan <br> 
                                                     preferensi sesuai profil kamu!
                                                 </h6>
-                                                <button class="btn btn-primary">Daftar Akun</button>
+                                                <a href="student/register.php" class="btn btn-primary">Daftar Akun</a>
                                             </div>
                                         </div>
                                     </div>

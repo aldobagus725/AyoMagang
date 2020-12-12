@@ -12,6 +12,11 @@
     include('db_chat.php');
     $student = new student();
     $id_student = $_SESSION['student']['student_id'];
+    $daerah = array("Banda Aceh", "Langsa", "Lhokseumawe", "Badung", "Depok", "Bekasi", "Jakarta", "Makassar", "Kupang", "Gorontalo", "Merauke", "Gianyar", "Tangerang" );
+    sort($daerah);
+    //	Array berisi data spesialisasi.
+    $spesialisasi = array("Perhotelan", "Kelistrikan", "Teknologi", "Kuliner", "Jurnalis", "Akuntansi", "Marketing",);
+    sort($spesialisasi);
 ?>
 <html>
     <head>
@@ -34,8 +39,8 @@
                 left: 0;right: 0;
                 z-index: -1;display: block;
                 filter: brightness(60%);
-                background-repeat: no-repeat;background-size:cover;
-                width: 100%;height: 75%;
+                background-repeat: no-repeat;background-size:contain;
+                width: 100%;height: 60%;
             }
             #student-application{background-color:white;}
             .chat_message_area{
@@ -56,6 +61,7 @@
             .btn-rounded-dark {color: #fff;background-color: #343a40;border-radius: 50rem;}
             .btn-rounded-warning {color: #fff;background-color: #ffc107;border-radius: 50rem;}
             .btn-rounded-secondary {color: #fff;background-color: #868e96;border-radius: 50rem;}
+            #filter{background-color: rgb(0, 133, 216);width: 100%;}
 	</style>
     </head>
     <body>
@@ -75,25 +81,21 @@
                             Kalau mau cari lagi, boleh aja kok!
                         </p>
                         <br>
-                        <input class="form-control mr-sm-2" type="text" placeholder="Nama Jurusan, Bidang Studi, Jenis Pekerjaan, contoh : Sistem Informasi">
                         <br/>
                         <a href="applist.php" class="btn btn-success" type="submit" style="font-size:20px;font-weight:bold;">Cari Lagi</a>
                         <?php }else{ ?>
                         <p style="font-size:24px; color:white;">Yuk Langsung Cari Magang Akademikmu!</p>
                         <br>
-                        <input class="form-control mr-sm-2" type="text" placeholder="Nama Jurusan, Bidang Studi, Jenis Pekerjaan, contoh : Sistem Informasi">
                         <br/>
                         <a href="applist.php" class="btn btn-success" type="submit" style="font-size:18px;font-weight:bold;">Cari</a>
                         <?php }?>
                         <br>
-                        <br>
-                        <p style="font-size:16px; font-weight:bold; color:white;">Butuh Bantuan? Bisa langsung kontak admin!:</p>
-                        <div id="user_details"></div>
-                        <div id="user_model_details"></div>
                     </div>
                 </div>
             </div>
         </div>
+        <form method="post">
+        </form>
         <div class="container-fluid" id="student-application">
             <div class="container">
                 <?php 
@@ -194,10 +196,11 @@
                                 <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
                                 <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelapp">Batalkan Pengajuan</a>
                                 <!--modal for Cancel Application-->
+                                <!--Here contains function for upload-->
                                 <div class="modal fade" id="cancelapp">
                                      <div class="modal-dialog">
                                          <div class="modal-content">
-                                             <form method="post">
+                                             <form method="post" enctype="multipart/form-data">
                                                  <div class="modal-header">
                                                      <h4 class="modal-title">Form Pembatalan Pengajuan KP</h4>
                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -215,10 +218,15 @@
                                                         </div>
                                                         <textarea class="form-control" name="req_detail" rows="4"></textarea>
                                                     </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">Upload Surat Pernyataan</span>
-                                                        </div>
+                                                     <div class="input-group mb-3">
+                                                        <label>Upload Surat Pernyataan :</label>
+                                                        <input type="file" name="formal_letter" value="Pilih Berkas" required>
+                                                        <p style="color: red;font-size:10px;">
+                                                            <i>
+                                                                Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf <br>
+                                                                Maksimal Ukuran File 1 MB!
+                                                            </i>
+                                                         </p>
                                                     </div>
                                                 </div>
                                                     <input type="hidden" class="btn btn-primary btn" name="status" value="0">
@@ -232,11 +240,27 @@
                                                         $req_title = $_POST['req_title'];
                                                         $req_detail = $_POST['req_detail'];
                                                         $status = $_POST['status'];
-                                                        $reqSubmit = $student->CreateRequest($req_title,$req_detail,$status);
-                                                        if ($reqSubmit == 1) {
-                                                             echo "<script>alert('Permintaan Pembatalan Sudah terkirim! Admin kami akan memproses!');location = 'dashboard.php';</script>";
-                                                        } else {
-                                                            echo "<script>alert('Error! Coba Lagi');location = 'dashboard.php';</script>";
+                                                        //upload operaton, courtesy by malasngoding.com
+                                                        $rand = rand();
+                                                        $ekstensi =  array('png','jpg','jpeg','pdf');
+                                                        $filename = $_FILES['formal_letter']['name'];
+                                                        $ukuran = $_FILES['formal_letter']['size'];
+                                                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                                                        if(!in_array($ext,$ekstensi) ) {
+                                                            echo "<script>alert('Ekstensi file salah!');location = 'dashboard.php';</script>";
+                                                        }else{
+                                                            if($ukuran < 1044070){		
+                                                                $xx = $rand.'_'.$filename;
+                                                                move_uploaded_file($_FILES['formal_letter']['tmp_name'], 'request/'.$rand.'_'.$filename);
+                                                                $reqSubmit = $student->CreateRequest($req_title,$req_detail,$status,$xx);
+                                                                if ($reqSubmit == 1) {
+                                                                    echo "<script>alert('Permintaan Pembatalan Sudah terkirim! Admin kami akan memproses!');location = 'dashboard.php';</script>";
+                                                                } else {
+                                                                    echo "<script>alert('Error! Coba Lagi');location = 'dashboard.php';</script>";
+                                                                }
+                                                            }else{
+                                                                echo "<script>alert('Ukuran file terlalu besar');location = 'dashboard.php';</script>";
+                                                            }
                                                         }
                                                     }
                                                 ?>
@@ -250,6 +274,17 @@
                         else{?>
                             <div class="alert alert-info text-center">Pengajuan Magang Akademikmu belum ada nih! Yuk <a href="applist.php">Gas Ajukan!</a></div>
                         <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="container" style="padding: 20px 0px;">
+                <div class="row">
+                    <div class="col text-center">
+                        <p style="font-size:22px; font-weight:bold; color:black;">Butuh Bantuan? Bisa langsung kontak admin!:</p>
+                        <div id="user_details"></div>
+                        <div id="user_model_details"></div>
                     </div>
                 </div>
             </div>

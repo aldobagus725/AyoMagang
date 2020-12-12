@@ -21,25 +21,26 @@
                 <li class="nav-item"><a class="nav-link scroll-link" href="#student-home">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#student-application">Daftar Aplikasi</a></li>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Butuh Bantuan?</a></li>
+                <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Translate</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><?php echo $_SESSION['student']['fullname'];?></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="myprofile.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
-                <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Translate</a></li>
                 </li>
                 <!--company primary navbar-->
                 <?php }else if(isset($_SESSION['company'])){?>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#company-home">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#company-vacancy">Daftar Bukaan Lowongan</a></li>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#company-application">Daftar Aplikasi Masuk</a></li>
+                <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Translate</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><?php echo $_SESSION['company']['company_name'];?></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="myprofilecom.php">My Profile</a>
                         <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
                     </div>
-                <li class="nav-item"><a class="nav-link scroll-link" href="#footer">Translate</a></li>
                 </li>
+                
                 <?php }else{  ?>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#home">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link scroll-link" href="#collaboration">Kerjasama</a></li>

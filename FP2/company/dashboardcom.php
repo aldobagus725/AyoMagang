@@ -21,6 +21,11 @@
     //another variables
     $company_name = $company->getters($id_company,'company_name');
     $username = $company->getters($id_company,'username');
+    $total_vacancy = $company->countVacancy($id_company);
+    $vacancyLastEntry = $company->lastEntryVacancy($id_company);
+    $total_application = $company->countApplication($id_company);
+    $applicationLastEntry = $company->lastEntryApplication($id_company);
+    $allVacancyClick = $company->countTotalClicks($id_company);
 ?>
 
 <html>
@@ -46,62 +51,24 @@
             }
             #company-vacancy{background-color:#f8f8f8;}
             #company-application{background-color:white;}
+            #company-statistic{background-color:white;}
             .chat_message_area{
-                position: relative;
-                width: 100%;
-                height: auto;
-                background-color: #FFF;
-                border: 1px solid #CCC;
-                border-radius: 3px;
+                position: relative;width: 100%;
+                height: auto;background-color: #FFF;
+                border: 1px solid #CCC;border-radius: 3px;
             }
-            .image_upload{
-                position: absolute;
-                top:3px;
-                right:3px;
-            }
+            .image_upload{position: absolute;top:3px;right:3px;}
             .image_upload > form > input{display: none;}
             .image_upload img{width: 24px;cursor: pointer;}
             .form-rounded {border-radius: 50rem;}
-            .btn-rounded {
-                color: #fff;
-                background-color: #007bff;
-                border-radius: 50rem;
-            }
-            .btn-rounded-success {
-                color: #fff;
-                background-color: #28a745;
-                border-radius: 50rem;
-            }
-            .btn-rounded-danger {
-                color: #fff;
-                background-color: #dc3545;
-                border-radius: 35rem;
-            }
-            .btn-rounded-info {
-                color: #fff;
-                background-color: #17a2b8;
-                border-radius: 50rem;
-            }
-            .btn-rounded-light {
-                color: #343a40;
-                background-color: #f8f9fa;
-                border-radius: 50rem;
-            }
-            .btn-rounded-dark {
-                color: #fff;
-                background-color: #343a40;
-                border-radius: 50rem;
-            }
-            .btn-rounded-warning {
-                color: #fff;
-                background-color: #ffc107;
-                border-radius: 50rem;
-            }
-            .btn-rounded-secondary {
-                color: #fff;
-                background-color: #868e96;
-                border-radius: 50rem;
-            }
+            .btn-rounded {color: #fff;background-color: #007bff;border-radius: 50rem;}
+            .btn-rounded-success {color: #fff;background-color: #28a745;border-radius: 50rem;}
+            .btn-rounded-danger {color: #fff;background-color: #dc3545;border-radius: 35rem;}
+            .btn-rounded-info {color: #fff;background-color: #17a2b8;border-radius: 50rem;}
+            .btn-rounded-light {color: #343a40;background-color: #f8f9fa;border-radius: 50rem;}
+            .btn-rounded-dark {color: #fff;background-color: #343a40;border-radius: 50rem;}
+            .btn-rounded-warning {color: #fff;background-color: #ffc107;border-radius: 50rem;}
+            .btn-rounded-secondary {color: #fff;background-color: #868e96;border-radius: 50rem;}
         </style>
     </head>
     <body>
@@ -131,21 +98,44 @@
                         <?php }?>
                         <br>
                         <br>
-                        <p style="font-size:16px; font-weight:bold; color:white;">Butuh Bantuan? Bisa langsung kontak admin!:</p>
-                        <div id="user_details"></div>
-                        <div id="user_model_details"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="display">0</div>
-<button class="trigger" id="trigger" onclick="trigger()">SUBMIT</button>
-        
-<!--        VACANCY-->
+        <!--Statistic-->
+        <div class="container-fluid" id="company-statistic">
+            <div class="container">
+                <div class="row align-items-center text-center">
+                    <div class="col" style="padding-top:20px;padding-bottom:20px;">
+                        <h1>Statistik</h1><hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="jumbotron shadow bg-secondary" style="color:white;">
+                            <h5><i class='fas fa-info-circle'></i> &nbsp;Total Bukaan Magang: <?php echo $total_vacancy;?></h5><hr>
+                            <h6 style="font-style:italic;">Entry Bukaan Terakhir: <?php echo $vacancyLastEntry;?></h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="jumbotron shadow bg-success" style="color:white;">
+                            <h5><i class='far fa-file-alt'></i> &nbsp;Total Ajuan KP/PKL Siswa: <?php echo $total_application;?></h5><hr>
+                            <h6 style="font-style:italic;">Entry Aplikasi Terakhir: <?php echo $applicationLastEntry; ?></h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="jumbotron shadow bg-info" style="color:white;">
+                            <h5><i class='fas fa-eye'></i> &nbsp;Total Views Bukaan: <?php echo $allVacancyClick;?></h5><hr>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--VACANCY-->
         <div class="container-fluid" id="company-vacancy">
             <div class="container">
-            <div class="round"><p clas="values"><php echo $totalviews;?></p></div></div>
-                <?php 
+                 <?php 
                     $checker_siup = $company->getters($id_company,"siup");
                     $checker_address = $company->getters($id_company,"address");
                     $checker_phone = $company->getters($id_company,"phone");
@@ -158,8 +148,7 @@
                             </button>
                         </div>
                         ";
-                    }
-                    if ($checker_address==NULL){
+                    }else if ($checker_address==NULL){
                         echo "
                         <div class='alert alert-primary alert-dismissible fade show' role='alert'>
                             Silakan Lengkapi Data Diri Anda: <strong>Alamat Anda</strong>&nbsp;<a href='myprofilecom.php'><i>Lengkapi Detail</i></a>
@@ -168,8 +157,7 @@
                             </button>
                         </div>
                         ";
-                    }
-                    if ($checker_phone==NULL){
+                    }else if ($checker_phone==NULL){
                         echo "
                         <div class='alert alert-primary alert-dismissible fade show' role='alert'>
                             Silakan Lengkapi Data Diri Anda: <strong>Nomor Telepon Anda</strong>&nbsp;<a href='myprofilecom.php'><i>Lengkapi Detail</i></a>
@@ -198,7 +186,17 @@
                                         <h5><?php echo $data["company_name"];?></h5>
                                     </div>
                                     <div class="col-sm-6 text-right">
-                                        <img src="../assets/img/logo/logo_hitam_pas.png" width="75%;">
+                                        <?php
+                                            if($company->getters($id_company,"profile_picture")==NULL){
+                                        ?>
+                                                <img src="../assets/img/logo/logo_hitam_pas.png" width="75%;">
+                                        <?php
+                                            }else{
+                                        ?>
+                                                <img src="../company/profile_picture/<?php echo $company->getters($id_company,"profile_picture");?>" width="50%;">
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -212,13 +210,23 @@
                                         <td><i class='fas fa-user-alt'></i> &nbsp;</td>
                                         <td><?php echo $data["company_speciality"];?></td>
                                     </tr>
+                                    <tr>
+                                        <td><i class='fas fa-eye'></i> &nbsp;</td>
+                                        <td><?php 
+                                                if ($data["views"]==NULL){
+                                                    echo "N/A";
+                                                }else{
+                                                    echo $data["views"]." views";
+                                                }
+                                            ?>
+                                        </td>
+                                    </tr>
                                 </table> 
                             </div>
                             <div class="card-footer">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                       
-                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm" button class="trigger" id="trigger" onclick="trigger()">Kunjungi</a>
+                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
                                         <a href="edit_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-success btn-sm">Edit Bukaan</a>
                                         <a href="delete_vacancy.php?id=<?php echo $data['vacancies_id'];?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus Bukaan</a>
                                     </div>
@@ -228,12 +236,8 @@
                         <br>
                         <?php }}
                         else{?>
-                            <div class="alert alert-primary">
-                                No Vacancy Exist!
-                            </div>
-                        <?php
-                            }
-                        ?>
+                            <div class="alert alert-primary"> No Vacancy Exist! </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -273,14 +277,12 @@
                                         <td><i class='fas fa-map-marker-alt'></i> &nbsp;</td>
                                         <td><?php echo $data["student_address"];?></td>
                                     </tr>
-
                                 </table> 
                             </div>
                             <div class="card-footer">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <a href="detailpengajuan.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Lihat Pengajuan</a>
-                                       
+                                        <a href="detailpengajuan.php?&id=<?php echo $data['application_id']; ?>" class="btn btn-primary btn-sm">Lihat Pengajuan</a>
                                     </div>
                                 </div>
                             </div>
@@ -293,6 +295,17 @@
                         <?php
                             }
                         ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="container" style="padding: 20px 0px;">
+                <div class="row">
+                    <div class="col text-center">
+                        <p style="font-size:22px; font-weight:bold; color:black;">Butuh Bantuan? Bisa langsung kontak admin!:</p>
+                        <div id="user_details"></div>
+                        <div id="user_model_details"></div>
                     </div>
                 </div>
             </div>

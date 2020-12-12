@@ -9,8 +9,15 @@
         echo "<script>location='login.php';</script>";
         die;
     }
-	$query = $koneksi->query("SELECT * FROM vacancies JOIN company ON vacancies.company_id = company.company_id WHERE vacancies_id = '$_GET[id]'");
+    require '../classes/company.php';
+    $company = new company();
+    require '../classes/student.php';
+    $student = new student();
+    $company_id = $_SESSION['company']['company_id'];
+    $application_id = $_GET['id'];
+	$query = $company->viewApplicationDetail($application_id,$company_id);
 	$data  = $query->fetch_assoc();
+    $student_id = $data['student_id'];
 ?>
 <html>
     <head>
@@ -32,7 +39,18 @@
             <div class="container">
                 <div class="row align-items-center" style="padding-top:10px;padding-bottom:20px;">
                     <div class="col-sm-9 text-left">
-                        <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;"><br>
+                        <?php
+                            if($company->getters($company_id,"profile_picture")==NULL){
+                        ?>
+                                <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;">
+                        <?php
+                            }else{
+                        ?>
+                                <img src="../company/profile_picture/<?php echo $company->getters($company_id,"profile_picture");?>" width="50%%;">
+                        <?php
+                            }
+                        ?>
+                        <br>
                         <h4><?php echo $data["vacancy_title"];?></h4>
                         <h5><?php echo $data["company_name"];?></h5>
                         <table>
@@ -59,35 +77,72 @@
                             <div class="card-body">
                                 <table>
                                     <tr>
-                                        <td><i class='fas fa-clipboard-list'></i> Nama Pengaju KP &nbsp;</td>
+                                        <td><i class='fas fa-clipboard-list'></i> Nama Siswa / Mahasiswa KP &nbsp;</td>
                                         <td> : <?php echo $data["student_name"];?></td>
                                     </tr>
                                     <tr>
-                                        <td><i class='fas fa-clipboard-list'></i> Alamat Pengajuan &nbsp;</td>
+                                        <td><i class='fas fas fa-map-marker-alt'></i> Alamat Siswa / Mahasiswa Pengajuan &nbsp;</td>
                                         <td> : <?php echo $data["student_address"];?></td>
                                     </tr>
-
+                                    <tr>
+                                        <td><i class='fas fa-building'></i> Asal Sekolah / Kampus dari Siswa / Mahasiswa &nbsp;</td>
+                                        <td> : <?php echo $student->getters($student_id,'institution_name');?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class='far fa-file-alt'></i> Berkas Pengajuan &nbsp;</td>
+                                        <td> : <?php 
+                                                if($data['file_pengajuan']==NULL){
+                                                    echo "TIDAK TERSEDIA";
+                                                }else{
+                                            ?>
+                                                <a href="../student/application/<?php echo $data['file_pengajuan'];?>" target="_blank" class="btn btn-primary btn-sm">Lihat Berkas</a>
+                                            <?php } 
+                                            ?>
+                                        </td>
+                                    </tr>
                                 </table>
-                                <br>
                             </div>
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select class="form-control" name="status">
-                                    <option value="">Choose Status</option>
-                                    <option value="Selamat Diterima">Accepted</option>
-                                    <option value="Maaf Ditolak">Decline</option>
-    
-                                </select>
+                            <div class="card-footer">
+                                <div class="row text-center">
+                                    <div class="col-sm-6 mx-auto">
+                                        <form method="post">
+                                            <div class="form-group">
+                                                <label>Status</label>
+                                                <select class="form-control" name="status">
+                                                    <?php 
+                                                        if($data["status"]==1){
+                                                    ?>
+                                                        <option selected value="1">Di Proses</option>
+                                                        <option value="2">Terima</option>
+                                                        <option value="3">Tolak</option>
+                                                    <?php
+                                                        }elseif($data["status"]==2){
+                                                    ?>
+                                                        <option value="1">Di Proses</option>
+                                                        <option selected value="2">Terima</option>
+                                                        <option value="3">Tolak</option>
+                                                    <?php
+                                                        }elseif($data["status"]==3){
+                                                    ?>
+                                                        <option value="1">Di Proses</option>
+                                                        <option value="2">Terima</option>
+                                                        <option selected value="3">Tolak</option>
+                                                    <?php
+                                                        }
+                                                    ?>
+
+                                                </select>
+                                            </div>
+                                            <input type="submit" name="proses" value="Ubah Status" class="btn btn-primary btn-sm">
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="btn btn-success btn-sm" name="proses">status pengajuan</button>
-                           <br>
-                           
                            <?php
                                 if(isset($_POST['proses'])){
                                     $status = $_POST['status'];
-                                    $koneksi->query("UPDATE application SET status = '$status'
-                                                                    WHERE application_id   = '$application_id'");
-                                   
+                                    $koneksi->query("UPDATE application SET status = '$status' WHERE application_id   = '$application_id'");
+                                    echo "<script>alert('Status berhasil diupdate!');location = 'dashboardcom.php'</script>";
                                 }
                             ?>
                         </div>

@@ -59,7 +59,19 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row align-items-center">
-                                            <div class="col-sm-3"><img src="../assets/img/testimonials/1.jpg" width="100%;"></div>
+                                            <div class="col-sm-3">                                               
+                                                <?php
+                                                    if($student->getters($student_id,"profile_picture")==NULL){
+                                                ?>
+                                                        <img src="../assets/img/testimonials/1.jpg" width="100%;">
+                                                <?php
+                                                    }else{
+                                                ?>
+                                                        <img src="../student/profile_picture/<?php echo $student->getters($student_id,"profile_picture");?>" width="100%;">
+                                                <?php
+                                                    }
+                                                ?>
+                                            </div>
                                             <div class="col-sm-9">
                                                 <table>
                                                     <tr><td><h4><?php echo $fullName;?></h4></td></tr>
@@ -147,7 +159,19 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row align-items-center">
-                                            <div class="col-sm-3"><img src="../assets/img/testimonials/1.jpg" width="100%;"></div>
+                                            <div class="col-sm-3">
+                                                <?php
+                                                    if($student->getters($student_id,"profile_picture")==NULL){
+                                                ?>
+                                                        <img src="../assets/img/testimonials/1.jpg" width="100%;">
+                                                <?php
+                                                    }else{
+                                                ?>
+                                                        <img src="../student/profile_picture/<?php echo $student->getters($student_id,"profile_picture");?>" width="100%;">
+                                                <?php
+                                                    }
+                                                ?>
+                                            </div>
                                             <div class="col-sm-9">
                                                 <table>
                                                     <tr><td><h4><?php echo $fullName;?></h4></td></tr>
@@ -172,7 +196,7 @@
                                         </table>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <a href="#" class="btn btn-primary"data-toggle="modal" data-target="#changePwD">Ganti Password</a>
+                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#changePwD">Ganti Password</a>
                                         <!--modal for change password-->
                                         <div class="modal fade" id="changePwD">
                                              <div class="modal-dialog">
@@ -212,7 +236,53 @@
                                                  </div>
                                              </div>
                                         </div>
-                                        <a href="#" class="btn btn-info">Ganti Email</a>
+                                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#changeEmail">>Ganti Email</a>
+                                        <!--modal for change email-->
+                                        <div class="modal fade" id="changeEmail">
+                                             <div class="modal-dialog">
+                                                 <div class="modal-content">
+                                                     <form method="post">
+                                                         <div class="modal-header">
+                                                             <h4 class="modal-title">Change Email</h4>
+                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                         </div>
+                                                         <div class="modal-body">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend"><span class="input-group-text">Masukkan Email Baru</span></div>
+                                                                <input type="email" name="email" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                     <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-primary btn" name="change-email" value="Ganti Email">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                     </div>
+                                                     </form>
+                                                     <?php
+                                                        if(isset($_POST['change-password'])){
+                                                            $old_password = mysqli_real_escape_string($koneksi,$_POST['old_password']);
+                                                            $new_password = password_hash(mysqli_real_escape_string($koneksi,$_POST['new_password']),PASSWORD_DEFAULT);
+                                                            if (password_verify($old_password, $student->getters($student_id,"password"))){
+                                                                $change = $student->changePassword($student_id,$new_password);
+                                                                if ($change == 1){echo "<script>alert('Selamat! Password anda telah berubah!');location = 'myprofile.php'; </script>";}
+                                                                else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
+                                                            }
+                                                            else{echo "<script>alert('Password Lama Salah!');location = 'myprofile.php';</script>";}
+                                                        }elseif(isset($_POST['change-email'])){
+                                                            $email= $_POST['email'];
+                                                            $old_email = $student->getters($student_id,"email");
+                                                            $token=hash('sha256', md5(date('Y-m-d')));
+                                                            $aktif=0;
+                                                            $email_change = $student->changeEmail($student_id,$email,$token,$aktif,$old_email);
+                                                            if ($email_change==1){
+                                                                include("regisMail.php");echo "<script>alert('Email Telah berubah, Anda Akan Log out dan Harus Verifikasi Ulang Email!');location = 'logout.php';</script>";
+                                                            }elseif($email_change==3){
+                                                                echo "<script>alert('Email Tidak Boleh Sama!');location = 'myprofile.php';</script>";
+                                                            }else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
+                                                        }
+                                                     ?>
+                                                 </div>
+                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +306,7 @@
                                         <div class="modal fade" id="editStudent">
                                              <div class="modal-dialog">
                                                  <div class="modal-content">
-                                                     <form method="post">
+                                                     <form method="post" enctype="multipart/form-data">
                                                          <div class="modal-header">
                                                              <h4 class="modal-title">Edit Student</h4>
                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -283,6 +353,16 @@
                                                                 <div class="input-group-prepend"><span class="input-group-text">Telepon</span></div>
                                                                 <input type="text" name="phone" class="form-control" value="<?php echo $phone;?>" required>
                                                             </div>
+                                                            <div class="input-group mb-3">
+                                                                <label>Ganti Profil Gambar :</label>
+                                                                <input type="file" name="profile_picture" value="<?php echo $student->getters($student_id,"profile_picture");?>" required>
+                                                                <p style="color: red;font-size:10px;">
+                                                                    <i>
+                                                                        Ekstensi yang diperbolehkan .png | .jpg | .jpeg | <br>
+                                                                        Maksimal Ukuran File 1 MB!
+                                                                    </i>
+                                                                 </p>
+                                                            </div>
                                                             <p class="text-left">
                                                                 <i>*untuk pengubahan NIS/NIM, harap melakukan pengajuan melalui tombol "Ajukan Perubahan NIS/NIM"</i><br>
                                                             </p> 
@@ -298,7 +378,7 @@
                                     <div class="modal fade" id="reqChangeNumber">
                                      <div class="modal-dialog">
                                          <div class="modal-content">
-                                             <form method="post">
+                                             <form method="post" enctype="multipart/form-data"> 
                                                  <div class="modal-header">
                                                      <h4 class="modal-title">Form Perubahan NIS/NIM Siswa</h4>
                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -312,8 +392,15 @@
                                                         <div class="input-group-prepend"><span class="input-group-text">Alasan Pengajuan</span></div>
                                                         <textarea class="form-control" name="req_detail" rows="4"></textarea>
                                                     </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Upload Surat Pernyataan</span></div>
+                                                     <div class="input-group mb-3">
+                                                        <label>Upload Surat Pernyataan :</label>
+                                                        <input type="file" name="formal_letter" value="Pilih Berkas" required>
+                                                        <p style="color: red;font-size:10px;">
+                                                            <i>
+                                                                Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf <br>
+                                                                Maksimal Ukuran File 1 MB!
+                                                            </i>
+                                                         </p>
                                                     </div>
                                                 </div>
                                                 <input type="hidden" class="btn btn-primary btn" name="status" value="0">
@@ -327,11 +414,27 @@
                                                         $req_title = $_POST['req_title'];
                                                         $req_detail = $_POST['req_detail'];
                                                         $status = $_POST['status'];
-                                                        $reqSubmit = $student->CreateRequest($req_title,$req_detail,$status);
-                                                        if ($reqSubmit == 1) {
-                                                             echo "<script>alert('Permintaan Pengajuan Perubahan Sudah terkirim! Admin kami akan memproses!');location = 'dashboard.php';</script>";
-                                                        } else {
-                                                            echo "<script>alert('Error! Coba Lagi');location = 'dashboard.php';</script>";
+                                                        //upload operaton, courtesy by malasngoding.com
+                                                        $rand = rand();
+                                                        $ekstensi =  array('png','jpg','jpeg','pdf');
+                                                        $filename = $_FILES['formal_letter']['name'];
+                                                        $ukuran = $_FILES['formal_letter']['size'];
+                                                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                                                        if(!in_array($ext,$ekstensi) ) {
+                                                            echo "<script>alert('Ekstensi file salah!');location = 'dashboard.php';</script>";
+                                                        }else{
+                                                            if($ukuran < 1044070){		
+                                                                $xx = $rand.'_'.$filename;
+                                                                move_uploaded_file($_FILES['formal_letter']['tmp_name'], 'request/'.$rand.'_'.$filename);
+                                                                $reqSubmit = $student->CreateRequest($req_title,$req_detail,$status,$xx);
+                                                                if ($reqSubmit == 1) {
+                                                                    echo "<script>alert('Permintaan Pembatalan Sudah terkirim! Admin kami akan memproses!');location = 'dashboard.php';</script>";
+                                                                } else {
+                                                                    echo "<script>alert('Error! Coba Lagi');location = 'dashboard.php';</script>";
+                                                                }
+                                                            }else{
+                                                                echo "<script>alert('Ukuran file terlalu besar');location = 'dashboard.php';</script>";
+                                                            }
                                                         }
                                                     }
                                                 ?>
@@ -357,10 +460,26 @@
             $course = $_POST['course'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
-            $edit = $student->editProfile($student_id,$username,$fullname,$institution_name,$course,$address,$phone);
-            if ($edit==1){echo "<script>alert('Selamat! Data anda telah berubah!');location = 'myprofile.php';</script>";}
-            elseif ($edit==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'myprofile.php';</script>";}
-            else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
+            //upload operaton, courtesy by malasngoding.com
+            $rand = rand();
+            $ekstensi =  array('png','jpg','jpeg');
+            $filename = $_FILES['profile_picture']['name'];
+            $ukuran = $_FILES['profile_picture']['size'];
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if(!in_array($ext,$ekstensi) ) {
+                echo "<script>alert('Ekstensi file salah!');location = 'dashboard.php';</script>";
+            }else{
+                if($ukuran < 1044070){		
+                    $xx = $rand.'_'.$filename;
+                    move_uploaded_file($_FILES['profile_picture']['tmp_name'], 'profile_picture/'.$rand.'_'.$filename);
+                    $edit = $student->editProfile($student_id,$username,$fullname,$institution_name,$course,$address,$phone,$xx);
+                    if ($edit==1){echo "<script>alert('Selamat! Data anda telah berubah!');location = 'myprofile.php';</script>";}
+                    elseif ($edit==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'myprofile.php';</script>";}
+                    else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
+                }else{
+                    echo "<script>alert('Ukuran file terlalu besar');location = 'dashboard.php';</script>";
+                }
+            }
         }
         if(isset($_POST['full_data'])){
             $institution_name = $_POST['institution_name'];

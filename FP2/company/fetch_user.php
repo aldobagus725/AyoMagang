@@ -12,11 +12,11 @@
         $user_last_activity = fetch_user_last_activity($row['superadmin_id'], $connect);
         if($user_last_activity > $current_timestamp){
             echo $output = '
-                <button type="button" class="btn btn-primary start_chat" data-touserid="'.$row['superadmin_id'].'" data-tousername="'.$row['username'].'">Online! Langsung Chat</button></td>
+                <button type="button" class="btn btn-primary start_chat" data-touserid="'.$row['superadmin_id'].'" data-tousername="'.$row['username'].'"><i class="far fa-user-circle"></i>&nbsp;Online! Langsung Chat</button></td>
             ';
         }else{
             echo $output = '
-                <button type="button" class="btn btn-danger start_chat" data-touserid="'.$row['superadmin_id'].'" data-tousername="'.$row['username'].'"> Offline! Masih bisa di chat kok, siapa tahu nanti dibales!</button></td>
+                <button type="button" class="btn btn-danger start_chat" data-touserid="'.$row['superadmin_id'].'" data-tousername="'.$row['username'].'"><i class="far fa-user-circle"></i>&nbsp; Offline! Masih bisa di chat kok, siapa tahu nanti dibales!</button></td>
             ';
         }
     }

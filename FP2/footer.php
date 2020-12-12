@@ -1,7 +1,7 @@
 <div class="container-fluid" id="footer">
     <div class="container">
         <div class="row align-items-center justify-content-center">
-            <div class="col text-center" style="padding-bottom:40px;">
+            <div class="col text-left" style="padding-bottom:40px;">
                 <h2>Contact Us</h2><hr>
             </div>
                 <!-- GTranslate: https://gtranslate.io/ -->

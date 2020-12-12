@@ -55,6 +55,10 @@ class company{
         $query = mysqli_query($this->con, "select * from application where company_id = $id");
         return $query;
     }
+    public function viewApplicationDetail($app_id,$company_id){
+        $query = mysqli_query($this->con, "select * from application where company_id = $company_id and application_id = $app_id");
+        return $query;
+    }
     public function viewProfile($id){
         $id = mysqli_real_escape_string($this->con, $id);
         $query = mysqli_query($this->con, "select * from company where company_id = $id");
@@ -83,11 +87,11 @@ class company{
         if($query = mysqli_query($this->con, "update vacancies set company_id='$company_id',company_name='$company_name',company_address='$company_address',phone='$phone',vacancy_title='$vacancy_title',author='$author',company_speciality='$company_speciality',intern_policies='$intern_policies' where vacancies_id = $id")){return 1;}
         else{return 2;}
     }
-    public function editProfileC($id,$username,$company_name,$address,$phone){
+    public function editProfileC($id,$username,$company_name,$address,$phone,$pp){
         $id = mysqli_real_escape_string($this->con, $id);
         if (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;}
         else{
-            if($query = mysqli_query($this->con, "update company set company_name='$company_name', username='$username',address='$address',phone='$phone' where company_id = $id")){return 1;}
+            if($query = mysqli_query($this->con, "update company set company_name='$company_name', username='$username',address='$address',phone='$phone',profile_picture='$pp' where company_id = $id")){return 1;}
             else{return 3;}
         }
     }
@@ -101,36 +105,45 @@ class company{
         if($query = mysqli_query($this->con, "update company set password = '$password' where email = '$email'")){return 1;}
         else{return 2;}
     }
-    public function CreateRequest($req_title,$req_detail,$status){
-        if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status) values ('$req_title','$req_detail','$status')")){return 1;}
+    public function CreateRequest($req_title,$req_detail,$status,$formal_letter){
+        if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status,formal_letter) values ('$req_title','$req_detail','$status','$formal_letter')")){return 1;}
         else{return 2;}
     }
-    public function clickgraph($from, $to, $uid)
-    {
-        $graph = [];
-        $data = Clicks::select(DB::raw("count('short_link_id') as count,date"))->whereBetween('date',[$from,$to])->orWhere('date','=',$to)->where('user_id','=',$uid)->get();
-        $now = new \DateTime($from);
-        $end = new \DateTime($to);
-        $interval = new \DateInterval( 'P1D'); // 1 Day interval
-        $period = new \DatePeriod( $now, $interval, $end); // 7 Days
-        foreach( $period as $day) {
-            $key = $day->format('M d');
-            foreach($data as $value)
-            {
-                if(!is_null($value->date) && ($key == Carbon::createFromFormat('Y-m-d',$value->date)->format('M d')))
-                {
-                    $graph['count'][] = (int) $value->count;
-                    $graph['date'][] = $key;
-                }
-                else
-                {
-                    $graph['count'][] = 0;
-                    $graph['date'][] = $key;
-                }
-            }
+    public function changeEmail($id,$email,$token,$aktif,$old_email){
+        if(strcmp($email,$old_email)==0){
+            return 3;
+        }else{
+            if($query = mysqli_query($this->con, "update company set email = '$email', token = '$token', aktif = '$aktif' where company_id = $id")){return 1;}
+            else{return 2;}
         }
-        return $graph;
     }
-    
-
+    // statistic function
+    public function lastEntryVacancy($id){
+        $vacancy_date_result = mysqli_query($this->con, "SELECT MAX(create_time) FROM vacancies WHERE company_id = $id");
+        $vacancy_date = mysqli_fetch_row($vacancy_date_result)[0];
+        if ($vacancy_date==NULL){return "N/A";}
+        else{return $vacancy_date;}
+    }
+    public function lastEntryApplication($id){
+        $application_date_result = mysqli_query($this->con, "SELECT MAX(create_time) FROM application WHERE company_id = $id");
+        $application_date = mysqli_fetch_row($application_date_result)[0];
+        if ($application_date==NULL){return "N/A";}
+        else{return $application_date;}
+    }
+    public function countVacancy($id){
+        $vacancy_result = mysqli_query($this->con, "SELECT count(*) FROM vacancies WHERE company_id = $id");
+        $vacancy_num_rows = mysqli_fetch_row($vacancy_result)[0];
+        return $vacancy_num_rows;
+    }
+    public function countApplication($id){
+        $application_result = mysqli_query($this->con, "SELECT count(*) FROM application WHERE company_id = $id");
+        $application_num_rows = mysqli_fetch_row($application_result)[0];
+        return $application_num_rows;
+    }
+    public function countTotalClicks($id){
+        $id = mysqli_real_escape_string($this->con, $id);
+        $query = mysqli_query($this->con, "select sum(views) from vacancies where company_id = $id");
+        $result = mysqli_fetch_row($query)[0];
+        return $result;
+    }
 }

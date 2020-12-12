@@ -50,7 +50,7 @@ class student{
             return 3;
         }
     }
-    public function ApplyInternship($student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status){
+    public function ApplyInternship($student_id,$company_id,$vacancies_id,$company_name,$vacancy_title,$company_address,$company_email,$student_name,$student_address,$status,$file_pengajuan){
         $this->student_id = $student_id;
         $this->company_id = $company_id;
         $this->vacancies_id = $vacancies_id;
@@ -61,7 +61,7 @@ class student{
         $this->student_name = $student_name;
         $this->student_address = $student_address;
         $this->status = $status;
-        mysqli_query($this->con, "insert into application (student_id,company_id,vacancies_id,company_name,vacancy_title,company_address,company_email,student_name,student_address,status) values ('$student_id','$company_id','$vacancies_id','$company_name','$vacancy_title','$company_address','$company_email','$student_name','$student_address','$status')");
+        mysqli_query($this->con, "insert into application (student_id,company_id,vacancies_id,company_name,vacancy_title,company_address,company_email,student_name,student_address,status,file_pengajuan) values ('$student_id','$company_id','$vacancies_id','$company_name','$vacancy_title','$company_address','$company_email','$student_name','$student_address','$status','$file_pengajuan')");
         return 1;
     }
     public function viewInternshipList(){
@@ -69,7 +69,7 @@ class student{
         return $query;
     }
     public function viewRecommendedInternshipList($course){
-        $query = mysqli_query($this->con, "select * from vacancies where company_speciality = '$course' limit 3");
+        $query = mysqli_query($this->con, "SELECT * FROM vacancies WHERE company_speciality = '$course' ORDER BY RAND() LIMIT 3");
         return $query;
     }
     public function viewApplication($id){
@@ -82,11 +82,11 @@ class student{
         $query = mysqli_query($this->con, "select * from student where student_id = $id");
         return $query;
     }
-    public function editProfile($id,$username,$fullname,$institution_name,$course,$address,$phone){
+    public function editProfile($id,$username,$fullname,$institution_name,$course,$address,$phone,$pp){
         $id = mysqli_real_escape_string($this->con, $id);
         if (!is_numeric($phone) || strlen($phone) > 14|| strlen($phone) < 11) {return 2;}
         else{
-            if($query = mysqli_query($this->con, "update student set fullname='$fullname', username='$username',institution_name='$institution_name', course='$course',address='$address',phone='$phone' where student_id = $id")){return 1;}
+            if($query = mysqli_query($this->con, "update student set fullname='$fullname', username='$username',institution_name='$institution_name', course='$course',address='$address',phone='$phone',profile_picture='$pp' where student_id = $id")){return 1;}
             else{return 3;}
         }
     }
@@ -95,13 +95,21 @@ class student{
         if($query = mysqli_query($this->con, "update student set password = '$password' where student_id = $id")){return 1;}
         else{return 2;}
     }
+    public function changeEmail($id,$email,$token,$aktif,$old_email){
+        if(strcmp($email,$old_email)==0){
+            return 3;
+        }else{
+            if($query = mysqli_query($this->con, "update student set email = '$email', token = '$token', aktif = '$aktif' where student_id = $id")){return 1;}
+            else{return 2;}
+        }
+    }
     public function ResetPassword($email,$password){
         $email = mysqli_real_escape_string($this->con, $email);
         if($query = mysqli_query($this->con, "update student set password = '$password' where email = '$email'")){return 1;}
         else{return 2;}
     }
-    public function CreateRequest($req_title,$req_detail,$status){
-        if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status) values ('$req_title','$req_detail','$status')")){return 1;}
+    public function CreateRequest($req_title,$req_detail,$status,$formal_letter){
+        if($query = mysqli_query($this->con, "insert into request (req_title,req_detail,status,formal_letter) values ('$req_title','$req_detail','$status','$formal_letter')")){return 1;}
         else{return 2;}
     }
 }

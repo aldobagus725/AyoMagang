@@ -805,6 +805,18 @@
                                                                                 <div class="input-group-prepend"><span class="input-group-text">Status Aplikasi</span></div>
                                                                                 <input type="text" name="status" class="form-control" value="<?php echo $data['status'];?>" required readonly>
                                                                             </div>
+                                                                              <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">Berkas Pengajuan</span>
+                                                                                </div>
+                                                                                  <?php
+                                                                                    if($data['file_pengajuan']==NULL){
+                                                                                        echo '<input type="text" class="form-control" value="TIDAK TERSEDIA" required readonly>';
+                                                                                    }else{
+                                                                                  ?>
+                                                                                        <a href="../student/application/<?php echo $data['file_pengajuan'];?>" target="_blank" class="btn btn-primary btn-sm">Lihat Surat</a>
+                                                                                <?php } ?>
+                                                                            </div>             
                                                                              <br>
                                                                             <p class="text-left">
                                                                                 Status aplikasi:<br>
@@ -951,10 +963,12 @@
                                                                 <th>Judul Request</th>
                                                                 <th>Detail Request</th>
                                                                 <th>Status</th>
+                                                                <th>Surat Pernyataan</th>
                                                                 <th class="text-center">Aksi</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <!--Here contains function for see upload-->
                                                             <?php
                                                                 $query_view = $superadmin->viewRequest();
                                                                 $nomor = 1;
@@ -965,6 +979,14 @@
                                                                 <td><?php echo $dataapp["req_title"];?></td>
                                                                 <td><?php echo $dataapp["req_detail"];?></td>
                                                                 <td><?php echo $dataapp["status"];?></td>
+                                                                <td><?php
+                                                                        if($dataapp['formal_letter']==NULL){
+                                                                            echo "N/A";
+                                                                        }else{
+                                                                    ?>
+                                                                    <a href="../student/request/<?php echo $dataapp['formal_letter'];?>" target="_blank">Lihat Surat</a>
+                                                                    <?php } ?>
+                                                                </td>
                                                                 <td>
                                                             <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewReq<?php echo $nomor;?>"><i class='far fa-list-alt'></i>&nbsp;Detail</a>
                                                             <!--modal for view Detail-->
@@ -1016,7 +1038,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade show active" id="v-pills-chats" role="tabpanel" aria-labelledby="v-pills-chats-tab">
+                        <div class="tab-pane fade" id="v-pills-chats" role="tabpanel" aria-labelledby="v-pills-chats-tab">
                             <div class="row shadow-sm" style="background-color: #f8f8f8;">
                                 <div class="col text-left" style="padding-top:20px;padding-bottom:20px;">
                                     <h3>Live Chat Session</h3>

@@ -20,7 +20,7 @@
                         <?php echo $_SESSION['superadmin']['fullname']; ?>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="logout.php">Logout</a>
+                        <a class="dropdown-item" onclick="return confirm('Yakin Logout?')" href="../logout.php">Logout</a>
                     </div>
                 </li>
             </ul>

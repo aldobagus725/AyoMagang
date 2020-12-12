@@ -92,7 +92,7 @@
     }
     //---------------------------------------------------------------------------------------
     function get_user_name($user_id, $connect){
-        $query = "SELECT username FROM company WHERE user_id = '$user_id'";
+        $query = "SELECT username FROM company WHERE company_id = '$user_id'";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();

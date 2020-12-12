@@ -69,7 +69,7 @@ class student{
         return $query;
     }
     public function viewRecommendedInternshipList($course){
-        $query = mysqli_query($this->con, "SELECT * FROM vacancies WHERE company_speciality = '$course' ORDER BY RAND() LIMIT 3");
+        $query = mysqli_query($this->con, "SELECT * FROM vacancies WHERE company_speciality LIKE '$course' ORDER BY RAND() LIMIT 3");
         return $query;
     }
     public function viewApplication($id){

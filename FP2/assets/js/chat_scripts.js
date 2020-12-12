@@ -2,7 +2,8 @@
      fetch_user();
      setInterval(function(){
          update_last_activity();
-    }, 5000);
+         update_chat_history_data();
+    }, 3000);
     function fetch_user(){
         $.ajax({
             url:"fetch_user.php",method:"POST",
@@ -43,7 +44,7 @@
             url:"insert_chat.php",method:"POST",
             data:{to_user_id:to_user_id, chat_message:chat_message},
             success:function(data){
-                //$('#chat_message_'+to_user_id).val('');
+//                $('#chat_message_'+to_user_id).val('');
                 var element = $('#chat_message_'+to_user_id).emojioneArea();
                 element[0].emojioneArea.setText('');
                 $('#chat_history_'+to_user_id).html(data);

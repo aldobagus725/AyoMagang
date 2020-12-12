@@ -165,11 +165,10 @@
                                             if ($checkRow > 0) {
                                             ?>
                                         <h6>Kamu sudah Melakukan Pengajuan disini!</h6>
-                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
+                                        <a href="appdetail.php?&id=<?php echo $dataSug['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
                                         <?php } else { ?>
-                                        <a href="appdetail.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
-                                        <a href="apply.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-success btn-sm">Ajukan Magang</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Laporkan</a>
+                                        <a href="appdetail.php?&id=<?php echo $dataSug['vacancies_id']; ?>" class="btn btn-primary btn-sm">Kunjungi</a>
+                                        <a href="apply.php?&id=<?php echo $dataSug['vacancies_id']; ?>" class="btn btn-success btn-sm">Ajukan Magang</a>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -261,7 +260,6 @@
                                             </div>
                                             <div class="col">
                                                 <a href="apply.php?&id=<?php echo $data['vacancies_id']; ?>" class="btn btn-success btn-sm">Ajukan Magang</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Laporkan</a>
                                             </div>
                                         </div>
                                         <?php } ?>

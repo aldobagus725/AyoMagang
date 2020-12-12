@@ -263,7 +263,17 @@
                                         <h5><?php echo $data["company_name"];?></h5>
                                     </div>
                                     <div class="col-sm-6 text-right">
-                                        <img src="../assets/img/logo/logo_hitam_pas.png" width="75%;">
+                                        <?php
+                                            if($company->getters($id_company,"profile_picture")==NULL){
+                                        ?>
+                                                <img src="../assets/img/logo/logo_hitam_pas.png" width="75%;">
+                                        <?php
+                                            }else{
+                                        ?>
+                                                <img src="../company/profile_picture/<?php echo $company->getters($id_company,"profile_picture");?>" width="50%;">
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

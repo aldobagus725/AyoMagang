@@ -129,17 +129,11 @@
                         ?>
                         <div class="card">
                             <div class="card-header">
-                                <?php
-                                    if($company->getters($dataSug["company_id"],"profile_picture")==NULL){
-                                ?>
-                                        <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;">
-                                <?php
-                                    }else{
-                                ?>
-                                        <img src="../company/profile_picture/<?php echo $company->getters($dataSug["company_id"],"profile_picture");?>" width="20%;">
-                                <?php
-                                    }
-                                ?>
+                                <?php if($company->getters($dataSug["company_id"],"profile_picture")==NULL){ ?>
+                                <img src="../assets/img/logo/logo_hitam_pas.png" width="30%;">
+                                <?php }else{ ?>
+                                <img src="../company/profile_picture/<?php echo $company->getters($dataSug["company_id"],"profile_picture");?>" width="20%;">
+                                <?php } ?>
                                 <br>
                                 <h4><?php echo $dataSug["vacancy_title"];?></h4>
                                 <h6><?php echo $dataSug["company_name"];?></h6>

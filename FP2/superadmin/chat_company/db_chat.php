@@ -7,9 +7,7 @@
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
-        foreach($result as $row){
-            return $row['last_activity'];
-        }
+        foreach($result as $row){return $row['last_activity'];}
     }
     //---------------------------------------------------------------------------------------
     function fetch_user_chat_history($from_user_id, $to_user_id, $connect){
@@ -33,11 +31,8 @@
                 }
                 $dynamic_background = 'background-color:#edfaf0;';
             }else{
-                if($row["status"] == '2'){
-                    $chat_message = '<em>Pesan ini telah dihapus</em>';
-                }else{
-                    $chat_message = $row["chat_message"];
-                }
+                if($row["status"] == '2'){$chat_message = '<em>Pesan ini telah dihapus</em>';}
+                else{$chat_message = $row["chat_message"];}
                 $user_name = '<b class="text-danger">'.get_user_name($row['from_user_id'], $connect).'</b>';
                 $dynamic_background = 'background-color:#fffff2;';
             }
@@ -73,11 +68,8 @@
                 }
             $dynamic_background = 'background-color:#edfaf0;';
             }else{
-                if($row["status"] == '2'){
-                    $chat_message = '<em>Pesan ini telah dihapus</em>';
-                }else{
-                    $chat_message = $row['chat_message'];
-                }
+                if($row["status"] == '2'){$chat_message = '<em>Pesan ini telah dihapus</em>';}
+                else{$chat_message = $row['chat_message'];}
                 $user_name = '<b class="text-danger">'.get_user_name($row['from_user_id'], $connect).'</b>';
                 $dynamic_background = 'background-color:#fffff2;';
             }
@@ -96,9 +88,7 @@
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
-        foreach($result as $row){
-            return $row['username'];
-        }
+        foreach($result as $row){return $row['username'];}
     }
     //---------------------------------------------------------------------------------------
     function count_unseen_message($from_user_id, $to_user_id, $connect){
@@ -107,9 +97,7 @@
         $statement->execute();
         $count = $statement->rowCount();
         $output = '';
-        if($count > 0){
-            $output = '<span class="badge badge-success">'.$count.'</span>';
-        }
+        if($count > 0){$output = '<span class="badge badge-success">'.$count.'</span>';}
         return $output;
     }
     //---------------------------------------------------------------------------------------

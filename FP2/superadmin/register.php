@@ -8,11 +8,9 @@
         <style>
             #reg-superadmin::before{
                 content: "";position: fixed;
-                left: 0;right: 0;
-                z-index: -1;display: block;
+                left: 0;right: 0;z-index: -1;display: block;
                 background-image: url(../assets/img/carousel/1.jpg);
-                filter: brightness(65%);
-                background-repeat: no-repeat;background-size:cover;
+                filter: brightness(65%);background-repeat: no-repeat;background-size:cover;
                 width: 100%;height: 100%;
             }
         </style>

@@ -1,7 +1,6 @@
 <head>
     <style>
-        a:hover{transition: .3s;}
-        li.nav-item{font-size: 18px;padding: 7px 7px 7px 7px;}
+        a:hover{transition: .3s;}li.nav-item{font-size: 18px;padding: 7px 7px 7px 7px;}
     </style>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-no-bg">
@@ -11,9 +10,7 @@
         <?php }else if(isset($_SESSION['superadmin'])){?><a class="navbar-brand" href="dashboard.php"><img src="../assets/img/logo/logo%20putih.png"></a>
         <?php }else{ ?><a class="navbar-brand" href="index.php"><img src="assets/img/logo/logo%20putih.png"></a>
         <?php }?> 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
                 <!--student primary navbar-->

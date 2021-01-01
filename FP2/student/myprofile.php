@@ -60,17 +60,11 @@
                                     <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-sm-3">                                               
-                                                <?php
-                                                    if($student->getters($student_id,"profile_picture")==NULL){
-                                                ?>
-                                                        <img src="../assets/img/testimonials/1.jpg" width="100%;">
-                                                <?php
-                                                    }else{
-                                                ?>
-                                                        <img src="../student/profile_picture/<?php echo $student->getters($student_id,"profile_picture");?>" width="100%;">
-                                                <?php
-                                                    }
-                                                ?>
+                                                <?php if($student->getters($student_id,"profile_picture")==NULL){ ?>
+                                                <img src="../assets/img/testimonials/1.jpg" width="100%;">
+                                                <?php }else{ ?>
+                                                <img src="../student/profile_picture/<?php echo $student->getters($student_id,"profile_picture");?>" width="100%;">
+                                                <?php } ?>
                                             </div>
                                             <div class="col-sm-9">
                                                 <table>
@@ -115,19 +109,19 @@
                                                          <div class="modal-body">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend"><span class="input-group-text">Alamat Anda</span></div>
-                                                                <input type="text" name="address" class="form-control">
+                                                                <input type="text" name="address" required class="form-control">
                                                             </div>
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend"><span class="input-group-text">No. Telp Anda</span></div>
-                                                                <input type="text" name="phone" class="form-control">
+                                                                <input type="text" name="phone" required class="form-control">
                                                             </div>
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend"><span class="input-group-text">NIM/NIS</span></div>
-                                                                <input type="text" name="student_number" class="form-control">
+                                                                <input type="text" name="student_number" required class="form-control">
                                                             </div>
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend"><span class="input-group-text">Nama Sekolah/Kampus</span></div>
-                                                                <input type="text" name="institution_name" class="form-control">
+                                                                <input type="text" name="institution_name" required class="form-control">
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="input-group">
@@ -160,17 +154,11 @@
                                     <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-sm-3">
-                                                <?php
-                                                    if($student->getters($student_id,"profile_picture")==NULL){
-                                                ?>
-                                                        <img src="../assets/img/testimonials/1.jpg" width="100%;">
-                                                <?php
-                                                    }else{
-                                                ?>
-                                                        <img src="../student/profile_picture/<?php echo $student->getters($student_id,"profile_picture");?>" width="100%;">
-                                                <?php
-                                                    }
-                                                ?>
+                                                <?php if($student->getters($student_id,"profile_picture")==NULL){ ?>
+                                                <img src="../assets/img/testimonials/1.jpg" width="100%;">
+                                                <?php }else{ ?>
+                                                <img src="../student/profile_picture/<?php echo $student->getters($student_id,"profile_picture");?>" width="100%;">
+                                                <?php } ?>
                                             </div>
                                             <div class="col-sm-9">
                                                 <table>
@@ -466,9 +454,8 @@
             $filename = $_FILES['profile_picture']['name'];
             $ukuran = $_FILES['profile_picture']['size'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            if(!in_array($ext,$ekstensi) ) {
-                echo "<script>alert('Ekstensi file salah!');location = 'dashboard.php';</script>";
-            }else{
+            if(!in_array($ext,$ekstensi) ) {echo "<script>alert('Ekstensi file salah!');location = 'dashboard.php';</script>";}
+            else{
                 if($ukuran < 1044070){		
                     $xx = $rand.'_'.$filename;
                     move_uploaded_file($_FILES['profile_picture']['tmp_name'], 'profile_picture/'.$rand.'_'.$filename);
@@ -476,9 +463,7 @@
                     if ($edit==1){echo "<script>alert('Selamat! Data anda telah berubah!');location = 'myprofile.php';</script>";}
                     elseif ($edit==2){echo "<script>alert('Format Nomor Telepon Salah!');location = 'myprofile.php';</script>";}
                     else{echo "<script>alert('Error!Silakan coba lagi!');location = 'myprofile.php';</script>";}
-                }else{
-                    echo "<script>alert('Ukuran file terlalu besar');location = 'dashboard.php';</script>";
-                }
+                }else{echo "<script>alert('Ukuran file terlalu besar');location = 'dashboard.php';</script>";}
             }
         }
         if(isset($_POST['full_data'])){

@@ -13,6 +13,7 @@
 	$data  = $query->fetch_assoc();
     require '../classes/company.php';
     $company = new company();
+    $company_id = $_SESSION['company']["company_id"];
 ?>
 <html>
     <head>

@@ -1,5 +1,4 @@
-# Ayo Magang - Web Application for Academic Internship (Update September 2021
-  )
+# Ayo Magang - Web Application for Academic Internship (Update September 2021)
 Requirements
 ============
 * Laravel 8.6
@@ -13,10 +12,9 @@ Project Background
 <p align="justify">
 AyoMagang is a Web-based Application for Academic Internship. The purpose of this application of this development,
 is to fulfill our requirements of bachelor degree in HELP University & ITB STIKOM Bali. We choose this idea
-that began from our real-life experience (and further survey, many students) about how hard student (vocational school or college student)
+that began from our real-life experience (and further survey, many students) about how hard students (vocational school or college student)
 to find companies that provide academic internship. Until this point, there is not much of company that understand the difference between
-real internship and academic internship. We also find out that students still have hard times in order to get companies for academic internship.
-So, we decide to take this idea for the whole project, helping by building a web-based application that provide information about academic internship.
+real internship and academic internship. So, we decide to take this idea for the whole project, helping by building a web-based application that provide information about academic internship.
 </p>
 
 Credits
